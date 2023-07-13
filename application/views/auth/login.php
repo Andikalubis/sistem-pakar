@@ -28,9 +28,12 @@
             <div class="card-body">
                 <p class="login-box-msg">Sign in untuk memulai sesi kamu</p>
 
-                <form action="../../index3.html" method="post">
+
+                <form action="<?= base_url('Auth/login'); ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                    <input type="username" class="form-control" placeholder="Username" 
+                            id="username" name="username"  
+                            placeholder="Enter Username..." value="<?= set_value('username'); ?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -54,15 +57,15 @@
                                 </label>
                             </div>
                         </div>
-
+                        
+                    </div>
+                    
+                    <div class="social-auth-links text-center mt-2 mb-3">
+                        <button type="submit" class="btn btn-primary btn-block">
+                        Login
+                        </button>
                     </div>
                 </form>
-
-                <div class="social-auth-links text-center mt-2 mb-3">
-                    <a href="#" class="btn btn-block btn-primary">
-                        Sign in
-                    </a>
-                </div>
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
