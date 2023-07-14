@@ -29,7 +29,7 @@
                 <p class="login-box-msg">Sign in untuk memulai sesi kamu</p>
 
 
-                <form action="<?= base_url('Auth/login'); ?>" method="post">
+                <form action="<?= base_url('Auth/login_pengguna'); ?>" method="post">
                     <div class="input-group mb-3">
                     <input type="username" class="form-control" placeholder="Username" 
                             id="username" name="username"  

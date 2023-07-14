@@ -1,16 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth_model extends CI_Model {
+class Auth_model extends CI_Model
+{
+    public function login($username, $password)
+    {
+        // Mengambil data pengguna berdasarkan username
+        $query = $this->db->get_where('user', array('username' => $username));
+        $user = $query->row();
 
-    public function get_user($username, $password) {
-        $this->db->where('username', $username);
-        $this->db->where('password', $password);
-        return $this->db->get('user')->row();
+        // Memeriksa apakah pengguna ditemukan dan passwordnya cocok
+        if ($user && password_verify($password, $user->password)) {
+            return $user; // Mengembalikan data pengguna jika login berhasil
+        }
+
+        return false; // Mengembalikan false jika login gagal
     }
-
-    public function register_user($data) {
-        $this->db->insert('user', $data);
-    }
-
 }
