@@ -1,15 +1,28 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class Admin extends CI_Controller
 {
-    public function index()
+    public function __construct()
     {
-        $tmp = array(
-            'title' => 'dashboard',
+        parent::__construct();
+        $this->load->helper('auth_helper'); // Memuat helper auth_helper
+    }
+
+    public function dashboard()
+    {
+        // Memeriksa apakah pengguna memiliki level admin
+        if (!is_admin()) {
+            // Jika bukan admin, alihkan ke halaman login
+            redirect('auth');
+        }
+
+        // Tampilkan halaman dashboard admin
+        $data = array(
+            'title' => 'Admin Dashboard',
         );
 
-        $tmp['contents'] = $this->load->view('admin/layout/template', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        $data['contents'] = $this->load->view('admin/layout/template', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 }
