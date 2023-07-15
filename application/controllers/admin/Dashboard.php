@@ -9,7 +9,7 @@ class Admin extends CI_Controller
         $this->load->helper('auth_helper'); // Memuat helper auth_helper
     }
 
-    public function dashboard()
+    public function index()
     {
         // Memeriksa apakah pengguna memiliki level admin
         if (!is_admin()) {
