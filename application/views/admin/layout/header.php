@@ -10,3 +10,9 @@
 <link rel="stylesheet" href="<?= base_url(); ?>assets/tempate/admin/dist/css/adminlte.min.css">
 <!-- overlayScrollbars -->
 <link rel="stylesheet" href="<?= base_url(); ?>assets/tempate/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+<style>
+    .content-wrapper {
+        height: auto !important;
+    }
+</style>

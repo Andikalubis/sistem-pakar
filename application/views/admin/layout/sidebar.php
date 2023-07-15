@@ -25,7 +25,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="pages/sdf.html" class="nav-link  <?= $title == 'pengguna' ? 'active' : '' ?>">
+            <a href="<?= base_url() ?>admin/pengguna" class="nav-link  <?= $title == 'pengguna' ? 'active' : '' ?>">
                 <i class="nav-icon far fa-plus-square"></i>
                 <p>
                     Manajemen Pengguna
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="pages/gs.html" class="nav-link  <?= $title == 'pertanyaan' ? 'active' : '' ?>">
+            <a href="<?= base_url() ?>admin/pertanyaan" class="nav-link  <?= $title == 'pertanyaan' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                     Manajemen Pertanyaaan
@@ -41,7 +41,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="pages/gas.html" class="nav-link  <?= $title == 'ciri' ? 'active' : '' ?>">
+            <a href="<?= base_url() ?>admin/ciri" class="nav-link  <?= $title == 'ciri' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-search"></i>
                 <p>
                     Data Ciri & Kriteria
