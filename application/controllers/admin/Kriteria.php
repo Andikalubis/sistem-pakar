@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Ciri extends CI_Controller
+class Kriteria extends CI_Controller
 {
     public function index()
     {
@@ -16,7 +16,7 @@ class Ciri extends CI_Controller
     public function tambah()
     {
         $tmp = array(
-            'title' => 'tambah data ciri dan kriteria',
+            'title' => 'tambah data kriteria',
         );
 
         $tmp['contents'] = $this->load->view('admin/pages/ciri-tambah', $tmp, TRUE);
@@ -26,8 +26,17 @@ class Ciri extends CI_Controller
     public function edit()
     {
         $tmp = array(
-            'title' => 'update data ciri dan kriteria',
-            'userID' => $this->input->get('id')
+            'title' => 'update data kriteria',
+        );
+
+        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
+        $this->load->view('admin/layout/template', $tmp);
+    }
+
+    public function hapus()
+    {
+        $tmp = array(
+            'title' => 'hapus data kriteria',
         );
 
         $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
