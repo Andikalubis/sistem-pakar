@@ -11,7 +11,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/ciri/tambahKriteria'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-6 col-lg-3">
@@ -24,7 +24,7 @@
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/ciri/tambahGejala'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -54,74 +54,32 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Kriteria</th>
+                                        <th>Kode Kriteria</th>
+                                        <th>Nama Kriteria</th>
                                         <th>Deskripsi</th>
-                                        <th>Kode</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>219</td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-warning">Pending</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>657</td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-primary">Approved</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>175</td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-danger">Denied</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                    <?php
+                                    $no=1;
+                                        foreach($kriteria as $data) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data->kode_kriteria ?></td>
+                                                <td><?php echo $data->nama_kriteria ?></td>
+                                                <td><?php echo $data->deskripsi ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('admin/editPengguna/').$data->id_user ?>" class="btn btn-sm btn-success">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="<?php echo base_url('admin/hapusPengguna/').$data->id_user ?>" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                    <?php endforeach; ?>
+                                </tbody>     
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -153,74 +111,32 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Gejala</th>
-                                        <th>Kode</th>
-                                        <th>Kode Kriteria</th>
+                                        <th>Kode Gejala</th>
+                                        <th>Nama Gejala</th>
+                                        <th>Bobot</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>219</td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-warning">Pending</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>657</td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-primary">Approved</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>175</td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-danger">Denied</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                    <?php
+                                    $no=1;
+                                        foreach($user as $data) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data->kode_gejala ?></td>
+                                                <td><?php echo $data->nama_gejala ?></td>
+                                                <td><?php echo $data->bobot ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('admin/editPengguna/').$data->id_user ?>" class="btn btn-sm btn-success">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="<?php echo base_url('admin/hapusPengguna/').$data->id_user ?>" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                    <?php endforeach; ?>
+                                </tbody>     
                             </table>
                         </div>
                         <!-- /.card-body -->
