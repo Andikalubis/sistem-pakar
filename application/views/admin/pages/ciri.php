@@ -4,27 +4,23 @@
         <div class="col-6 col-lg-3">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
                     <p>Insert Data Kriteria</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="<?= base_url('admin/ciri/tambahKriteria'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/ciri/tambahKriteria'); ?>" class="small-box-footer">Add Kriteria <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-6 col-lg-3">
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
-
                     <p>Insert Data Gejala</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="<?= base_url('admin/ciri/tambahGejala'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/ciri/tambahGejala'); ?>" class="small-box-footer">Add Gejala <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>

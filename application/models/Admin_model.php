@@ -29,11 +29,11 @@ class Admin_model extends CI_Model {
 
     public function getKriteria()
     {
-        return $this->db->get('kriteria')->result_array();
+        return $this->db->get('kriteria')->result();
     }
 
     public function getGejala()
     {
-        return $this->db->get('gejala')->result_array();
+        return $this->db->get('gejala')->result();
     }
 }
