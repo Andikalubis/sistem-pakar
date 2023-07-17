@@ -70,15 +70,15 @@
                                                 <td><?php echo $data->nama_kriteria ?></td>
                                                 <td><?php echo $data->deskripsi ?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/editPengguna/').$data->id_user ?>" class="btn btn-sm btn-success">
+                                                    <a href="<?php echo base_url('admin/ciri/editKriteria').$data->id_kriteria ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="<?php echo base_url('admin/hapusPengguna/').$data->id_user ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('admin/ciri/hapusKriteria').$data->id_kriteria ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
                                 </tbody>     
                             </table>
                         </div>
@@ -120,22 +120,22 @@
                                 <tbody>
                                     <?php
                                     $no=1;
-                                        foreach($user as $data) : ?>
+                                        foreach($gejala as $data) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $data->kode_gejala ?></td>
                                                 <td><?php echo $data->nama_gejala ?></td>
                                                 <td><?php echo $data->bobot ?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/editPengguna/').$data->id_user ?>" class="btn btn-sm btn-success">
+                                                    <a href="<?php echo base_url('admin/ciri/editGejala').$data->id_gejala ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="<?php echo base_url('admin/hapusPengguna/').$data->id_user ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('admin/ciri/hapusGejala').$data->id_gejala ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
                                 </tbody>     
                             </table>
                         </div>

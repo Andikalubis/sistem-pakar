@@ -27,4 +27,13 @@ class Admin_model extends CI_Model {
         return $query->result();
     }
 
+    public function getKriteria()
+    {
+        return $this->db->get('kriteria')->result_array();
+    }
+
+    public function getGejala()
+    {
+        return $this->db->get('gejala')->result_array();
+    }
 }

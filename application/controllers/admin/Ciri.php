@@ -3,15 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ciri extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Admin_model');
+    }
+
     public function index()
     {
-        $tmp = array(
-            'title' => 'ciri',
-        );
+        $data['title'] = 'ciri';
+        $data['kriteria'] = $this->Admin_model->getKriteria();
+        $data['gejala'] = $this->Admin_model->getGejala();
 
-        $tmp['contents'] = $this->load->view('admin/pages/ciri', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        $data['contents'] = $this->load->view('admin/pages/ciri', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
+
 
     ///data untuk kriteria
     public function tambahKriteria()
