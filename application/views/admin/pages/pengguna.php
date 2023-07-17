@@ -1,118 +1,70 @@
-<div class="card card-outline card-primary m-4">
-    <div class="card-header text-center">
-        <h4>Manajemen Data Pengguna</h4>
+<div>
+    <h3 class="text-center my-4">Manajemen Data Pengguna</h3>
+    <div class="row my-4">
     </div>
-    <div class="card-body">
-        <form action="<?= base_url('Auth/login'); ?>" method="post">
-            <div class="input-group mb-3">
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Nama</label>
-                    </div>
-                    <div class="col">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Username</label>
-                    </div>
-                    <div class="col">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Password</label>
-                    </div>
-                    <div class="col">
-                        <input type="password" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Confirm Password</label>
-                    </div>
-                    <div class="col">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Email</label>
-                    </div>
-                    <div class="col">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Telepon</label>
-                    </div>
-                    <div class="col">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Jenis Kelamin</label>
-                    </div>
-                    <div class="col">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option value="L">Laki-laki</option>
-                            <option value="P">Perempuan</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Alamat</label>
-                    </div>
-                    <div class="col">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-            </div>
-            <div class="row input-group mb-3">
-                <div class="col">
-                    <label for="nama">Level</label>
-                </div>
-                <div class="col">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option value="L">Laki-laki</option>
-                        <option value="P">Perempuan</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row input-group mb-3">
-                <div class="col">
-                    <label for="nama">Alamat</label>
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Admin</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                <label class="form-check-label" for="exampleCheck2">User</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
             <div class="row">
-                <div class="col">
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Update
-                    </button>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Tabel Data Pengguna</h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Username</th>
+                                        <th>Nama Pengguna</th>
+                                        <th>Alamat</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Email</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no=1;
+                                        foreach($user as $data) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data->username ?></td>
+                                                <td><?php echo $data->nama ?></td>
+                                                <td><?php echo $data->alamat ?></td>
+                                                <td><?php echo $data->jenis_kelamin ?></td>
+                                                <td><?php echo $data->email ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('admin/editPengguna/').$data->id_user ?>" class="btn btn-sm btn-success">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="<?php echo base_url('admin/hapusPengguna/').$data->id_user ?>" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                    <?php endforeach; ?>
+                                </tbody>     
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
                 </div>
             </div>
-        </form>
+            </div>
+        </div>
     </div>
-    <!-- /.card-body -->
 </div>
