@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jul 2023 pada 14.44
+-- Waktu pembuatan: 17 Jul 2023 pada 21.36
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sistem-pakar`
+-- Database: `sistem_pakar`
 --
 
 -- --------------------------------------------------------
@@ -29,8 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `gejala` (
   `id_gejala` int(11) NOT NULL,
-  `id_kriteria` int(11) DEFAULT NULL,
-  `kode_gejala` int(45) DEFAULT NULL,
+  `kode_gejala` varchar(25) DEFAULT NULL,
   `nama_gejala` varchar(50) DEFAULT NULL,
   `bobot` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -58,7 +57,7 @@ CREATE TABLE `hasil` (
 
 CREATE TABLE `kriteria` (
   `id_kriteria` int(11) NOT NULL,
-  `kode_kriteria` int(25) DEFAULT NULL,
+  `kode_kriteria` varchar(25) DEFAULT NULL,
   `nama_kriteria` varchar(50) DEFAULT NULL,
   `deskripsi` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -71,9 +70,8 @@ CREATE TABLE `kriteria` (
 
 CREATE TABLE `pertanyaan` (
   `id_pertanyaan` int(11) NOT NULL,
-  `id_gejala` int(11) DEFAULT NULL,
-  `kode_gejala` int(11) DEFAULT NULL,
-  `kode_pertanyaan` int(50) DEFAULT NULL,
+  `kode_gejala` varchar(25) DEFAULT NULL,
+  `kode_pertanyaan` varchar(25) DEFAULT NULL,
   `pertanyaan` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -111,8 +109,7 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `alamat`, `jenis_
 -- Indeks untuk tabel `gejala`
 --
 ALTER TABLE `gejala`
-  ADD PRIMARY KEY (`id_gejala`),
-  ADD KEY `id_kriteria` (`id_kriteria`);
+  ADD PRIMARY KEY (`id_gejala`);
 
 --
 -- Indeks untuk tabel `hasil`
@@ -125,14 +122,16 @@ ALTER TABLE `hasil`
 -- Indeks untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
-  ADD PRIMARY KEY (`id_kriteria`);
+  ADD PRIMARY KEY (`id_kriteria`),
+  ADD UNIQUE KEY `kode_kriteria` (`kode_kriteria`);
 
 --
 -- Indeks untuk tabel `pertanyaan`
 --
 ALTER TABLE `pertanyaan`
   ADD PRIMARY KEY (`id_pertanyaan`),
-  ADD KEY `id_gejala` (`id_gejala`);
+  ADD UNIQUE KEY `kode_gejala` (`kode_gejala`),
+  ADD UNIQUE KEY `kode_pertanyaan` (`kode_pertanyaan`);
 
 --
 -- Indeks untuk tabel `user`
@@ -155,22 +154,10 @@ ALTER TABLE `user`
 --
 
 --
--- Ketidakleluasaan untuk tabel `gejala`
---
-ALTER TABLE `gejala`
-  ADD CONSTRAINT `gejala_ibfk_1` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`);
-
---
 -- Ketidakleluasaan untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
   ADD CONSTRAINT `hasil_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
-
---
--- Ketidakleluasaan untuk tabel `pertanyaan`
---
-ALTER TABLE `pertanyaan`
-  ADD CONSTRAINT `pertanyaan_ibfk_1` FOREIGN KEY (`id_gejala`) REFERENCES `gejala` (`id_gejala`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
