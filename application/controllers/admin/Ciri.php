@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kriteria extends CI_Controller
+class Ciri extends CI_Controller
 {
     public function index()
     {
@@ -13,7 +13,8 @@ class Kriteria extends CI_Controller
         $this->load->view('admin/layout/template', $tmp);
     }
 
-    public function tambah()
+    ///data untuk kriteria
+    public function tambahKriteria()
     {
         $tmp = array(
             'title' => 'tambah data kriteria',
@@ -23,7 +24,7 @@ class Kriteria extends CI_Controller
         $this->load->view('admin/layout/template', $tmp);
     }
 
-    public function edit()
+    public function editKriteria()
     {
         $tmp = array(
             'title' => 'update data kriteria',
@@ -33,10 +34,41 @@ class Kriteria extends CI_Controller
         $this->load->view('admin/layout/template', $tmp);
     }
 
-    public function hapus()
+    public function hapusKriteria()
     {
         $tmp = array(
             'title' => 'hapus data kriteria',
+        );
+
+        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
+        $this->load->view('admin/layout/template', $tmp);
+    }
+
+    ///data untuk gejala
+    public function tambahGejala()
+    {
+        $tmp = array(
+            'title' => 'tambah data gejala',
+        );
+
+        $tmp['contents'] = $this->load->view('admin/pages/ciri-tambah', $tmp, TRUE);
+        $this->load->view('admin/layout/template', $tmp);
+    }
+
+    public function editGejala()
+    {
+        $tmp = array(
+            'title' => 'update data gejala',
+        );
+
+        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
+        $this->load->view('admin/layout/template', $tmp);
+    }
+
+    public function hapusGejala()
+    {
+        $tmp = array(
+            'title' => 'hapus data gejala',
         );
 
         $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
