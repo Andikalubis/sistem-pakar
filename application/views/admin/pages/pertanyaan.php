@@ -4,27 +4,12 @@
         <div class="col-6 col-lg-3">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Insert Data Kriteria</p>
+                    <p>Insert Data Pertanyaan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-6 col-lg-3">
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Insert Data Gejala</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="<?= base_url('admin/pertanyaan/tambahPertanyaan'); ?>" class="small-box-footer">Add Pertanyaan <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>
@@ -34,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tabel Data Kriteria</h3>
+                            <h3 class="card-title">Tabel Data Pertanyaan</h3>
 
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -54,74 +39,32 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Pertanyaan</th>
-                                        <th>Kode Pertanyaan</th>
                                         <th>Kode Gejala</th>
+                                        <th>Kode Pertanyaan</th>
+                                        <th>Pertanyaan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>183</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>219</td>
-                                        <td>Alexander Pierce</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-warning">Pending</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>657</td>
-                                        <td>Bob Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-primary">Approved</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>175</td>
-                                        <td>Mike Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-danger">Denied</span></td>
-                                        <td>
-                                            <div class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-
-                                            </div>
-                                            <div class="btn btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                    <?php
+                                    $no=1;
+                                        foreach($pertanyaan as $data) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data->kode_gejala ?></td>
+                                                <td><?php echo $data->kode_pertanyaan ?></td>
+                                                <td><?php echo $data->pertanyaan ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('admin/pertanyaan/editPertanyaan/').$data->id_pertanyaan ?>" class="btn btn-sm btn-success">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <a href="<?php echo base_url('admin/pertanyaan/hapusPertanyaan/').$data->id_pertanyaan ?>" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                </tbody>     
                             </table>
                         </div>
                         <!-- /.card-body -->
