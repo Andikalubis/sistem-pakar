@@ -12,12 +12,7 @@ class Admin_model extends CI_Model {
     {
         // Ambil data riwayat dari tabel 'hasil'
         $query = $this->db->get('hasil');
-        
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        } else {
-            return array();
-        }
+        return $query->result_array();
     }
 
     public function getUser($level)

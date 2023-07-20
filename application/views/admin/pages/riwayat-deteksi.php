@@ -2,9 +2,6 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-default">
-            <div class="card-header text-center">
-                <h5 class="text-center mt-2">Pria (6 tahun)</h5>
-            </div>
             <div class="card-body p-4">
                 <div class="row">
                     <div class="col-12">
@@ -38,47 +35,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>183</td>
-                                            <td>John Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="tag tag-success">Approved</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                            <td>
-                                                <div class="btn btn-primary">Detail</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>219</td>
-                                            <td>Alexander Pierce</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="tag tag-warning">Pending</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                            <td>
-                                                <div class="btn btn-primary">Detail</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>657</td>
-                                            <td>Bob Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="tag tag-primary">Approved</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                            <td>
-                                                <div class="btn btn-primary">Detail</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>175</td>
-                                            <td>Mike Doe</td>
-                                            <td>11-7-2014</td>
-                                            <td><span class="tag tag-danger">Denied</span></td>
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                            <td>
-                                                <div class="btn btn-primary">Detail</div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <?php
+                                        $no=1;
+                                        foreach($hasil as $data) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data->nama ?></td>
+                                                <td><?php echo $data->bobot ?></td>
+                                                <td><?php echo $data->tanggal ?></td>
+                                                <td><?php echo $data->usia ?></td>
+                                                <td><?php echo $data->hasil ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('admin/riwayat/').$data->id_hasil ?>" class="btn btn-sm btn-success">
+                                                        <i class="fas fa-show"></i>
+                                                    </a>
+                                                    <a href="<?php echo base_url('admin/riwayat/').$data->id_hasil ?>" class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                </tbody>     
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -88,9 +65,6 @@
                 </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-                <button class="btn btn-danger">Hapus Data</button>
-            </div>
         </div>
         <!-- /.card -->
     </div>
