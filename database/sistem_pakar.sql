@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jul 2023 pada 21.36
--- Versi server: 10.4.27-MariaDB
--- Versi PHP: 7.4.33
+-- Waktu pembuatan: 22 Jul 2023 pada 14.32
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,15 @@ CREATE TABLE `gejala` (
   `kode_gejala` varchar(25) DEFAULT NULL,
   `nama_gejala` varchar(50) DEFAULT NULL,
   `bobot` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `gejala`
+--
+
+INSERT INTO `gejala` (`id_gejala`, `kode_gejala`, `nama_gejala`, `bobot`) VALUES
+(1, 'G1', 'sample', 0.1),
+(2, 'G2', 'sample', 0.2);
 
 -- --------------------------------------------------------
 
@@ -47,7 +55,7 @@ CREATE TABLE `hasil` (
   `tanggal` date DEFAULT NULL,
   `usia` int(50) DEFAULT NULL,
   `hasil_kriteria` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -60,7 +68,15 @@ CREATE TABLE `kriteria` (
   `kode_kriteria` varchar(25) DEFAULT NULL,
   `nama_kriteria` varchar(50) DEFAULT NULL,
   `deskripsi` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kriteria`
+--
+
+INSERT INTO `kriteria` (`id_kriteria`, `kode_kriteria`, `nama_kriteria`, `deskripsi`) VALUES
+(1, 'K1', 'sample', 'sample'),
+(2, 'K2', 'sample', 'sample');
 
 -- --------------------------------------------------------
 
@@ -73,7 +89,15 @@ CREATE TABLE `pertanyaan` (
   `kode_gejala` varchar(25) DEFAULT NULL,
   `kode_pertanyaan` varchar(25) DEFAULT NULL,
   `pertanyaan` tinytext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pertanyaan`
+--
+
+INSERT INTO `pertanyaan` (`id_pertanyaan`, `kode_gejala`, `kode_pertanyaan`, `pertanyaan`) VALUES
+(1, 'G1', 'KP1', 'sample'),
+(2, 'G2', 'KP2', 'sample');
 
 -- --------------------------------------------------------
 
@@ -91,7 +115,7 @@ CREATE TABLE `user` (
   `email` varchar(20) DEFAULT NULL,
   `tlp` int(20) DEFAULT NULL,
   `level` enum('admin','user') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
@@ -109,7 +133,8 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `alamat`, `jenis_
 -- Indeks untuk tabel `gejala`
 --
 ALTER TABLE `gejala`
-  ADD PRIMARY KEY (`id_gejala`);
+  ADD PRIMARY KEY (`id_gejala`),
+  ADD UNIQUE KEY `kode_gejala` (`kode_gejala`);
 
 --
 -- Indeks untuk tabel `hasil`
@@ -142,6 +167,30 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `gejala`
+--
+ALTER TABLE `gejala`
+  MODIFY `id_gejala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `hasil`
+--
+ALTER TABLE `hasil`
+  MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `kriteria`
+--
+ALTER TABLE `kriteria`
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
