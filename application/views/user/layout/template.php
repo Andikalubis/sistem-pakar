@@ -16,7 +16,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>user/dashboard" class="nav-link text-capitalize"><?= $title ?></a>
+                    <a href="<?= base_url(); ?>user/beranda" class="nav-link text-capitalize"><?= $title ?></a>
                 </li>
             </ul>
 
@@ -164,7 +164,7 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <?php $this->load->view('admin/layout/sidebar') ?>
+                <?php $this->load->view('user/layout/sidebar') ?>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -193,7 +193,7 @@
     <!-- ./wrapper -->
 
     <!-- footer -->
-    <?php $this->load->view('admin/layout/footer') ?>
+    <?php $this->load->view('user/layout/footer') ?>
 </body>
 
 </html>
