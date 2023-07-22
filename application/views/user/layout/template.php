@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view('admin/layout/header') ?>
+    <?php $this->load->view('user/layout/header') ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -16,7 +16,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>admin/dashboard" class="nav-link text-capitalize"><?= $title ?></a>
+                    <a href="<?= base_url(); ?>user/dashboard" class="nav-link text-capitalize"><?= $title ?></a>
                 </li>
             </ul>
 
