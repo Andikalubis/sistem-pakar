@@ -7,6 +7,13 @@ class Pengguna extends CI_Controller
     {
         parent::__construct();
         $this->load->model('User_model');
+
+        $logged_in = $this->session->userdata('logged_in');
+        $level = $this->session->userdata('level');
+
+        if (!$logged_in && $level === 'user') {
+            redirect('auth');
+        }
     }
 
     public function index($id_user)
