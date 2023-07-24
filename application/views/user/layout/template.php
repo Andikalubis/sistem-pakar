@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view('admin/layout/header') ?>
+    <?php $this->load->view('user/layout/header') ?>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -16,7 +16,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>admin/dashboard" class="nav-link text-capitalize"><?= $title ?></a>
+                    <a href="<?= base_url(); ?>user/beranda" class="nav-link text-capitalize"><?= $title ?></a>
                 </li>
             </ul>
 
@@ -56,6 +56,7 @@
             </ul>
         </nav>
         <!-- /.navbar -->
+
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
@@ -69,12 +70,12 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <span class="font-weight-bold mt-3 stext-110 cl2"><?= $user['name']; ?></span>
+                        <span class="font-weight-bold mt-3 stext-110 cl2"><?= $user['nama']; ?></span>
                     </div>
                 </div>
 
                 <!-- Sidebar Menu -->
-                <?php $this->load->view('admin/layout/sidebar') ?>
+                <?php $this->load->view('user/layout/sidebar') ?>
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -103,7 +104,7 @@
     <!-- ./wrapper -->
 
     <!-- footer -->
-    <?php $this->load->view('admin/layout/footer') ?>
+    <?php $this->load->view('user/layout/footer') ?>
 </body>
 
 </html>

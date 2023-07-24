@@ -3,30 +3,31 @@
         <h4>Manajemen Data Kriteria Kecerdasan Anak</h4>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('Auth/login'); ?>" method="post">
+        <?php echo form_open('admin/pertanyaan/editPertanyaan/'.$pertanyaan->id_pertanyaan); ?>
             <div class="input-group mb-3">
+                <?php echo form_hidden('id_pertanyaan', $pertanyaan->id_pertanyaan) ?>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="nama">Pertanyaan</label>
+                            <label for="kode_gejala">Kode Gejala</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" name="kode_gejala" class="form-control" value="<?php echo $pertanyaan->kode_gejala ?>">
+                        </div>
+                </div>
+                <div class="row input-group mb-3">
+                    <div class="col">
+                        <label for="kode_pertanyaan">Kode Pertanyaan</label>
                     </div>
                     <div class="col">
-                        <input type="username" class="form-control" id="username" name="username" placeholder="Masukan Pertanyaan..." value="<?= set_value('username'); ?>">
+                    <input type="text" name="kode_pertanyaan" class="form-control" value="<?php echo $pertanyaan->kode_pertanyaan ?>">
                     </div>
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="nama">Kode Pertanyaan</label>
+                        <label for="pertanyaan">Pertanyaan</label>
                     </div>
                     <div class="col">
-                        <input type="username" class="form-control" id="username" name="username" placeholder="Masukan Kode Pertanyaan ..." value="<?= set_value('username'); ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Kode Gejala</label>
-                    </div>
-                    <div class="col">
-                        <input type="password" class="form-control" id="username" name="username" placeholder="Masukan Kode Gejala ..." value="<?= set_value('username'); ?>">
+                    <input type="text" name="pertanyaan" class="form-control" value="<?php echo $pertanyaan->pertanyaan ?>">
                     </div>
                 </div>
             </div>
@@ -37,7 +38,7 @@
                     </button>
                 </div>
             </div>
-        </form>
+        <?php echo form_close() ?>
     </div>
     <!-- /.card-body -->
 </div>

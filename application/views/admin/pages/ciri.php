@@ -1,5 +1,5 @@
 <div>
-    <h3 class="text-center my-4">Manajemen Data Pertanyaan</h3>
+    <h3 class="text-center my-4">Manajemen Data Kriteria dan Gejala</h3>
     <div class="row my-4">
         <div class="col-6 col-lg-3">
             <div class="small-box bg-success">
@@ -66,10 +66,10 @@
                                                 <td><?php echo $data->nama_kriteria ?></td>
                                                 <td><?php echo $data->deskripsi ?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/ciri/editKriteria').$data->id_kriteria ?>" class="btn btn-sm btn-success">
+                                                    <a href="<?php echo base_url('admin/ciri/editKriteria/').$data->id_kriteria ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="<?php echo base_url('admin/ciri/hapusKriteria').$data->id_kriteria ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('admin/ciri/hapusKriteria/').$data->id_kriteria ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -123,10 +123,10 @@
                                                 <td><?php echo $data->nama_gejala ?></td>
                                                 <td><?php echo $data->bobot ?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/ciri/editGejala').$data->id_gejala ?>" class="btn btn-sm btn-success">
+                                                    <a href="<?php echo base_url('admin/ciri/editGejala/').$data->id_gejala ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <a href="<?php echo base_url('admin/ciri/hapusGejala').$data->id_gejala ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('admin/ciri/hapusGejala/').$data->id_gejala ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>

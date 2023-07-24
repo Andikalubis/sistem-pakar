@@ -3,13 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // $this->load->model('Auth_model'); // Memuat model Auth_model
-        $this->load->model('User_model');
-    }
-
     public function index()
     {
         $data = array(
@@ -34,7 +27,7 @@ class Auth extends CI_Controller
     public function register()
     {
         $data = array(
-            'title' => 'Auth',
+            'title' => 'Register',
         );
 
         $data['contents'] = $this->load->view('auth/login', $data, TRUE);

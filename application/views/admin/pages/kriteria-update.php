@@ -3,41 +3,42 @@
         <h4>Manajemen Data Kriteria Kecerdasan Anak</h4>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('admin/pertanyaan/tambahPertanyaan'); ?>" method="post">
+        <?php echo form_open('admin/ciri/editkriteria/'.$kriteria->id_kriteria); ?>
             <div class="input-group mb-3">
+            <?php echo form_hidden('id_kriteria', $kriteria->id_kriteria) ?>32
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="kode_gejala">Kode Gejala</label>
+                        <label for="kode_kriteria">Kode Kriteria</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="kode_gejala" name="kode_gejala" placeholder="Masukan Kode Gejala..." value="<?= set_value('kode_gejala'); ?>">
+                        <input type="text" name="kode_kriteria" class="form-control" value="<?php echo $kriteria->kode_kriteria ?>">
                     </div>
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="kode_pertanyaan">Kode Pertanyaan</label>
+                        <label for="nama_kriteria">Nama Kriteria</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="kode_pertanyaan" name="kode_pertanyaan" placeholder="Masukan Kode Pertanyaan ..." value="<?= set_value('kode_pertanyaan'); ?>">
+                        <input type="text" name="nama_kriteria" class="form-control" value="<?php echo $kriteria->nama_kriteria ?>">
                     </div>
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="pertanyaan">Pertanyaan</label>
+                        <label for="deskripsi">Deskripsi</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="pertanyaan" name="pertanyaan" placeholder="Masukan Pertanyaan ..." value="<?= set_value('pertanyaan'); ?>">
+                        <input type="text" name="deskripsi" class="form-control" value="<?php echo $kriteria->deskripsi ?>">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <button type="submit" class="btn btn-primary btn-block">
-                        Tambah Pertanyaan
+                        Perbarui
                     </button>
                 </div>
             </div>
-        </form>
+        <?php echo form_close() ?>
     </div>
     <!-- /.card-body -->
 </div>

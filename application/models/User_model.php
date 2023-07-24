@@ -4,19 +4,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class User_model extends CI_Model
 {
 
-    public function get_username($username)
+    public function updateUser($id_user, $data)
     {
-        return $this->db->get_where('user', ['username' => $username])->row_array();
+        // Mengupdate data gejala berdasarkan ID di tabel "gejala"
+        $this->db->where('id_user', $id_user);
+        $this->db->update('user', $data);
     }
 
-    public function get_user_id($nomor_id)
+    public function deleteUser($id_user)
     {
-        $this->db->select('nomor_id, nama_pengguna, username, lokasi');
-        return $this->db->get_where('users', ['nomor_id' => $nomor_id])->row_array();
+        // Menghapus data kriteria berdasarkan ID dari tabel "kriteria"
+        $this->db->where('id_user', $id_user);
+        $this->db->delete('user');
     }
 
-    public function add_user($data)
+    public function get_User_by_id($id_user)
     {
-        $this->db->insert('users', $data);
+        // Mengambil data kriteria berdasarkan ID dari tabel "kriteria"
+        $this->db->where('id_user', $id_user);
+        return $this->db->get('user')->row();
     }
 }

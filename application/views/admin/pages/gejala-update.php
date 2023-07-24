@@ -1,32 +1,33 @@
 <div class="card card-outline card-primary m-4">
     <div class="card-header text-center">
-        <h4>Manajemen Data Kriteria Kecerdasan Anak</h4>
+        <h4>Manajemen Data Gejala Kecerdasan Anak</h4>
     </div>
     <div class="card-body">
-        <form action="<?= base_url('admin/ciri/editKriteria'); ?>" method="post">
+        <?php echo form_open('admin/ciri/editGejala/'.$gejala->id_gejala); ?>
             <div class="input-group mb-3">
+                <?php echo form_hidden('id_gejala', $gejala->id_gejala) ?>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="nama">Kode Kriteria</label>
+                        <label for="kode_gejala">Kode Gejala</label>
                     </div>
                     <div class="col">
-                        <input type="text" name="kode_kriteria" class="form-control" value="<?php echo $kriteria->kode_kriteria ?>">
+                        <input type="text" name="kode_gejala" class="form-control" value="<?php echo $gejala->kode_gejala ?>">
                     </div>
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="nama">Nama Kriteria</label>
+                        <label for="nama_gejala">Nama Gejala</label>
                     </div>
                     <div class="col">
-                        <input type="text" name="nama_kriteria" class="form-control" value="<?php echo $kriteria->nama_kriteria ?>">
+                        <input type="text" name="nama_gejala" class="form-control" value="<?php echo $gejala->nama_gejala ?>">
                     </div>
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="nama">Deskripsi</label>
+                        <label for="bobot">Bobot</label>
                     </div>
                     <div class="col">
-                        <input type="text" name="deskripsi" class="form-control" value="<?php echo $kriteria->deskripsi ?>">
+                        <input type="text" name="bobot" class="form-control" value="<?php echo $gejala->bobot ?>">
                     </div>
                 </div>
             </div>
@@ -37,7 +38,7 @@
                     </button>
                 </div>
             </div>
-        </form>
+        <?php echo form_close() ?>
     </div>
     <!-- /.card-body -->
 </div>

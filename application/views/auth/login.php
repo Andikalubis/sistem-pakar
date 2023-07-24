@@ -29,9 +29,9 @@
                 <p class="login-box-msg">Sign in untuk memulai sesi kamu</p>
 
 
-                <form action="<?= base_url('admin/auth'); ?>" method="post">
+                <form action="<?= base_url('auth/loginpengguna'); ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
+                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" value="<?= set_value('username'); ?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" id="password" name="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

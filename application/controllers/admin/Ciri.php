@@ -23,62 +23,135 @@ class Ciri extends CI_Controller
     ///data untuk kriteria
     public function tambahKriteria()
     {
-        $tmp = array(
-            'title' => 'tambah data kriteria',
-        );
+        $data['title'] = 'tambah data kriteria';
 
-        $tmp['contents'] = $this->load->view('admin/pages/ciri-tambah', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        // Jika ada data yang dikirimkan melalui form
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required');
+            $this->form_validation->set_rules('nama_kriteria', 'Nama Kriteria', 'required');
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+
+            if ($this->form_validation->run() == TRUE) {
+                // Jika validasi sukses, lakukan proses tambah data ke model
+                $data = array(
+                    'kode_kriteria' => $this->input->post('kode_kriteria'),
+                    'nama_kriteria' => $this->input->post('nama_kriteria'),
+                    'deskripsi'     => $this->input->post('deskripsi')
+                );
+
+                $this->Admin_model->insertKriteria($data);
+
+                // Redirect ke halaman index atau halaman sukses tambah data
+                redirect('admin/ciri');
+            }
+        }
+        $data['contents'] = $this->load->view('admin/pages/kriteria-tambah', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 
-    public function editKriteria()
+    public function editKriteria($id_kriteria)
     {
-        $tmp = array(
-            'title' => 'update data kriteria',
-        );
+        $data['title'] = 'update data kriteria';
+        $data['kriteria'] = $this->Admin_model->get_kriteria_by_id($id_kriteria);
 
-        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        // Jika ada data yang dikirimkan melalui form
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required');
+            $this->form_validation->set_rules('nama_kriteria', 'Nama Kriteria', 'required');
+            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+
+            if ($this->form_validation->run() == TRUE) {
+                // Jika validasi sukses, lakukan proses update data ke model
+                $id_kriteria = $this->input->post('id_kriteria');
+                $data = array(
+                    'kode_kriteria' => $this->input->post('kode_kriteria'),
+                    'nama_kriteria' => $this->input->post('nama_kriteria'),
+                    'deskripsi'     => $this->input->post('deskripsi')
+                );
+
+                $this->Admin_model->updateKriteria($id_kriteria, $data);
+
+                // Redirect ke halaman ciri ketika halaman sukses update data
+                redirect('admin/ciri');
+            }
+        }
+        $data['contents'] = $this->load->view('admin/pages/kriteria-update', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 
-    public function hapusKriteria()
+    public function hapusKriteria($id_kriteria)
     {
-        $tmp = array(
-            'title' => 'hapus data kriteria',
-        );
-
-        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        // Proses hapus data kriteria dari database
+        $this->Admin_model->deleteKriteria($id_kriteria); // Panggil fungsi delete pada model
+        // Redirect ke halaman daftar kriteria setelah penghapusan berhasil
+        redirect('admin/ciri');
     }
+
 
     ///data untuk gejala
     public function tambahGejala()
     {
-        $tmp = array(
-            'title' => 'tambah data gejala',
-        );
+        $data['title'] = 'tambah data Gejala';
 
-        $tmp['contents'] = $this->load->view('admin/pages/ciri-tambah', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        // Jika ada data yang dikirimkan melalui form
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('kode_gejala', 'Kode Gejala', 'required');
+            $this->form_validation->set_rules('nama_gejala', 'Nama Gejala', 'required');
+            $this->form_validation->set_rules('bobot', 'Bobot', 'required');
+
+            if ($this->form_validation->run() == TRUE) {
+                // Jika validasi sukses, lakukan proses tambah data ke model
+                $data = array(
+                    'kode_gejala' => $this->input->post('kode_gejala'),
+                    'nama_gejala' => $this->input->post('nama_gejala'),
+                    'bobot'       => $this->input->post('bobot')
+                );
+
+                $this->Admin_model->insertGejala($data);
+
+                // Redirect ke halaman index atau halaman sukses tambah data
+                redirect('admin/ciri');
+            }
+        }
+        $data['contents'] = $this->load->view('admin/pages/gejala-tambah', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 
-    public function editGejala()
+    public function editGejala($id_gejala)
     {
-        $tmp = array(
-            'title' => 'update data gejala',
-        );
+        $data['title'] = 'update data Gejala';
+        $data['gejala'] = $this->Admin_model->get_gejala_by_id($id_gejala);
 
-        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        // Jika ada data yang dikirimkan melalui form
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('kode_gejala', 'Kode Gejala', 'required');
+            $this->form_validation->set_rules('nama_gejala', 'Nama Gejala', 'required');
+            $this->form_validation->set_rules('bobot', 'Bobot', 'required');
+
+            if ($this->form_validation->run() == TRUE) {
+                // Jika validasi sukses, lakukan proses update data ke model
+                $id_gejala = $this->input->post('id_gejala');
+                $data = array(
+                    'kode_gejala' => $this->input->post('kode_gejala'),
+                    'nama_gejala' => $this->input->post('nama_gejala'),
+                    'bobot'       => $this->input->post('bobot')
+                );
+
+                $this->Admin_model->updateGejala($id_gejala, $data);
+
+                // Redirect ke halaman ciri ketika halaman sukses update data
+                redirect('admin/ciri');
+            }
+        }
+        $data['contents'] = $this->load->view('admin/pages/gejala-update', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 
-    public function hapusGejala()
+    public function hapusGejala($id_gejala)
     {
-        $tmp = array(
-            'title' => 'hapus data gejala',
-        );
-
-        $tmp['contents'] = $this->load->view('admin/pages/ciri-update', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+       // Proses hapus data gejala dari database
+       $this->Admin_model->deleteGejala($id_gejala); // Panggil fungsi delete pada model
+       // Redirect ke halaman daftar gejala setelah penghapusan berhasil
+       redirect('admin/ciri');
     }
 }
