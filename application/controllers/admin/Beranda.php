@@ -7,7 +7,6 @@ class Beranda extends CI_Controller
     {
         parent::__construct();
 
-
         $logged_in = $this->session->userdata('logged_in');
         if (!$logged_in) {
             redirect('auth');

@@ -62,6 +62,16 @@ class Auth extends CI_Controller
         $this->load->view('auth/register');
     }
 
+    public function logout()
+    {
+        $this->session->unset_userdata('level');
+        $this->session->unset_userdata('logged_in');
+
+        $this->session->set_flashdata('alert', 'alert-success');
+        $this->session->set_flashdata('message', 'Anda berhasil logout!');
+        redirect('signin');
+    }
+
     // public function login_pengguna()
     // {
     //     // Mendapatkan input dari form
