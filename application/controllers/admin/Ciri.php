@@ -11,7 +11,7 @@ class Ciri extends CI_Controller
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
 
-        if (!$logged_in && $level === 'admin') {
+        if (!$logged_in || $level != "admin") {
             redirect('auth');
         }
     }
