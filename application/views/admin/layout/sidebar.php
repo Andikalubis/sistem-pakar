@@ -51,7 +51,7 @@
 
         <li class="nav-header">User</li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= base_url('auth/logout') ?>" class="nav-link">
                 <i class="nav-icon far fa-circle text-danger"></i>
                 <p class="text">Keluar</p>
             </a>
