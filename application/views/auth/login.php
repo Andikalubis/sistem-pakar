@@ -29,11 +29,9 @@
                 <p class="login-box-msg">Sign in untuk memulai sesi kamu</p>
 
 
-                <form action="<?= base_url('Auth/login_pengguna'); ?>" method="post">
+                <form action="<?= base_url('admin/auth'); ?>" method="post">
                     <div class="input-group mb-3">
-                    <input type="username" class="form-control" placeholder="Username" 
-                            id="username" name="username"  
-                            placeholder="Enter Username..." value="<?= set_value('username'); ?>">
+                        <input type="username" class="form-control" placeholder="Username" id="username" name="username" placeholder="Enter Username..." value="<?= set_value('username'); ?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -41,7 +39,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -57,12 +55,12 @@
                                 </label>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="social-auth-links text-center mt-2 mb-3">
                         <button type="submit" class="btn btn-primary btn-block">
-                        Login
+                            Login
                         </button>
                     </div>
                 </form>
@@ -72,7 +70,7 @@
                     <a href="forgot-password.html">Saya lupa password</a>
                 </p>
                 <p class="mb-0">
-                    <a href="register.html" class="text-center">Daftar sekarang</a>
+                    <a href="<?= base_url('auth/register') ?>" class="text-center">Daftar sekarang</a>
                 </p>
             </div>
             <!-- /.card-body -->
