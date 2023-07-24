@@ -64,7 +64,7 @@
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
-                    <a href="<?= base_url() ?>auth/login">Saya sudah memiliki akun</a>
+                    <a href="<?= base_url('auth') ?>">Saya sudah memiliki akun</a>
                 </p>
             </div>
             <!-- /.card-body -->

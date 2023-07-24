@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_model extends CI_Model {
+class User_model extends CI_Model
+{
 
     public function updateUser($id_user, $data)
     {
@@ -17,7 +18,7 @@ class User_model extends CI_Model {
         $this->db->delete('user');
     }
 
-    public function get_User_by_id($id_user) 
+    public function get_User_by_id($id_user)
     {
         // Mengambil data kriteria berdasarkan ID dari tabel "kriteria"
         $this->db->where('id_user', $id_user);
