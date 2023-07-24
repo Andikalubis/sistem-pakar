@@ -9,7 +9,9 @@ class Admin extends CI_Controller
         $this->load->helper('auth_helper'); // Memuat helper auth_helper
 
         $logged_in = $this->session->userdata('logged_in');
-        if (!$logged_in) {
+        $level = $this->session->userdata('level');
+
+        if (!$logged_in && $level === 'admin') {
             redirect('auth');
         }
     }
