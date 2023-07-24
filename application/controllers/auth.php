@@ -6,17 +6,6 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
-        $logged_in = $this->session->userdata('logged_in');
-        $level = $this->session->userdata('level');
-
-        if ($logged_in) {
-            if ($level === "admin") {
-                redirect('admin/beranda');
-            } else {
-                redirect('user/beranda');
-            }
-        }
     }
 
 
@@ -32,6 +21,16 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]');
 
         if ($this->form_validation->run() == false) {
+            $logged_in = $this->session->userdata('logged_in');
+            $level = $this->session->userdata('level');
+            if ($logged_in === true) {
+                if ($level === "admin") {
+                    redirect('admin/beranda');
+                } else {
+                    redirect('user/beranda');
+                }
+            }
+
             $this->load->view('auth/login');
         } else {
             $this->_login();
@@ -86,7 +85,11 @@ class Auth extends CI_Controller
 
         $this->session->set_flashdata('alert', 'alert-success');
         $this->session->set_flashdata('message', 'Anda berhasil logout!');
-        redirect('auth');
+
+        if (!$this->session->userdata('level') && !$this->session->userdata('logged_in')) {
+            // Lakukan redirect ke halaman tertentu setelah semua data sesi berhasil dihapus
+            redirect('auth');
+        }
     }
 
     // public function login_pengguna()
