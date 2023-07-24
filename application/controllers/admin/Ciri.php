@@ -7,6 +7,11 @@ class Ciri extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin_model');
+
+        $logged_in = $this->session->userdata('logged_in');
+        if (!$logged_in) {
+            redirect('auth');
+        }
     }
 
     public function index()
@@ -149,9 +154,9 @@ class Ciri extends CI_Controller
 
     public function hapusGejala($id_gejala)
     {
-       // Proses hapus data gejala dari database
-       $this->Admin_model->deleteGejala($id_gejala); // Panggil fungsi delete pada model
-       // Redirect ke halaman daftar gejala setelah penghapusan berhasil
-       redirect('admin/ciri');
+        // Proses hapus data gejala dari database
+        $this->Admin_model->deleteGejala($id_gejala); // Panggil fungsi delete pada model
+        // Redirect ke halaman daftar gejala setelah penghapusan berhasil
+        redirect('admin/ciri');
     }
 }

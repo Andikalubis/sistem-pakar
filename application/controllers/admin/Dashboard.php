@@ -7,16 +7,15 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('auth_helper'); // Memuat helper auth_helper
+
+        $logged_in = $this->session->userdata('logged_in');
+        if (!$logged_in) {
+            redirect('auth');
+        }
     }
 
     public function index()
     {
-        // Memeriksa apakah pengguna memiliki level admin
-        if (!is_admin()) {
-            // Jika bukan admin, alihkan ke halaman login
-            redirect('auth');
-        }
-
         // Tampilkan halaman dashboard admin
         $data = array(
             'title' => 'Admin Dashboard',
