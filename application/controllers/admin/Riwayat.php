@@ -3,6 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Riwayat extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $logged_in = $this->session->userdata('logged_in');
+        if (!$logged_in) {
+            redirect('auth');
+        }
+    }
+
     public function index()
     {
         $data = array(
@@ -12,14 +22,14 @@ class Riwayat extends CI_Controller
         // Load model 
         $this->load->model('Admin_model');
         $this->load->model('User_model');
-        
+
         // Ambil data riwayat dari model
         $data['hasil'] = $this->Admin_model->getRiwayat();
 
         foreach ($data['hasil'] as $row) {
             $row->nama = $this->User_model->get_user_by_id($row->id_user);
         }
-        
+
         $data['contents'] = $this->load->view('admin/pages/riwayat-deteksi', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }
