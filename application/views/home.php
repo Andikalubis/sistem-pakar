@@ -73,7 +73,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="<?= base_url() ?>assets/template/landing_page/assets/img/hero-img.png" class="img-fluid animated" alt="">
+                    <!-- <img src="<?= base_url() ?>assets/template/landing_page/assets/img/hero-img.png" class="img-fluid animated" alt=""> -->
+                    <img src="<?= base_url() ?>assets/template/landing_page/assets/img/Multiple-intelligence.png" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -125,24 +126,42 @@
                     <h2>About Us</h2>
                 </div>
 
-                <div class="row content mb-4">
+                <!-- <div class="row content mb-4">
                     <h2>Apa Itu Sistem Pakar Anak ....?</h2>
-                </div>
+                </div> -->
                 <div class="row content">
                     <div class="col-lg-6">
+                        <h2 class="text-text-capitalize mb-4">Apa Itu Sistem Pakar Anak ....?</h2>
+
                         <p>
                             Aplikasi "Perbandingan Metode Certainty Factor dan Naive Bayes pada Identifikasi Minat dan Bakat Berdasarkan Multiple Intelligence Berbasis Web" adalah suatu sistem yang dikembangkan untuk membantu mengidentifikasi minat dan bakat seseorang berdasarkan teori Multiple Intelligence menggunakan metode Certainty Factor (CF) dan Naive Bayes.
                         </p>
-                        <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0">
+
                         <p>
                             Dalam konteks ini, metode Certainty Factor dan Naive Bayes digunakan sebagai algoritma pemrosesan data untuk menganalisis informasi yang diberikan oleh pengguna aplikasi. Tujuan utama aplikasi ini adalah memberikan rekomendasi tentang minat dan bakat individu berdasarkan teori Multiple Intelligence yang dikemukakan oleh Howard Gardner.
                         </p>
+                        <!-- <ul>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                        </ul> -->
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <h2 class="text-capitalize mb-4">Apa Itu multiple intelegence....?</h2>
+
+                        <p>
+                            Teori multiple inteligensi atau kecerdasan majemuk ditemukan dan
+                            dikembangkan oleh Howard Gardner, seorang psikolog perkembangan dan
+                            professor pendidikan dari Graduate School of Education, Harvard
+                            Univercity, Amerika Serikat. Gardner mendefinisikan inteligensi sebagai
+                            kemampuan untuk memecahkan persoalan dan menghasilkan produk
+                            dalam suatu setting yang bermacam-macam dan dalam situasi yang nyata.
+                            Berdasarkan pengertian ini, dapat dipahami bahwa inteligensi bukanlah
+                            kemampuan seseorang untuk menjawab soal-soal tes IQ dalam ruang
+                            tertutup yang terlepas dari lingkungannya. Akan tetapi inteligensi memuat
+                            kemampuan seseorang untuk memecahkan persoalan yang nyata dan
+                            dalam situasi yang bermacam-macam </p>
+
                         <a href="#" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
