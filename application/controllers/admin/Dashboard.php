@@ -19,8 +19,11 @@ class Admin extends CI_Controller
     public function index()
     {
         // Tampilkan halaman dashboard admin
+        $username = $this->session->userdata('username');
+
         $data = array(
             'title' => 'Admin Dashboard',
+            'username' => $username
         );
 
         $data['contents'] = $this->load->view('admin/layout/template', $data, TRUE);

@@ -18,9 +18,13 @@ class Ciri extends CI_Controller
 
     public function index()
     {
+        $username = $this->session->userdata('username');
+
         $data['title'] = 'ciri';
+        $data['username'] = $username;
         $data['kriteria'] = $this->Admin_model->getKriteria();
         $data['gejala'] = $this->Admin_model->getGejala();
+
 
         $data['contents'] = $this->load->view('admin/pages/ciri', $data, TRUE);
         $this->load->view('admin/layout/template', $data);

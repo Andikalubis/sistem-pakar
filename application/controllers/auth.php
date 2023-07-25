@@ -21,8 +21,10 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]');
 
         if ($this->form_validation->run() == false) {
+
             $logged_in = $this->session->userdata('logged_in');
             $level = $this->session->userdata('level');
+
             if ($logged_in === true) {
                 if ($level === "admin") {
                     redirect('admin/beranda');
@@ -48,6 +50,8 @@ class Auth extends CI_Controller
 
         if ($user) {
             if ($hashPassword === $user['password']) {
+
+                $this->session->set_userdata('username', $user['username']);
                 $this->session->set_userdata('logged_in', true);
                 $this->session->set_userdata('level', $user['level']);
 

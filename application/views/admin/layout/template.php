@@ -61,18 +61,11 @@
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
                 <img src="<?= base_url() ?>assets/template/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Sistem Pakar</span>
+                <span class="brand-text font-weight-light text-capitalize"><?= isset($username) ? $username : 'Your Acount Name' ?></span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="info">
-                        <span class="font-weight-bold mt-3 stext-110 cl2"><?= $user['name']; ?></span>
-                    </div>
-                </div>
-
                 <!-- Sidebar Menu -->
                 <?php $this->load->view('admin/layout/sidebar') ?>
                 <!-- /.sidebar-menu -->

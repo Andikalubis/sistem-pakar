@@ -17,8 +17,11 @@ class Riwayat extends CI_Controller
 
     public function index()
     {
+        $username = $this->session->userdata('username');
+
         $data = array(
             'title' => 'riwayat',
+            'username' => $username
         );
 
         // Load model 

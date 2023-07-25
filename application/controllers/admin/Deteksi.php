@@ -17,8 +17,11 @@ class Deteksi extends CI_Controller
 
     public function index()
     {
+        $username = $this->session->userdata('username');
+
         $tmp = array(
             'title' => 'deteksi',
+            'username' => $username
         );
 
         $tmp['contents'] = $this->load->view('admin/pages/deteksi', $tmp, TRUE);

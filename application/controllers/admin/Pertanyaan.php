@@ -18,8 +18,11 @@ class Pertanyaan extends CI_Controller
 
     public function index()
     {
+        $username = $this->session->userdata('username');
+
         $data['title'] = 'pertanyaan';
         $data['pertanyaan'] = $this->Pertanyaan_model->getPertanyaan();
+        $data['username'] = $username;
 
         $data['contents'] = $this->load->view('admin/pages/pertanyaan', $data, TRUE);
         $this->load->view('admin/layout/template', $data);

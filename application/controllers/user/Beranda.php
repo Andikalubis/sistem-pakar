@@ -17,9 +17,13 @@ class Beranda extends CI_Controller
 
     public function index()
     {
+        $username = $this->session->userdata('username');
+
         $tmp = array(
             'title' => 'beranda',
+            'username' => $username
         );
+
 
         $tmp['contents'] = $this->load->view('user/beranda', $tmp, TRUE);
         $this->load->view('user/layout/template', $tmp);

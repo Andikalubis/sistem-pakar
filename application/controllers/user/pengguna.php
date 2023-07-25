@@ -16,33 +16,44 @@ class Pengguna extends CI_Controller
         }
     }
 
-    public function index($id_user)
+    public function index()
     {
-        $data['title'] = 'Profil';
-        $data['user'] = $this->User_model->get_User_by_id($id_user);
+        $username = $this->session->userdata('username');
 
-        $data['contents'] = $this->load->view('user/pages/pengguna', $data, TRUE);
-        $this->load->view('user/layout/template', $data);
+        $tmp = array(
+            'title' => 'profil',
+            'user' =>  $this->User_model->get_user_by_username($username),
+            'username' => $username
+        );
+
+        $tmp['contents'] = $this->load->view('user/pages/pengguna', $tmp, TRUE);
+        $this->load->view('user/layout/template', $tmp);
     }
 
     public function editPengguna($id_user)
     {
-        $data['title'] = 'update data kriteria';
-        $data['user'] = $this->User_model->get_User_by_id($id_user);
-
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
-            $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required');
-            $this->form_validation->set_rules('nama_kriteria', 'Nama Kriteria', 'required');
-            $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('tlp', 'Telepon', 'required');
+
+
+            var_dump($this->form_validation->run());
+            echo validation_errors();
+
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
-                $id_user = $this->input->post('id_kriteria');
                 $data = array(
-                    'kode_kriteria' => $this->input->post('kode_kriteria'),
-                    'nama_kriteria' => $this->input->post('nama_kriteria'),
-                    'deskripsi'     => $this->input->post('deskripsi')
+                    'username' => $this->input->post('username'),
+                    'nama' => $this->input->post('nama'),
+                    'alamat' => $this->input->post('alamat'),
+                    'jenis_kelamin' => $this->input->post('jk'),
+                    'email' => $this->input->post('email'),
+                    'tlp' => $this->input->post('tlp'),
                 );
 
                 $this->User_model->updateUser($id_user, $data);
@@ -51,7 +62,6 @@ class Pengguna extends CI_Controller
                 redirect('user/pengguna');
             }
         }
-        $data['contents'] = $this->load->view('user/pages/pengguna', $data, TRUE);
-        $this->load->view('user/layout/template', $data);
+        redirect('user/pengguna');
     }
 }

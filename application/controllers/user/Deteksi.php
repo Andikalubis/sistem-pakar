@@ -17,8 +17,11 @@ class Deteksi extends CI_Controller
 
     public function index()
     {
+        $username = $this->session->userdata('username');
+
         $tmp = array(
             'title' => 'deteksi',
+            'usernmae' => $username
         );
 
         $tmp['contents'] = $this->load->view('user/pages/deteksi', $tmp, TRUE);
@@ -27,8 +30,11 @@ class Deteksi extends CI_Controller
 
     public function hasil()
     {
+        $username = $this->session->userdata('username');
+
         $tmp = array(
             'title' => 'hasil',
+            'usernmae' => $username
         );
 
         $tmp['contents'] = $this->load->view('user/pages/deteksi-hasil', $tmp, TRUE);
