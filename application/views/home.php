@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Arsha Bootstrap Template - Index</title>
+    <title>Sistem Pakar Anak</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -65,11 +65,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                    <h1>Better Solutions For Your Business</h1>
-                    <h2>We are team of talented designers making websites with Bootstrap</h2>
+                    <h1>Selamat Datang...!</h1>
+                    <h2>Ayo Identifikasi Minat dan Bakat Anakmu...</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-                        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                        <a href="<?= base_url('auth') ?>" class="btn-get-started scrollto">Get Started</a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
@@ -83,7 +82,7 @@
     <main id="main">
 
         <!-- ======= Clients Section ======= -->
-        <section id="clients" class="clients section-bg">
+        <!-- <section id="clients" class="clients section-bg">
             <div class="container">
 
                 <div class="row" data-aos="zoom-in">
@@ -115,7 +114,7 @@
                 </div>
 
             </div>
-        </section><!-- End Cliens Section -->
+        </section>End Cliens Section -->
 
         <!-- ======= About Us Section ======= -->
         <section id="about" class="about">
@@ -262,7 +261,7 @@
 
 
         <!-- ======= Services Section ======= -->
-        <section id="services" class="services section-bg">
+        <!-- <section id="services" class="services section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -306,7 +305,8 @@
                 </div>
 
             </div>
-        </section><!-- End Services Section -->
+        </section> -->
+        <!-- End Services Section -->
 
         <!-- ======= Cta Section ======= -->
         <section id="cta" class="cta">
@@ -323,10 +323,11 @@
                 </div>
 
             </div>
-        </section><!-- End Cta Section -->
+        </section>
+        <!-- End Cta Section -->
 
         <!-- ======= Frequently Asked Questions Section ======= -->
-        <section id="faq" class="faq section-bg">
+        <!-- <section id="faq" class="faq section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -385,10 +386,11 @@
                 </div>
 
             </div>
-        </section><!-- End Frequently Asked Questions Section -->
+        </section> -->
+        <!-- End Frequently Asked Questions Section -->
 
         <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
+        <!-- <section id="contact" class="contact">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -455,14 +457,15 @@
                 </div>
 
             </div>
-        </section><!-- End Contact Section -->
+        </section> -->
+        <!-- End Contact Section -->
 
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
 
-        <div class="footer-newsletter">
+        <!-- <div class="footer-newsletter">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
@@ -474,7 +477,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="footer-top">
             <div class="container">
@@ -483,9 +486,9 @@
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <h3>Sistem pakar anak</h3>
                         <p>
-                            A108 Adam Street <br>
-                            New York, NY 535022<br>
-                            United States <br><br>
+                            Velya <br>
+                            Cirebon<br>
+                            Indonesia <br><br>
                             <strong>Phone:</strong> +1 5589 55488 55<br>
                             <strong>Email:</strong> info@example.com<br>
                         </p>
@@ -495,27 +498,23 @@
                         <h4>Useful Links</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#certainty">Certainty Factor</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#bayes">Naives Bayes</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
+                        <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth'); ?>" >Login</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth/register'); ?>" >Register</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Social Networks</h4>
-                        <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                        <!-- <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p> -->
                         <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>

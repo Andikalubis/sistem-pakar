@@ -1,6 +1,7 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         </li>
+        <li class="nav-header">Main Menu</li>
         <li class="nav-item">
             <a href="<?= base_url() ?>user/beranda" class="nav-link  <?= $title == 'beranda' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -24,6 +25,7 @@
                 </p>
             </a>
         </li>
+        <li class="nav-header">User</li>
         <li class="nav-item">
             <a href="<?= base_url() ?>user/pengguna" class="nav-link  <?= $title == 'pengguna' ? 'active' : '' ?>">
                 <i class="nav-icon far fa-user"></i>
@@ -32,8 +34,6 @@
                 </p>
             </a>
         </li>
-
-        <li class="nav-header">User</li>
         <li class="nav-item">
             <a href="<?= base_url('auth/logout') ?>" class="nav-link">
                 <i class="nav-icon far fa-circle text-danger"></i>

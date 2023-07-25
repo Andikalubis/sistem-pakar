@@ -6,6 +6,7 @@ class Deteksi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Pertanyaan_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -19,25 +20,26 @@ class Deteksi extends CI_Controller
     {
         $username = $this->session->userdata('username');
 
-        $tmp = array(
+        $data = array(
             'title' => 'deteksi',
-            'usernmae' => $username
+            'pertanyaan' =>  $this->Pertanyaan_model->getPertanyaan(),
+            'username' => $username
         );
 
-        $tmp['contents'] = $this->load->view('user/pages/deteksi', $tmp, TRUE);
-        $this->load->view('user/layout/template', $tmp);
+        $data['contents'] = $this->load->view('user/pages/deteksi', $data, TRUE);
+        $this->load->view('user/layout/template', $data);
     }
 
     public function hasil()
     {
         $username = $this->session->userdata('username');
 
-        $tmp = array(
+        $data = array(
             'title' => 'hasil',
             'usernmae' => $username
         );
 
-        $tmp['contents'] = $this->load->view('user/pages/deteksi-hasil', $tmp, TRUE);
-        $this->load->view('user/layout/template', $tmp);
+        $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
+        $this->load->view('user/layout/template', $data);
     }
 }

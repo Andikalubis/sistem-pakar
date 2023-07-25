@@ -20,13 +20,13 @@ class Pengguna extends CI_Controller
         $username = $this->session->userdata('username');
         $this->load->model('Admin_model'); // Memuat model Admin_model
 
-        $tmp = array(
+        $data = array(
             'title' => 'pengguna',
             'user' => $this->Admin_model->getUser('user'), // Mengambil data user dengan level "user"
             'username' => $username
         );
 
-        $tmp['contents'] = $this->load->view('admin/pages/pengguna', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        $data['contents'] = $this->load->view('admin/pages/pengguna', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 }

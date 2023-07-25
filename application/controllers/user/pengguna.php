@@ -20,14 +20,14 @@ class Pengguna extends CI_Controller
     {
         $username = $this->session->userdata('username');
 
-        $tmp = array(
+        $data = array(
             'title' => 'profil',
             'user' =>  $this->User_model->get_user_by_username($username),
             'username' => $username
         );
 
-        $tmp['contents'] = $this->load->view('user/pages/pengguna', $tmp, TRUE);
-        $this->load->view('user/layout/template', $tmp);
+        $data['contents'] = $this->load->view('user/pages/pengguna', $data, TRUE);
+        $this->load->view('user/layout/template', $data);
     }
 
     public function editPengguna($id_user)

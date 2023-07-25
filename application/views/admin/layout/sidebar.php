@@ -8,6 +8,7 @@
                 </p>
             </a>
         </li> -->
+        <li class="nav-header">Main Menu</li>
         <li class="nav-item">
             <a href="<?= base_url() ?>admin/beranda" class="nav-link  <?= $title == 'beranda' ? 'active' : '' ?>">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -50,6 +51,14 @@
         </li>
 
         <li class="nav-header">User</li>
+        <li class="nav-item">
+            <a href="<?= base_url() ?>admin/profil" class="nav-link  <?= $title == 'pengguna' ? 'active' : '' ?>">
+                <i class="nav-icon far fa-user"></i>
+                <p>
+                    Profil
+                </p>
+            </a>
+        </li>
         <li class="nav-item">
             <a href="<?= base_url('auth/logout') ?>" class="nav-link">
                 <i class="nav-icon far fa-circle text-danger"></i>
