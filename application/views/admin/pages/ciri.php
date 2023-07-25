@@ -46,13 +46,13 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-hover text-nowrap text-center">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Kode Kriteria</th>
                                         <th>Nama Kriteria</th>
-                                        <th>Deskripsi</th>
+                                        <!-- <th>Deskripsi</th> -->
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -64,7 +64,7 @@
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $data->kode_kriteria ?></td>
                                                 <td><?php echo $data->nama_kriteria ?></td>
-                                                <td><?php echo $data->deskripsi ?></td>
+                                                <!-- <td><?php echo $data->deskripsi ?></td> -->
                                                 <td>
                                                     <a href="<?php echo base_url('admin/ciri/editKriteria/').$data->id_kriteria ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-edit"></i>
@@ -103,7 +103,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-hover text-nowrap text-center">
                                 <thead>
                                     <tr>
                                         <th>No</th>
