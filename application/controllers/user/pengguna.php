@@ -48,7 +48,6 @@ class Pengguna extends CI_Controller
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
                 $data = array(
-                    'username' => $this->input->post('username'),
                     'nama' => $this->input->post('nama'),
                     'alamat' => $this->input->post('alamat'),
                     'jenis_kelamin' => $this->input->post('jk'),

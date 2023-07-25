@@ -29,8 +29,7 @@
                 </div>
                 <div class="col">
                     <!-- <input type="text" name="jk" class="form-control" value="<?php echo $user['jenis_kelamin'] ?>"> -->
-                    <select class="custom-select">
-                        <option>Pilih Jenis Kelamin</option>
+                    <select class="custom-select" name="jk">
                         <option value="laki-laki">Laki-laki</option>
                         <option value="perempuan">Perempuan</option>
                     </select>
