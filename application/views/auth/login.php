@@ -21,7 +21,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="<?= base_url(); ?>" class="h1"><b>Sistem</b>Pakar</a>
+                <a href="<?= base_url('home'); ?>" class="h1"><b>Sistem</b>Pakar</a>
                 <br />
                 <span>Sistem Pakar Deteksi Minat Dan Bakat</span>
             </div>

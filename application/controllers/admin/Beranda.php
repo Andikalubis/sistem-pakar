@@ -20,12 +20,12 @@ class Beranda extends CI_Controller
 
         $username = $this->session->userdata('username');
 
-        $tmp = array(
+        $data = array(
             'title' => 'beranda',
             'username' => $username
         );
 
-        $tmp['contents'] = $this->load->view('admin/beranda', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        $data['contents'] = $this->load->view('admin/beranda', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 }

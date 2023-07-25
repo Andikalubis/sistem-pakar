@@ -19,22 +19,22 @@ class Deteksi extends CI_Controller
     {
         $username = $this->session->userdata('username');
 
-        $tmp = array(
+        $data = array(
             'title' => 'deteksi',
             'username' => $username
         );
 
-        $tmp['contents'] = $this->load->view('admin/pages/deteksi', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        $data['contents'] = $this->load->view('admin/pages/deteksi', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 
     public function hasil()
     {
-        $tmp = array(
+        $data = array(
             'title' => 'hasil',
         );
 
-        $tmp['contents'] = $this->load->view('admin/pages/deteksi-hasil', $tmp, TRUE);
-        $this->load->view('admin/layout/template', $tmp);
+        $data['contents'] = $this->load->view('admin/pages/deteksi-hasil', $data, TRUE);
+        $this->load->view('admin/layout/template', $data);
     }
 }
