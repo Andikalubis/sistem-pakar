@@ -96,18 +96,18 @@
                     <div class="col-lg-6">
                         <h2 class="text-text-capitalize mb-4">Apa Itu Sistem Pakar Anak ....?</h2>
 
-                        <p>
+                        <p style="text-align: justify;">
                             Aplikasi "Perbandingan Metode Certainty Factor dan Naive Bayes pada Identifikasi Minat dan Bakat Berdasarkan Multiple Intelligence Berbasis Web" adalah suatu sistem yang dikembangkan untuk membantu mengidentifikasi minat dan bakat seseorang berdasarkan teori Multiple Intelligence menggunakan metode Certainty Factor (CF) dan Naive Bayes.
                         </p>
 
-                        <p>
+                        <p style="text-align: justify;">
                             Dalam konteks ini, metode Certainty Factor dan Naive Bayes digunakan sebagai algoritma pemrosesan data untuk menganalisis informasi yang diberikan oleh pengguna aplikasi. Tujuan utama aplikasi ini adalah memberikan rekomendasi tentang minat dan bakat individu berdasarkan teori Multiple Intelligence yang dikemukakan oleh Howard Gardner.
                         </p>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0">
                         <h2 class="text-capitalize mb-4">Apa Itu multiple intelegence....?</h2>
 
-                        <p>
+                        <p style="text-align: justify;">
                             Teori multiple inteligensi atau kecerdasan majemuk ditemukan dan
                             dikembangkan oleh Howard Gardner, seorang psikolog perkembangan dan
                             professor pendidikan dari Graduate School of Education, Harvard
@@ -282,8 +282,8 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth'); ?>" >Login</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth/register'); ?>" >Register</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth'); ?>">Login</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth/register'); ?>">Register</a></li>
                         </ul>
                     </div>
 
