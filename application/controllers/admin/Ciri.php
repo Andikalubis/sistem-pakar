@@ -108,14 +108,12 @@ class Ciri extends CI_Controller
         if ($this->input->post()) {
             $this->form_validation->set_rules('kode_gejala', 'Kode Gejala', 'required');
             $this->form_validation->set_rules('nama_gejala', 'Nama Gejala', 'required');
-            $this->form_validation->set_rules('bobot', 'Bobot', 'required');
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses tambah data ke model
                 $data = array(
                     'kode_gejala' => $this->input->post('kode_gejala'),
                     'nama_gejala' => $this->input->post('nama_gejala'),
-                    'bobot'       => $this->input->post('bobot')
                 );
 
                 $this->Admin_model->insertGejala($data);
@@ -137,7 +135,6 @@ class Ciri extends CI_Controller
         if ($this->input->post()) {
             $this->form_validation->set_rules('kode_gejala', 'Kode Gejala', 'required');
             $this->form_validation->set_rules('nama_gejala', 'Nama Gejala', 'required');
-            $this->form_validation->set_rules('bobot', 'Bobot', 'required');
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
@@ -145,7 +142,6 @@ class Ciri extends CI_Controller
                 $data = array(
                     'kode_gejala' => $this->input->post('kode_gejala'),
                     'nama_gejala' => $this->input->post('nama_gejala'),
-                    'bobot'       => $this->input->post('bobot')
                 );
 
                 $this->Admin_model->updateGejala($id_gejala, $data);

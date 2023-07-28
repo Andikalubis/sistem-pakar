@@ -19,15 +19,7 @@
                         <label for="nama_gejala">Nama Gejala</label>
                     </div>
                     <div class="col">
-                        <input type="text" name="nama_gejala" class="form-control" value="<?php echo $gejala->nama_gejala ?>">
-                    </div>
-                </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="bobot">Bobot</label>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="bobot" class="form-control" value="<?php echo $gejala->bobot ?>">
+                        <input type="text-area" name="nama_gejala" class="form-control" value="<?php echo $gejala->nama_gejala ?>">
                     </div>
                 </div>
             </div>

@@ -21,14 +21,6 @@
                         <input type="nama_gejala" class="form-control" id="nama_gejala" name="nama_gejala" placeholder="Masukan Nama Gejala ..." value="<?= set_value('nama_gejala'); ?>">
                     </div>
                 </div>
-                <div class="row input-group mb-3">
-                    <div class="col">
-                        <label for="nama">Bobot</label>
-                    </div>
-                    <div class="col">
-                        <input type="bobot" class="form-control" id="bobot" name="bobot" placeholder="Masukan Bobot ..." value="<?= set_value('bobot'); ?>">
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-block">
