@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jul 2023 pada 10.05
+-- Waktu pembuatan: 28 Jul 2023 pada 17.40
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -120,6 +120,7 @@ INSERT INTO `kriteria` (`id_kriteria`, `kode_kriteria`, `nama_kriteria`, `deskri
 CREATE TABLE `pertanyaan` (
   `id_pertanyaan` int(11) NOT NULL,
   `id_gejala` int(11) DEFAULT NULL,
+  `id_kriteria` int(11) DEFAULT NULL,
   `kode_pertanyaan` varchar(25) DEFAULT NULL,
   `pertanyaan` tinytext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -128,8 +129,37 @@ CREATE TABLE `pertanyaan` (
 -- Dumping data untuk tabel `pertanyaan`
 --
 
-INSERT INTO `pertanyaan` (`id_pertanyaan`, `id_gejala`, `kode_pertanyaan`, `pertanyaan`) VALUES
-(5, 4, 'KP-01', 'Apakah Anak Suka Bercerita ?');
+INSERT INTO `pertanyaan` (`id_pertanyaan`, `id_gejala`, `id_kriteria`, `kode_pertanyaan`, `pertanyaan`) VALUES
+(5, 4, 1, 'KP-01', 'Apakah Anak Suka Bercerita ?'),
+(9, 5, 0, 'KP-02', 'Apakah Anak Suka Membaca ?'),
+(10, 6, 0, 'KP-03', 'Apakah Anak Suka Menulis ?'),
+(11, 7, 0, 'KP-04', 'Apakah Anak Suka Memecahkan Teka Teki ?'),
+(12, 8, 0, 'KP-05', 'Apakah Anak Gemar Berdebat ?'),
+(13, 10, 0, 'KP-06', 'Apakah Anak Suka Dengan Permainan Catur ?'),
+(14, 11, 0, 'KP-07', 'Apakah Anak Suka Buku Ilmu Pengetahuan ?'),
+(15, 12, 0, 'KP-08', 'Apakah Anak Suka Berhitung Tanpa Alat Bantu ?'),
+(16, 13, 0, 'KP-09', 'Apakah Anak Suka Permainan Gambar Atau 3D ?'),
+(18, 14, 0, 'KP-10', 'Apakah Anak Mudah Mengenali Pola dan Berimajinasi ?'),
+(19, 15, 0, 'KP-11', 'Apakah Anak Suka Menggambar ?'),
+(20, 16, 0, 'KP-12', 'Apakah Anak Bisa Memainkan Alat Musik ?'),
+(21, 17, 0, 'KP-13', 'Apakah Anak Suka Bernyanyi ?'),
+(22, 20, 0, 'KP-14', 'Apakah Anak Suka Mendengarkan Musik ?'),
+(23, 21, 0, 'KP-15', 'Apakah Anak Suka Belajar Di Iringi Musik ?'),
+(24, 22, 0, 'KP-16', 'Apakah Anak Suka Melakukan Kegiatan Fisik ?'),
+(25, 23, 0, 'KP-17', 'Apakah Anak Suka Menari ?'),
+(26, 24, 0, 'KP-18', 'Apakah Anak Suka Olahraga atau Bela Diri'),
+(27, 25, 0, 'KP-19', 'Apakah Anak Suka Menirukan Gerak Tubuh Untuk Bicara ?'),
+(28, 26, 0, 'KP-20', 'Apakah Anak Suka Bekerja Sama Dengan Orang Lain ?'),
+(29, 27, 0, 'KP-21', 'Apakah Anak Suka Berkenalan Dengan Orang Baru ? '),
+(30, 28, 0, 'KP-22', 'Apakah Anak Suka Bergaul atau Bersosialisasi ?'),
+(31, 29, 0, 'KP-23', 'Apakah Anak Memiliki Empati Yang Tinggi ?'),
+(32, 30, 0, 'KP-24', 'Apakah Anak Suka Belajar Sendiri Maupun Bermain ?'),
+(33, 31, 0, 'KP-25', 'Apakah Anak Suka Keadaan Tenang ?'),
+(34, 32, 0, 'KP-26', 'Apakah Anak Suka Hobi Yang Bersifat Pribadi ?'),
+(35, 33, 0, 'KP-27', 'Apakah Anak Suka Dengan Binatang ?'),
+(36, 34, 0, 'KP-28', 'Apakah Anak Suka Bejalan - Jalan Di Taman ?'),
+(37, 35, 0, 'KP-29', 'Apakah Anak Suka Berkebun ?'),
+(38, 36, 0, 'KP-30', 'Apakah Anak Suka Berkemah ?');
 
 -- --------------------------------------------------------
 
@@ -177,16 +207,13 @@ ALTER TABLE `hasil`
 -- Indeks untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
-  ADD PRIMARY KEY (`id_kriteria`),
-  ADD UNIQUE KEY `kode_kriteria` (`kode_kriteria`);
+  ADD PRIMARY KEY (`id_kriteria`);
 
 --
 -- Indeks untuk tabel `pertanyaan`
 --
 ALTER TABLE `pertanyaan`
   ADD PRIMARY KEY (`id_pertanyaan`),
-  ADD UNIQUE KEY `kode_gejala` (`id_gejala`),
-  ADD UNIQUE KEY `kode_pertanyaan` (`kode_pertanyaan`),
   ADD UNIQUE KEY `id_gejala` (`id_gejala`);
 
 --
@@ -221,13 +248,23 @@ ALTER TABLE `kriteria`
 -- AUTO_INCREMENT untuk tabel `pertanyaan`
 --
 ALTER TABLE `pertanyaan`
-  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pertanyaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `pertanyaan`
+--
+ALTER TABLE `pertanyaan`
+  ADD CONSTRAINT `id_gejala` FOREIGN KEY (`id_gejala`) REFERENCES `gejala` (`id_gejala`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
