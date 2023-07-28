@@ -3,14 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
-<<<<<<< Updated upstream
-    public function createUser($data)
-    {
-=======
     public function register($data) 
     {
         // Simpan data pengguna ke database
->>>>>>> Stashed changes
         $this->db->insert('user', $data);
     }
 
