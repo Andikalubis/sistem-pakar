@@ -72,12 +72,19 @@ class Auth extends CI_Controller
         }
     }
 
-    public function register()
-    {
-        $data = array(
-            'title' => 'Register',
-        );
+    public function register() {
+        // Validasi input menggunakan CodeIgniter Form Validation
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('konfirmasi', 'Konfirmasi Password', 'required|matches[password]');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('tlp', 'Telepon', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
 
+<<<<<<< Updated upstream
         $data['contents'] = $this->load->view('auth/login', $data, TRUE);
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
@@ -92,8 +99,29 @@ class Auth extends CI_Controller
             $this->load->view('auth/register');
         } else {
             $this->_register();
+=======
+        if ($this->form_validation->run() == FALSE) {
+            // Jika validasi gagal, tampilkan kembali halaman registrasi dengan pesan error
+            $this->load->view('auth/register');
+        } else {
+            // Jika validasi berhasil, simpan data ke database
+            $data = array(
+                'username' => $this->input->post('username'),
+                'nama' => $this->input->post('nama'),
+                'password' => md5($this->input->post('password')),
+                'alamat' => $this->input->post('alamat'),
+                'email' => $this->input->post('email'),
+                'tlp' => $this->input->post('tlp'),
+                'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'level' => 'user' // Set level ke user
+            );
+
+            $this->User_model->register($data); // Panggil fungsi register di model
+            redirect('auth'); // Alihkan pengguna ke halaman login setelah registrasi sukses
+>>>>>>> Stashed changes
         }
     }
+
 
     public function logout()
     {
@@ -108,6 +136,7 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
+<<<<<<< Updated upstream
 
     private function _register()
     {
@@ -168,4 +197,6 @@ class Auth extends CI_Controller
     //     }
     // }
 
+=======
+>>>>>>> Stashed changes
 }
