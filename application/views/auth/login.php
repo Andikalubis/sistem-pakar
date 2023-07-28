@@ -63,6 +63,11 @@
                             Login
                         </button>
                     </div>
+                    <div class="social-auth-links text-center mt-2 mb-3">
+                        <a href="<?php echo base_url('home') ?>" class="btn btn-danger btn-block">
+                            Kembali
+                        </a>
+                    </div>
                 </form>
                 <!-- /.social-auth-links -->
 
