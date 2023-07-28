@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
+    public function createUser($data)
+    {
+        $this->db->insert('user', $data);
+    }
 
     public function updateUser($id_user, $data)
     {

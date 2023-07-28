@@ -40,11 +40,6 @@ class Pengguna extends CI_Controller
             $this->form_validation->set_rules('email', 'Email', 'required');
             $this->form_validation->set_rules('tlp', 'Telepon', 'required');
 
-
-            var_dump($this->form_validation->run());
-            echo validation_errors();
-
-
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
                 $data = array(
