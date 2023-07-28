@@ -28,39 +28,6 @@
             <div class="card-body">
                 <p class="login-box-msg">Daftar terlebih dahulu untuk memulai sesi kamu</p>
 
-<<<<<<< Updated upstream
-                <form action="<?= base_url('auth/register') ?>" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" name="nama" class="form-control" placeholder="Nama">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Username">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="confirmPassword" class="form-control" placeholder="Konfirmasi Password">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="number" name="tlp" class="form-control" placeholder="Telepon">
-                    </div>
-                    <div class="input-group mb-3">
-                        <select class="custom-select" name="jk">
-                            <!-- <option>Pilih Jenis Kelamin</option> -->
-                            <option value="laki-laki">Laki-laki</option>
-                            <option value="perempuan">Perempuan</option>
-                        </select>
-                    </div>
-
-                    <div class="social-auth-links text-center mt-2 mb-3">
-                        <!-- <a href="<?= base_url('auth/register') ?>" class="btn btn-block btn-primary">
-                            Sign up
-                        </a> -->
-=======
                 <form action="<?= base_url('auth/register'); ?>" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" name="username" placeholder="Username">
@@ -91,17 +58,12 @@
                         </select>
                     </div>
                     <div class="social-auth-links text-center mt-2 mb-3">
->>>>>>> Stashed changes
                         <button type="submit" class="btn btn-primary btn-block">
                             Sign Up
                         </button>
                     </div>
                 </form>
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                 <p class="mb-1">
                     <a href="<?= base_url('auth') ?>">Saya sudah memiliki akun</a>
                 </p>

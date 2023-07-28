@@ -3,9 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
-    public function register($data) 
+    public function createUser($data)
     {
-        // Simpan data pengguna ke database
         $this->db->insert('user', $data);
     }
 

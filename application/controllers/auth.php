@@ -72,9 +72,57 @@ class Auth extends CI_Controller
 
     public function register() 
     {
- 
+        $data = array(
+            'title' => 'register',
+        );
+        $data['contents'] = $this->load->view('auth/login', $data, TRUE);
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('konfirmasi', 'Confirm Password', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('tlp', 'Telepon', 'required');
+        $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('auth/register');
+        } else {
+            $this->_register();
+        }
     }
 
+    private function _register()
+    {
+        $nama = $this->input->post('nama');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $konfirmasi = $this->input->post('konfirmasi');
+        $hashPassword = md5($password);
+        $email = $this->input->post('email');
+        $jk = $this->input->post('jk');
+
+        if ($this->form_validation->run()) {
+            if ($password == $konfirmasi) {
+                $data = array(
+                    'nama' => $nama,
+                    'username' => $username,
+                    'password' => $hashPassword,
+                    'email' => $email,
+                    'jenis_kelamin' => $jk,
+                );
+
+                $this->User_model->createUser($data);
+
+                redirect('auth');
+            } else {
+                $this->session->set_flashdata('alert', 'alert-danger');
+                $this->session->set_flashdata('message', 'Password dan Confrim Password tidak sama!');
+
+                redirect('auth/register');
+            }
+        }
+    }
 
     public function logout()
     {
@@ -89,33 +137,5 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
-
-    // public function login_pengguna()
-    // {
-    //     // Mendapatkan input dari form
-    //     $username = $this->input->post('username');
-    //     $password = $this->input->post('password');
-
-    //     // Memanggil fungsi login pada model Auth_model
-    //     $user = $this->Auth_model->login($username, $password);
-
-    //     if ($user) {
-    //         // Login berhasil, simpan informasi pengguna ke dalam sesi
-    //         $this->session->set_userdata('logged_in', true);
-    //         $this->session->set_userdata('level', $user->level);
-
-    //         // Alihkan ke dashboard sesuai level
-    //         if ($user->level === 'admin') {
-    //             redirect('admin/dashboard');
-    //         } elseif ($user->level === 'user') {
-    //             redirect('user/dashboard');
-    //         }
-    //     } else {
-    //         // Login gagal, tampilkan pesan error
-    //         $data['error'] = 'Username atau password salah';
-    //         $this->load->view('auth/login', $data);
-    //     }
-    // }
-
 }
 
