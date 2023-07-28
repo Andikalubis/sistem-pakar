@@ -39,7 +39,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Kode Gejala</th>
+                                        <!-- <th>Kode Gejala</th> -->
                                         <th>Kode Pertanyaan</th>
                                         <th>Pertanyaan</th>
                                         <th>Aksi</th>
@@ -51,7 +51,7 @@
                                         foreach($pertanyaan as $data) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><?php echo $data->kode_gejala ?></td>
+                                                <!-- <td><?php echo $data->kode_gejala ?></td> -->
                                                 <td><?php echo $data->kode_pertanyaan ?></td>
                                                 <td><?php echo $data->pertanyaan ?></td>
                                                 <td>

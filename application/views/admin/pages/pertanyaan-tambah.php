@@ -7,10 +7,16 @@
             <div class="input-group mb-3">
                 <div class="row input-group mb-3">
                     <div class="col">
-                        <label for="kode_gejala">Kode Gejala</label>
+                        <label for="id_gejala">Gejala</label>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="kode_gejala" name="kode_gejala" placeholder="Masukan Kode Gejala..." value="<?= set_value('kode_gejala'); ?>">
+                        <select class="custom-select" name="id_gejala" id="id_gejala" value="<?= set_value('id_gejala'); ?>" >>
+                            <option value="">Pilih Gejala</option>
+                            <?php foreach ($gejala as $data): ?>
+                                <option value="<?php echo $data->id_gejala ?>">
+                                <?php echo $data->nama_gejala ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <div class="row input-group mb-3">
