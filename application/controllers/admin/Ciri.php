@@ -7,6 +7,8 @@ class Ciri extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Admin_model');
+        $this->load->model('Kriteria_model');
+        $this->load->model('Bayes_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -25,11 +27,61 @@ class Ciri extends CI_Controller
         $data['kriteria'] = $this->Admin_model->getKriteria();
         $data['gejala'] = $this->Admin_model->getGejala();
 
-
         $data['contents'] = $this->load->view('admin/pages/ciri', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }
 
+    public function certainty_factor()
+    {
+        // Array yang berisi nilai-nilai kriteria
+        $kriteriaNilai = array(
+            [0, 0, 1, 0.5, 0],
+            [0, 0.5, 0, 0, 1],
+            [0.5, 0, 1, 0.5],
+            [0.5, 1, 1, 0],
+            [0.5, 1, 0, 0],
+            [0, 0, 1, 0.5, 0.5],
+            [1, 0, 0.5, 0, 1, 0.5],
+            [0, 1, 0, 0.5]
+        );
+
+        // Array yang berisi nama-nama kriteria
+        $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
+
+        $maxCfCombine = array();
+
+        // Menggunakan perulangan untuk mendapatkan nilai maksimum untuk setiap kriteria
+        foreach ($kriteria as $index => $kriteriaNama) {
+            $nilaiGejala = $kriteriaNilai[$index];
+            $maxCfCombine[$index] = $this->Kriteria_model->nilai_gejala($kriteriaNama, $nilaiGejala);
+        }
+
+        // Mendapatkan semua indeks yang memiliki nilai maksimum
+        $maxValueIndices = array_keys($maxCfCombine, max($maxCfCombine));
+
+        // Mengambil indeks pertama dari array $maxValueIndices
+        $firstIndex = reset($maxValueIndices);
+
+        echo "Nilai maksimum: " . max($maxCfCombine) . "%\n <br/>";
+        echo "Indeks pertama dari nilai maksimum: " . $kriteria[$firstIndex] . "\n";
+    }
+
+    public function bayes()
+    {
+        $kriteriaNilai = array(
+            [0, 0, 1, 0.5, 0],
+            [0, 0.5, 0, 0, 1],
+            [0.5, 0, 1, 0.5],
+            [0.5, 1, 1, 0],
+            [0.5, 1, 0, 0],
+            [0, 0, 1, 0.5, 0.5],
+            [1, 0, 0.5, 0, 1, 0.5],
+            [0, 1, 0, 0.5]
+        );
+
+
+        echo $this->Bayes_model->nilai_gejala('K1', $kriteriaNilai[0]);
+    }
 
     ///data untuk kriteria
     public function tambahKriteria()

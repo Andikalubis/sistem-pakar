@@ -47,24 +47,24 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no=1;
-                                        foreach($pertanyaan as $data) : ?>
-                                            <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <!-- <td><?php echo $data->kode_gejala ?></td> -->
-                                                <td><?php echo $data->kode_pertanyaan ?></td>
-                                                <td><?php echo $data->pertanyaan ?></td>
-                                                <td>
-                                                    <a href="<?php echo base_url('admin/pertanyaan/editPertanyaan/').$data->id_pertanyaan ?>" class="btn btn-sm btn-success">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="<?php echo base_url('admin/pertanyaan/hapusPertanyaan/').$data->id_pertanyaan ?>" class="btn btn-sm btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                </tbody>     
+                                    $no = 1;
+                                    foreach ($pertanyaan as $data) : ?>
+                                        <tr>
+                                            <td><?php echo $no++ ?></td>
+                                            <!-- <td><?php echo $data->kode_gejala ?></td> -->
+                                            <td><?php echo $data->kode_pertanyaan ?></td>
+                                            <td><?php echo $data->pertanyaan ?></td>
+                                            <td>
+                                                <a href="<?php echo base_url('admin/pertanyaan/editPertanyaan/') . $data->id_pertanyaan ?>" class="btn btn-sm btn-success">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="<?php echo base_url('admin/pertanyaan/hapusPertanyaan/') . $data->id_pertanyaan ?>" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->

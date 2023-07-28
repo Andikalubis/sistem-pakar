@@ -58,24 +58,24 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no=1;
-                                        foreach($kriteria as $data) : ?>
-                                            <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $data->kode_kriteria ?></td>
-                                                <td><?php echo $data->nama_kriteria ?></td>
-                                                <td><?php echo $data->deskripsi ?></td>
-                                                <td>
-                                                    <a href="<?php echo base_url('admin/ciri/editKriteria/').$data->id_kriteria ?>" class="btn btn-sm btn-success">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="<?php echo base_url('admin/ciri/hapusKriteria/').$data->id_kriteria ?>" class="btn btn-sm btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                </tbody>     
+                                    $no = 1;
+                                    foreach ($kriteria as $data) : ?>
+                                        <tr>
+                                            <td><?php echo $no++ ?></td>
+                                            <td><?php echo $data->kode_kriteria ?></td>
+                                            <td><?php echo $data->nama_kriteria ?></td>
+                                            <td><?php echo $data->deskripsi ?></td>
+                                            <td width="10%">
+                                                <a href="<?php echo base_url('admin/ciri/editKriteria/') . $data->id_kriteria ?>" class="btn btn-sm btn-success">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="<?php echo base_url('admin/ciri/hapusKriteria/') . $data->id_kriteria ?>" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -114,23 +114,23 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $no=1;
-                                        foreach($gejala as $data) : ?>
-                                            <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $data->kode_gejala ?></td>
-                                                <td><?php echo $data->nama_gejala ?></td>
-                                                <td>
-                                                    <a href="<?php echo base_url('admin/ciri/editGejala/').$data->id_gejala ?>" class="btn btn-sm btn-success">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="<?php echo base_url('admin/ciri/hapusGejala/').$data->id_gejala ?>" class="btn btn-sm btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                </tbody>     
+                                    $no = 1;
+                                    foreach ($gejala as $data) : ?>
+                                        <tr>
+                                            <td><?php echo $no++ ?></td>
+                                            <td><?php echo $data->kode_gejala ?></td>
+                                            <td><?php echo $data->nama_gejala ?></td>
+                                            <td width="10%">
+                                                <a href="<?php echo base_url('admin/ciri/editGejala/') . $data->id_gejala ?>" class="btn btn-sm btn-success">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="<?php echo base_url('admin/ciri/hapusGejala/') . $data->id_gejala ?>" class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
