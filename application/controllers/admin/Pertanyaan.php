@@ -34,9 +34,11 @@ class Pertanyaan extends CI_Controller
     {
         $data['title'] = 'tambah data Pertanyaan';
         $data['gejala'] = $this->Admin_model->getGejala();
+        $data['kriteria'] = $this->Admin_model->getKriteria();
 
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
+            $this->form_validation->set_rules('id_kriteria', 'Kriteria', 'required');
             $this->form_validation->set_rules('id_gejala', 'Gejala', 'required');
             $this->form_validation->set_rules('kode_pertanyaan', 'Kode Pertanyaan', 'required');
             $this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required');
@@ -44,6 +46,7 @@ class Pertanyaan extends CI_Controller
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses tambah data ke model
                 $data = array(
+                    'id_kriteria'     => $this->input->post('id_kriteria'),
                     'id_gejala'     => $this->input->post('id_gejala'),
                     'kode_pertanyaan' => $this->input->post('kode_pertanyaan'),
                     'pertanyaan' => $this->input->post('pertanyaan')
@@ -64,9 +67,11 @@ class Pertanyaan extends CI_Controller
         $data['title'] = 'update data Pertanyaan';
         $data['pertanyaan'] = $this->Pertanyaan_model->get_Pertanyaan_by_id($id_pertanyaan);
         $data['gejala'] = $this->Admin_model->getGejala();
+        $data['kriteria'] = $this->Admin_model->getKriteria();
 
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
+            $this->form_validation->set_rules('id_kriteria', 'Kriteria', 'required');
             $this->form_validation->set_rules('id_gejala', 'Gejala', 'required');
             $this->form_validation->set_rules('kode_pertanyaan', 'Kode Pertanyaan', 'required');
             $this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required');
@@ -76,6 +81,7 @@ class Pertanyaan extends CI_Controller
                 $id_pertanyaan = $this->input->post('id_pertanyaan');
                 
                 $data = array(
+                    'id_kriteria'     => $this->input->post('id_kriteria'),
                     'id_gejala'     => $this->input->post('id_gejala'),
                     'kode_pertanyaan' => $this->input->post('kode_pertanyaan'),
                     'pertanyaan' => $this->input->post('pertanyaan')

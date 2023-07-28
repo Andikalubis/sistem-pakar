@@ -7,6 +7,20 @@
             <div class="input-group mb-3">
                 <div class="row input-group mb-3">
                     <div class="col">
+                        <label for="id_kriteria">Kriteria</label>
+                    </div>
+                    <div class="col">
+                        <select class="custom-select" name="id_kriteria" id="id_kriteria" value="<?= set_value('id_kriteria'); ?>" >>
+                            <option value="">Pilih Kriteria</option>
+                            <?php foreach ($kriteria as $data): ?>
+                                <option value="<?php echo $data->id_kriteria ?>">
+                                <?php echo $data->nama_kriteria ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="row input-group mb-3">
+                    <div class="col">
                         <label for="id_gejala">Gejala</label>
                     </div>
                     <div class="col">

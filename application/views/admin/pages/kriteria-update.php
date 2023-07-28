@@ -5,7 +5,7 @@
     <div class="card-body">
         <?php echo form_open('admin/ciri/editkriteria/'.$kriteria->id_kriteria); ?>
             <div class="input-group mb-3">
-            <?php echo form_hidden('id_kriteria', $kriteria->id_kriteria) ?>32
+            <?php echo form_hidden('id_kriteria', $kriteria->id_kriteria) ?>
                 <div class="row input-group mb-3">
                     <div class="col">
                         <label for="kode_kriteria">Kode Kriteria</label>

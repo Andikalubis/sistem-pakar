@@ -8,11 +8,31 @@
                 <?php echo form_hidden('id_pertanyaan', $pertanyaan->id_pertanyaan) ?>
                 <div class="row input-group mb-3">
                     <div class="col">
-                            <label for="kode_gejala">Kode Gejala</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" name="kode_gejala" class="form-control" value="<?php echo $pertanyaan->kode_gejala ?>">
-                        </div>
+                        <label for="id_kriteria">Kriteria</label>
+                    </div>
+                    <div class="col">
+                        <select class="custom-select" name="id_kriteria" id="id_kriteria" value="<?= set_value('id_kriteria'); ?>" >>
+                            <option value="">Pilih Kriteria</option>
+                            <?php foreach ($kriteria as $data): ?>
+                                <option value="<?php echo $data->id_kriteria ?>">
+                                <?php echo $data->nama_kriteria ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="row input-group mb-3">
+                    <div class="col">
+                        <label for="id_gejala">Gejala</label>
+                    </div>
+                    <div class="col">
+                        <select class="custom-select" name="id_gejala" id="id_gejala" value="<?= set_value('id_gejala'); ?>" >>
+                            <option value="">Pilih Gejala</option>
+                            <?php foreach ($gejala as $data): ?>
+                                <option value="<?php echo $data->id_gejala ?>">
+                                <?php echo $data->nama_gejala ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
