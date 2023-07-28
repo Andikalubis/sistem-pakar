@@ -17,6 +17,7 @@
 
             <div class="row">
                 <h4 class="my-4 text-center">Silahkan menjawab pertanyaan ini untuk mendapatkan kriteria kecerdasan pada anak</h4>
+                <h10> PILIH 1 OPSI JAWABAN DI SETIAP PERTANYAAN...!!! </h10>
             </div>
 
             <!-- soal -->
@@ -26,87 +27,41 @@
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
-                                <th scope="col">Kode</th>
+                                <!-- <th scope="col">Kode</th> -->
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Jawaban</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row" width="5%">1</th>
-                                <td width="10%">P-042</td>
-                                <td>Apakah anda mengandung anti biotik ?</td>
-                                <td class="d-flex justify-content-between">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Sering
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                            Jarang
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                            Tidak Pernah
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>P-042</td>
-                                <td>Thornton</td>
-                                <td class="d-flex justify-content-between">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Sering
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                            Jarang
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                            Tidak Pernah
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>P-042</td>
-                                <td>the Bird</td>
-                                <td class="d-flex justify-content-between">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                            Sering
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                            Jarang
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                                        <label class="form-check-label" for="exampleRadios3">
-                                            Tidak Pernah
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                                $no=1;
+                                foreach($pertanyaan as $data) : ?>
+                                <tr>
+                                    <td><?php echo $no++ ?></td>
+                                    <!-- <td><?php echo $data->kode_pertanyaan ?></td> -->
+                                    <td><?php echo $data->pertanyaan ?></td>
+                                    <td>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="jawaban1" id="jawaban1" value="1">
+                                            <label class="form-check-label" for="jawaban1">
+                                                Sering
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="jawaban2" id="jawaban2" value="0.5">
+                                            <label class="form-check-label" for="jawaban2">
+                                                Jarang
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="jawaban3" id="jawaban3" value="0">
+                                            <label class="form-check-label" for="jawaban3">
+                                                Tidak Pernah
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
