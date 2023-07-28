@@ -119,118 +119,11 @@
                             tertutup yang terlepas dari lingkungannya. Akan tetapi inteligensi memuat
                             kemampuan seseorang untuk memecahkan persoalan yang nyata dan
                             dalam situasi yang bermacam-macam </p>
-
-                        <a href="#" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
             </div>
         </section><!-- End About Us Section -->
-
-        <!-- ======= Why Us Section ======= -->
-        <section id="certainty" class="why-us section-bg">
-            <div class="container-fluid" data-aos="fade-up">
-
-                <div class="row">
-
-                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-                        <div class="content">
-                            <!-- <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3> -->
-                            <h3>Apa itu metode <strong>Certainty Factor</strong></h3>
-                        </div>
-
-                        <div class="accordion-list">
-                            <ul>
-                                <li>
-                                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Certainty Factor, dalam konteks sistem pakar dan kecerdasan buatan, adalah metode yang digunakan untuk mengukur dan menggambarkan tingkat kepastian atau keyakinan dalam sebuah pernyataan atau diagnosis. Hal ini membantu dalam pengambilan keputusan berdasarkan pengetahuan dan informasi yang tersedia. </p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Certainty Factor diperkenalkan sebagai salah satu teknik dalam sistem pakar oleh Arthur L. Bier pada tahun 1975. Metode ini digunakan untuk menggambungkan pengetahuan ahli manusia dengan data dan informasi yang dihasilkan oleh sistem untuk menghasikan kesimpulan atau diagnosis yang akurat. </p>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Certainty Factor menghitung tingkat keyakinan berdasarkan dua faktor utama yaitu faktor penunjang (supporting factor), dan faktor penolakan (opposing factor). Faktor penunjang adalah informasi yang mendukung suatu pernyataan atau diagnosis, sedangkan faktor penolakan adalah informasi yang bertentangan dengan pernyataan
-                                            atau diagnosis tersebut. </p>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
-                </div>
-
-            </div>
-        </section><!-- End Why Us Section -->
-
-        <!-- ======= Why Us Section ======= -->
-        <section id="bayes" class="why-us">
-            <div class="container-fluid" data-aos="fade-up">
-
-                <div class="row">
-
-                    <div class="col-lg-5 align-items-stretch img" style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
-
-                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-
-                        <div class="content">
-                            <!-- <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3> -->
-                            <h3>Apa itu metode <strong>Naives Bayes</strong></h3>
-                        </div>
-
-                        <div class="accordion-list">
-                            <ul>
-                                <li class="bg-light">
-                                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Naives Bayes, atau yang dikenal juga dengan Naives Bayes Classifier, adalah sebuah metode klasisfikasi yang berdasarkan pada teorema bayes dengan asumsi yang diamati adalah independen satu sama lain. </p>
-                                    </div>
-                                </li>
-
-                                <li class="bg-light">
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Naives Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Naives Bayes sangat populer dalam bidang kecerdasan buatan dan pembelajaran mesin karena sifatnya yang efisien, mudah di implementasikan dan memberikan kinerja yang baik dalam banyak kasus. Meskipun memiliki asumsi sederhana tentang indepedensi fitur,Naives Bayes seringkali memberikan hasil yang cukup baik dalam banyak tugas klasifikasi. </p>
-                                    </div>
-                                </li>
-
-                                <li class="bg-light">
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Naives Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
-                                            Pada dasarnya, Naives Bayes menggunakan teorema Bayes untuk menghitung probabilitas
-                                            kelas target berdasarkan fitur-fitur yang diamati. Metode ini memperhitungkan frekuensi kemunculan fitur-fitur dalam set data pelatihan tersebut. Kemudian, saat diberikan data baru,Naives Bayes menghitung probabilitas kelas untuk data tersebut berdasarkan probabilitas yang dihitung sebelumnya dan memilih kelas dengan probabilitas terbesar sebagai hasil klasifikasi
-                                        </p>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-        <!-- End Why Us Section -->
 
         <!-- ======= Cta Section ======= -->
         <section id="cta" class="cta">
@@ -249,6 +142,113 @@
             </div>
         </section>
         <!-- End Cta Section -->
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="certainty" class="why-us">
+            <div class="container-fluid" data-aos="fade-up">
+
+                <div class="row">
+
+                    <div class="col-lg-5 align-items-stretch img" style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+
+                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+                        <div class="content">
+                            <h3>Apa itu metode <strong>Certainty Factor</strong></h3>
+                        </div>
+
+                        <div class="accordion-list">
+                            <ul>
+                                <li class="bg-light">
+                                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                                        <p>
+                                            Certainty Factor, dalam konteks sistem pakar dan kecerdasan buatan, adalah metode yang digunakan untuk mengukur dan menggambarkan tingkat kepastian atau keyakinan dalam sebuah pernyataan atau diagnosis. Hal ini membantu dalam pengambilan keputusan berdasarkan pengetahuan dan informasi yang tersedia. 
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li class="bg-light">
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                                        <p>
+                                            Certainty Factor diperkenalkan sebagai salah satu teknik dalam sistem pakar oleh Arthur L. Bier pada tahun 1975. Metode ini digunakan untuk menggambungkan pengetahuan ahli manusia dengan data dan informasi yang dihasilkan oleh sistem untuk menghasikan kesimpulan atau diagnosis yang akurat. 
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li class="bg-light">
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                                        <p>
+                                            Certainty Factor menghitung tingkat keyakinan berdasarkan dua faktor utama yaitu faktor penunjang (supporting factor), dan faktor penolakan (opposing factor). Faktor penunjang adalah informasi yang mendukung suatu pernyataan atau diagnosis, sedangkan faktor penolakan adalah informasi yang bertentangan dengan pernyataan
+                                            atau diagnosis tersebut.
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Why Us Section -->
+
+        <!-- ======= Why Us Section ======= -->
+        <section id="bayes" class="why-us section-bg">
+            <div class="container-fluid" data-aos="fade-up">
+                <div class="row">
+
+                    <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+
+                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                        <div class="content">
+                            <h3>Apa itu metode <strong>Naive Bayes</strong></h3>
+                        </div>
+
+                        <div class="accordion-list text-justify">
+                            <ul>
+                                <li>
+                                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                                        <p>
+                                            Naives Bayes, atau yang dikenal juga dengan Naives Bayes Classifier, adalah sebuah metode klasisfikasi yang berdasarkan pada teorema bayes dengan asumsi yang diamati adalah independen satu sama lain.  
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Sejarah Naive Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                                        <p>
+                                        Naives Bayes sangat populer dalam bidang kecerdasan buatan dan pembelajaran mesin karena sifatnya yang efisien, mudah di implementasikan dan memberikan kinerja yang baik dalam banyak kasus. Meskipun memiliki asumsi sederhana tentang indepedensi fitur,Naives Bayes seringkali memberikan hasil yang cukup baik dalam banyak tugas klasifikasi.
+                                        </p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Naive Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                                        <p>
+                                            Pada dasarnya, Naives Bayes menggunakan teorema Bayes untuk menghitung probabilitas
+                                            kelas target berdasarkan fitur-fitur yang diamati. Metode ini memperhitungkan frekuensi kemunculan fitur-fitur dalam set data pelatihan tersebut. Kemudian, saat diberikan data baru,Naives Bayes menghitung probabilitas kelas untuk data tersebut berdasarkan probabilitas yang dihitung sebelumnya dan memilih kelas dengan probabilitas terbesar sebagai hasil klasifikasi 
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Why Us Section -->
+
     </main>
     <!-- End #main -->
 
@@ -315,7 +315,8 @@
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
-    </footer><!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
