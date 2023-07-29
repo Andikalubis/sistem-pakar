@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jul 2023 pada 17.40
+-- Waktu pembuatan: 29 Jul 2023 pada 16.48
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -77,12 +77,67 @@ INSERT INTO `gejala` (`id_gejala`, `kode_gejala`, `nama_gejala`) VALUES
 
 CREATE TABLE `hasil` (
   `id_hasil` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama` varchar(50) DEFAULT NULL,
   `bobot` double DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `usia` int(50) DEFAULT NULL,
   `hasil_kriteria` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jawaban`
+--
+
+CREATE TABLE `jawaban` (
+  `id_jawaban` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  `usia` int(11) DEFAULT NULL,
+  `id_pertanyaan` int(11) DEFAULT NULL,
+  `id_kriteria` int(11) DEFAULT NULL,
+  `id_gejala` int(11) DEFAULT NULL,
+  `jawaban` float DEFAULT NULL,
+  `tanggal` date DEFAULT curdate()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jawaban`
+--
+
+INSERT INTO `jawaban` (`id_jawaban`, `id_user`, `nama`, `usia`, `id_pertanyaan`, `id_kriteria`, `id_gejala`, `jawaban`, `tanggal`) VALUES
+(93, 3, 'Velya', 22, 5, 1, 4, 1, '2023-07-29'),
+(94, 3, 'Velya', 22, 9, 1, 5, 0.5, '2023-07-29'),
+(95, 3, 'Velya', 22, 10, 1, 6, 0.5, '2023-07-29'),
+(96, 3, 'Velya', 22, 11, 1, 7, 0.5, '2023-07-29'),
+(97, 3, 'Velya', 22, 12, 1, 8, 1, '2023-07-29'),
+(98, 3, 'Velya', 22, 13, 2, 10, 1, '2023-07-29'),
+(99, 3, 'Velya', 22, 14, 2, 11, 0, '2023-07-29'),
+(100, 3, 'Velya', 22, 15, 2, 12, 0.5, '2023-07-29'),
+(101, 3, 'Velya', 22, 16, 2, 13, 0, '2023-07-29'),
+(102, 3, 'Velya', 22, 18, 3, 14, 0, '2023-07-29'),
+(103, 3, 'Velya', 22, 19, 3, 15, 0, '2023-07-29'),
+(104, 3, 'Velya', 22, 20, 4, 16, 0.5, '2023-07-29'),
+(105, 3, 'Velya', 22, 21, 4, 17, 0.5, '2023-07-29'),
+(106, 3, 'Velya', 22, 22, 4, 20, 0.5, '2023-07-29'),
+(107, 3, 'Velya', 22, 23, 4, 21, 0.5, '2023-07-29'),
+(108, 3, 'Velya', 22, 24, 5, 22, 0.5, '2023-07-29'),
+(109, 3, 'Velya', 22, 25, 5, 23, 0, '2023-07-29'),
+(110, 3, 'Velya', 22, 26, 5, 24, 0, '2023-07-29'),
+(111, 3, 'Velya', 22, 27, 5, 25, 0, '2023-07-29'),
+(112, 3, 'Velya', 22, 28, 6, 26, 0, '2023-07-29'),
+(113, 3, 'Velya', 22, 29, 6, 27, 0, '2023-07-29'),
+(114, 3, 'Velya', 22, 30, 6, 28, 0, '2023-07-29'),
+(115, 3, 'Velya', 22, 31, 6, 29, 0.5, '2023-07-29'),
+(116, 3, 'Velya', 22, 32, 7, 30, 0.5, '2023-07-29'),
+(117, 3, 'Velya', 22, 33, 7, 31, 0.5, '2023-07-29'),
+(118, 3, 'Velya', 22, 34, 7, 32, 0, '2023-07-29'),
+(119, 3, 'Velya', 22, 35, 9, 33, 0.5, '2023-07-29'),
+(120, 3, 'Velya', 22, 36, 9, 34, 1, '2023-07-29'),
+(121, 3, 'Velya', 22, 37, 7, 35, 0.5, '2023-07-29'),
+(122, 3, 'Velya', 22, 38, 9, 36, 0.5, '2023-07-29');
 
 -- --------------------------------------------------------
 
@@ -114,6 +169,62 @@ INSERT INTO `kriteria` (`id_kriteria`, `kode_kriteria`, `nama_kriteria`, `deskri
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pakar`
+--
+
+CREATE TABLE `pakar` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `kode_kriteria` varchar(10) NOT NULL,
+  `kode_gejala` varchar(10) NOT NULL,
+  `cf_pakar` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pakar`
+--
+
+INSERT INTO `pakar` (`id`, `kode_kriteria`, `kode_gejala`, `cf_pakar`) VALUES
+(38, 'K1', 'G1', 0.7),
+(39, 'K1', 'G2', 0.4),
+(40, 'K1', 'G3', 0.7),
+(41, 'K1', 'G4', 1),
+(42, 'K1', 'G5', 0.7),
+(43, 'K2', 'G2', 1),
+(44, 'K2', 'G6', 0.7),
+(45, 'K2', 'G7', 0.4),
+(46, 'K2', 'G8', 0.7),
+(47, 'K2', 'G9', 0.4),
+(48, 'K3', 'G3', 0.4),
+(49, 'K3', 'G9', 0.7),
+(50, 'K3', 'G10', 0.7),
+(51, 'K3', 'G11', 0.4),
+(52, 'K4', 'G12', 0.4),
+(53, 'K4', 'G13', 0.4),
+(54, 'K4', 'G14', 0.7),
+(55, 'K4', 'G15', 0.4),
+(56, 'K5', 'G16', 0.4),
+(57, 'K5', 'G17', 0.7),
+(58, 'K5', 'G18', 0.4),
+(59, 'K5', 'G19', 1),
+(60, 'K6', 'G5', 1),
+(61, 'K6', 'G20', 0.4),
+(62, 'K6', 'G21', 0.7),
+(63, 'K6', 'G22', 0.4),
+(64, 'K6', 'G23', 1),
+(65, 'K7', 'G2', 0.4),
+(66, 'K7', 'G7', 0.4),
+(67, 'K7', 'G15', 0.4),
+(68, 'K7', 'G24', 0.7),
+(69, 'K7', 'G25', 0.7),
+(70, 'K7', 'G26', 1),
+(71, 'K8', 'G27', 0.4),
+(72, 'K8', 'G28', 0.4),
+(73, 'K8', 'G29', 0.7),
+(74, 'K8', 'G30', 0.1);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pertanyaan`
 --
 
@@ -131,35 +242,35 @@ CREATE TABLE `pertanyaan` (
 
 INSERT INTO `pertanyaan` (`id_pertanyaan`, `id_gejala`, `id_kriteria`, `kode_pertanyaan`, `pertanyaan`) VALUES
 (5, 4, 1, 'KP-01', 'Apakah Anak Suka Bercerita ?'),
-(9, 5, 0, 'KP-02', 'Apakah Anak Suka Membaca ?'),
-(10, 6, 0, 'KP-03', 'Apakah Anak Suka Menulis ?'),
-(11, 7, 0, 'KP-04', 'Apakah Anak Suka Memecahkan Teka Teki ?'),
-(12, 8, 0, 'KP-05', 'Apakah Anak Gemar Berdebat ?'),
-(13, 10, 0, 'KP-06', 'Apakah Anak Suka Dengan Permainan Catur ?'),
-(14, 11, 0, 'KP-07', 'Apakah Anak Suka Buku Ilmu Pengetahuan ?'),
-(15, 12, 0, 'KP-08', 'Apakah Anak Suka Berhitung Tanpa Alat Bantu ?'),
-(16, 13, 0, 'KP-09', 'Apakah Anak Suka Permainan Gambar Atau 3D ?'),
-(18, 14, 0, 'KP-10', 'Apakah Anak Mudah Mengenali Pola dan Berimajinasi ?'),
-(19, 15, 0, 'KP-11', 'Apakah Anak Suka Menggambar ?'),
-(20, 16, 0, 'KP-12', 'Apakah Anak Bisa Memainkan Alat Musik ?'),
-(21, 17, 0, 'KP-13', 'Apakah Anak Suka Bernyanyi ?'),
-(22, 20, 0, 'KP-14', 'Apakah Anak Suka Mendengarkan Musik ?'),
-(23, 21, 0, 'KP-15', 'Apakah Anak Suka Belajar Di Iringi Musik ?'),
-(24, 22, 0, 'KP-16', 'Apakah Anak Suka Melakukan Kegiatan Fisik ?'),
-(25, 23, 0, 'KP-17', 'Apakah Anak Suka Menari ?'),
-(26, 24, 0, 'KP-18', 'Apakah Anak Suka Olahraga atau Bela Diri'),
-(27, 25, 0, 'KP-19', 'Apakah Anak Suka Menirukan Gerak Tubuh Untuk Bicara ?'),
-(28, 26, 0, 'KP-20', 'Apakah Anak Suka Bekerja Sama Dengan Orang Lain ?'),
-(29, 27, 0, 'KP-21', 'Apakah Anak Suka Berkenalan Dengan Orang Baru ? '),
-(30, 28, 0, 'KP-22', 'Apakah Anak Suka Bergaul atau Bersosialisasi ?'),
-(31, 29, 0, 'KP-23', 'Apakah Anak Memiliki Empati Yang Tinggi ?'),
-(32, 30, 0, 'KP-24', 'Apakah Anak Suka Belajar Sendiri Maupun Bermain ?'),
-(33, 31, 0, 'KP-25', 'Apakah Anak Suka Keadaan Tenang ?'),
-(34, 32, 0, 'KP-26', 'Apakah Anak Suka Hobi Yang Bersifat Pribadi ?'),
-(35, 33, 0, 'KP-27', 'Apakah Anak Suka Dengan Binatang ?'),
-(36, 34, 0, 'KP-28', 'Apakah Anak Suka Bejalan - Jalan Di Taman ?'),
-(37, 35, 0, 'KP-29', 'Apakah Anak Suka Berkebun ?'),
-(38, 36, 0, 'KP-30', 'Apakah Anak Suka Berkemah ?');
+(9, 5, 1, 'KP-02', 'Apakah Anak Suka Membaca ?'),
+(10, 6, 1, 'KP-03', 'Apakah Anak Suka Menulis ?'),
+(11, 7, 1, 'KP-04', 'Apakah Anak Suka Memecahkan Teka Teki ?'),
+(12, 8, 1, 'KP-05', 'Apakah Anak Gemar Berdebat ?'),
+(13, 10, 2, 'KP-06', 'Apakah Anak Suka Dengan Permainan Catur ?'),
+(14, 11, 2, 'KP-07', 'Apakah Anak Suka Buku Ilmu Pengetahuan ?'),
+(15, 12, 2, 'KP-08', 'Apakah Anak Suka Berhitung Tanpa Alat Bantu ?'),
+(16, 13, 2, 'KP-09', 'Apakah Anak Suka Permainan Gambar Atau 3D ?'),
+(18, 14, 3, 'KP-10', 'Apakah Anak Mudah Mengenali Pola dan Berimajinasi ?'),
+(19, 15, 3, 'KP-11', 'Apakah Anak Suka Menggambar ?'),
+(20, 16, 4, 'KP-12', 'Apakah Anak Bisa Memainkan Alat Musik ?'),
+(21, 17, 4, 'KP-13', 'Apakah Anak Suka Bernyanyi ?'),
+(22, 20, 4, 'KP-14', 'Apakah Anak Suka Mendengarkan Musik ?'),
+(23, 21, 4, 'KP-15', 'Apakah Anak Suka Belajar Di Iringi Musik ?'),
+(24, 22, 5, 'KP-16', 'Apakah Anak Suka Melakukan Kegiatan Fisik ?'),
+(25, 23, 5, 'KP-17', 'Apakah Anak Suka Menari ?'),
+(26, 24, 5, 'KP-18', 'Apakah Anak Suka Olahraga atau Bela Diri ?'),
+(27, 25, 5, 'KP-19', 'Apakah Anak Suka Menirukan Gerak Tubuh Untuk Bicara ?'),
+(28, 26, 6, 'KP-20', 'Apakah Anak Suka Bekerja Sama Dengan Orang Lain ?'),
+(29, 27, 6, 'KP-21', 'Apakah Anak Suka Berkenalan Dengan Orang Baru ? '),
+(30, 28, 6, 'KP-22', 'Apakah Anak Suka Bergaul atau Bersosialisasi ?'),
+(31, 29, 6, 'KP-23', 'Apakah Anak Memiliki Empati Yang Tinggi ?'),
+(32, 30, 7, 'KP-24', 'Apakah Anak Suka Belajar Sendiri Maupun Bermain ?'),
+(33, 31, 7, 'KP-25', 'Apakah Anak Suka Keadaan Tenang ?'),
+(34, 32, 7, 'KP-26', 'Apakah Anak Suka Hobi Yang Bersifat Pribadi ?'),
+(35, 33, 9, 'KP-27', 'Apakah Anak Suka Dengan Binatang ?'),
+(36, 34, 9, 'KP-28', 'Apakah Anak Suka Bejalan - Jalan Di Taman ?'),
+(37, 35, 7, 'KP-29', 'Apakah Anak Suka Berkebun ?'),
+(38, 36, 9, 'KP-30', 'Apakah Anak Suka Berkemah ?');
 
 -- --------------------------------------------------------
 
@@ -201,13 +312,30 @@ ALTER TABLE `gejala`
 -- Indeks untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
-  ADD PRIMARY KEY (`id_hasil`);
+  ADD PRIMARY KEY (`id_hasil`),
+  ADD KEY `hasil` (`id_user`);
+
+--
+-- Indeks untuk tabel `jawaban`
+--
+ALTER TABLE `jawaban`
+  ADD PRIMARY KEY (`id_jawaban`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_pertanyaan` (`id_pertanyaan`),
+  ADD KEY `id_gejala` (`id_gejala`),
+  ADD KEY `jawaban_ibfk_3` (`id_kriteria`);
 
 --
 -- Indeks untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
   ADD PRIMARY KEY (`id_kriteria`);
+
+--
+-- Indeks untuk tabel `pakar`
+--
+ALTER TABLE `pakar`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `pertanyaan`
@@ -239,10 +367,22 @@ ALTER TABLE `hasil`
   MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `jawaban`
+--
+ALTER TABLE `jawaban`
+  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+
+--
 -- AUTO_INCREMENT untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
   MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `pakar`
+--
+ALTER TABLE `pakar`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT untuk tabel `pertanyaan`
@@ -259,6 +399,21 @@ ALTER TABLE `user`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `hasil`
+--
+ALTER TABLE `hasil`
+  ADD CONSTRAINT `hasil` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `jawaban`
+--
+ALTER TABLE `jawaban`
+  ADD CONSTRAINT `jawaban_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `jawaban_ibfk_2` FOREIGN KEY (`id_pertanyaan`) REFERENCES `pertanyaan` (`id_pertanyaan`),
+  ADD CONSTRAINT `jawaban_ibfk_3` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `jawaban_ibfk_4` FOREIGN KEY (`id_gejala`) REFERENCES `gejala` (`id_gejala`);
 
 --
 -- Ketidakleluasaan untuk tabel `pertanyaan`
