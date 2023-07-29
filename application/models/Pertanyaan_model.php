@@ -34,4 +34,21 @@ public function getPertanyaan()
         $this->db->where('id_pertanyaan', $id_pertanyaan);
         return $this->db->get('pertanyaan')->row();
     }
+
+    public function get_kriteria_id($id_pertanyaan) {
+        $this->db->select('id_kriteria');
+        $this->db->where('id_pertanyaan', $id_pertanyaan);
+        return $this->db->get('pertanyaan')->row();
+    }
+
+    public function get_gejala_id($id_pertanyaan) {
+        $this->db->select('id_gejala');
+        $this->db->where('id_pertanyaan', $id_pertanyaan);
+        return $this->db->get('pertanyaan')->row();
+    }
+
+    public function save_jawaban($data) {
+        $this->db->insert('jawaban', $data);
+        return $this->db->insert_id();
+    }
 }

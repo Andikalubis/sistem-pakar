@@ -22,18 +22,13 @@ class User_model extends CI_Model
         $this->db->delete('user');
     }
 
-    public function get_User_by_id($id_user)
+    public function get_user_by_id($id_user)
     {
-        // Mengambil data kriteria berdasarkan ID dari tabel "kriteria"
-        $this->db->where('id_user', $id_user);
-        return $this->db->get('user')->row();
+        return $this->db->get_where('user', ['id_user' => $id_user])->row_array();
     }
 
     public function get_user_by_username($username)
     {
-        // Mengambil data kriteria berdasarkan ID dari tabel "kriteria"
-        // $this->db->where('username', $username);
-        // return $this->db->get('user')->row();
         return $this->db->get_where('user', ['username' => $username])->row_array();
     }
 }

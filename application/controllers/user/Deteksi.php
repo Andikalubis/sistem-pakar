@@ -7,6 +7,7 @@ class Deteksi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pertanyaan_model');
+        $this->load->model('User_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -19,6 +20,7 @@ class Deteksi extends CI_Controller
     public function index()
     {
         $username = $this->session->userdata('username');
+        $data['id_user'] = $this->session->userdata('id_user');
 
         $data = array(
             'title' => 'deteksi',
@@ -33,7 +35,7 @@ class Deteksi extends CI_Controller
     public function hasil()
     {
         $username = $this->session->userdata('username');
-
+        
         $data = array(
             'title' => 'hasil',
             'usernmae' => $username
@@ -42,4 +44,36 @@ class Deteksi extends CI_Controller
         $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
         $this->load->view('user/layout/template', $data);
     }
+
+    public function submit_jawaban() {
+        $nama = $this->input->post('nama');
+        $usia = $this->input->post('usia');
+        $username = $this->session->userdata('username');
+    
+        // Get the user ID based on the username (assuming 'users' table has 'id_user' and 'username' columns).
+        $this->db->where('username', $username);
+        $user = $this->db->get('user')->row();
+    
+        // Save each answer to the 'jawaban' table.
+        foreach ($_POST['jawaban'] as $id_pertanyaan => $jawaban) {
+            $kriteria = $this->Pertanyaan_model->get_kriteria_id($id_pertanyaan);
+            $gejala = $this->Pertanyaan_model->get_gejala_id($id_pertanyaan);
+    
+            $data = array(
+                'id_user' => $user->id_user,
+                'nama' => $nama,
+                'usia' => $usia,
+                'id_pertanyaan' => $id_pertanyaan,
+                'id_kriteria' => $kriteria->id_kriteria,
+                'id_gejala' => $gejala->id_gejala,
+                'jawaban' => $jawaban,
+                'tanggal' => date('Y-m-d'),
+            );
+    
+            $this->Pertanyaan_model->save_jawaban($data);
+        }
+    
+        redirect('user/beranda');
+    }
+    
 }
