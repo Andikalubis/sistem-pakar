@@ -7,6 +7,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->library('form_validation');
     }
     public function index()
     {
@@ -73,55 +74,51 @@ class Auth extends CI_Controller
     public function register() 
     {
         $data = array(
-            'title' => 'register',
+            'title' => 'Register',
         );
-        $data['contents'] = $this->load->view('auth/login', $data, TRUE);
 
         $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[user.username]');
         $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('konfirmasi', 'Confirm Password', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]');
         $this->form_validation->set_rules('tlp', 'Telepon', 'required');
-        $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('auth/register');
+            $this->load->view('auth/register', $data);
         } else {
             $this->_register();
         }
     }
 
-    private function _register()
+    private function _register() 
     {
         $nama = $this->input->post('nama');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $konfirmasi = $this->input->post('konfirmasi');
-        $hashPassword = md5($password);
+        $alamat = $this->input->post('alamat');
         $email = $this->input->post('email');
-        $jk = $this->input->post('jk');
+        $tlp = $this->input->post('tlp');
+        $jenis_kelamin = $this->input->post('jenis_kelamin');
+        $level = 'user'; 
 
-        if ($this->form_validation->run()) {
-            if ($password == $konfirmasi) {
-                $data = array(
-                    'nama' => $nama,
-                    'username' => $username,
-                    'password' => $hashPassword,
-                    'email' => $email,
-                    'jenis_kelamin' => $jk,
-                );
+        $hashPassword = md5($password);
 
-                $this->User_model->createUser($data);
+        $data = array(
+            'nama' => $nama,
+            'username' => $username,
+            'password' => $hashPassword,
+            'alamat' => $alamat,
+            'email' => $email,
+            'tlp' => $tlp,
+            'jenis_kelamin' => $jenis_kelamin,
+            'level' => $level,
+        );
 
-                redirect('auth');
-            } else {
-                $this->session->set_flashdata('alert', 'alert-danger');
-                $this->session->set_flashdata('message', 'Password dan Confrim Password tidak sama!');
+        $this->User_model->createUser($data);
 
-                redirect('auth/register');
-            }
-        }
+        redirect('auth');
     }
 
     public function logout()
