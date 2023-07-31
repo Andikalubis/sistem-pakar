@@ -45,7 +45,7 @@ class Pertanyaan_model extends CI_Model
 
     public function get_gejala_id($id_pertanyaan)
     {
-        $this->db->select('id_gejala', 'kode_gejala');
+        $this->db->select('id_gejala, kode_gejala');
         $this->db->where('id_pertanyaan', $id_pertanyaan);
         return $this->db->get('pertanyaan')->row();
     }

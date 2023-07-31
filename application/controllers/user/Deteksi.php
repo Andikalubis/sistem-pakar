@@ -74,7 +74,6 @@ class Deteksi extends CI_Controller
         foreach ($_POST['jawaban'] as $id_pertanyaan => $jawaban) {
             $kriteria = $this->Pertanyaan_model->get_kriteria_id($id_pertanyaan);
             $gejala = $this->Pertanyaan_model->get_gejala_id($id_pertanyaan);
-            var_dump($gejala);
 
             $data = array(
                 'id_user' => $user->id_user,
@@ -92,6 +91,6 @@ class Deteksi extends CI_Controller
             $this->Pertanyaan_model->save_jawaban($data);
         }
 
-        redirect('user/beranda');
+        redirect(base_url("user/deteksi/hasil/$user->id_user"));
     }
 }
