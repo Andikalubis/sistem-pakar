@@ -31,28 +31,28 @@
                         </thead>
                         <tbody>
                             <?php
-                                $no=1;
-                                foreach($pertanyaan as $data) : ?>
+                            $no = 1;
+                            foreach ($pertanyaan as $data) : ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
                                     <!-- <td><?php echo $data->kode_pertanyaan ?></td> -->
                                     <td><?php echo $data->pertanyaan ?></td>
                                     <td>
                                         <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="1">
-                                            <label class="form-check-label" for="jawaban">
+                                            <input class="form-check-input" id="sering<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="1">
+                                            <label class="form-check-label" for="sering<?= $no ?>">
                                                 Sering
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0.5">
-                                            <label class="form-check-label" for="jawaban">
+                                            <input class="form-check-input" id="jarang<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0.5">
+                                            <label class="form-check-label" for="jarang<?= $no ?>">
                                                 Jarang
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0">
-                                            <label class="form-check-label" for="jawaban">
+                                            <input class="form-check-input" id="tidakPernah<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0">
+                                            <label class="form-check-label" for="tidakPernah<?= $no ?>">
                                                 Tidak Pernah
                                             </label>
                                         </div>

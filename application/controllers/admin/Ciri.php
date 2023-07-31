@@ -8,6 +8,7 @@ class Ciri extends CI_Controller
         parent::__construct();
         $this->load->model('Admin_model');
         $this->load->model('Kriteria_model');
+        $this->load->model('Certainty_model');
         $this->load->model('Bayes_model');
 
         $logged_in = $this->session->userdata('logged_in');
@@ -35,19 +36,24 @@ class Ciri extends CI_Controller
     {
         // Array yang berisi nilai-nilai kriteria
         $kriteriaNilai = array(
-            [0, 0, 1, 0.5, 0],
-            [0, 0.5, 0, 0, 1],
-            [0.5, 0, 1, 0.5],
-            [0.5, 1, 1, 0],
-            [0.5, 1, 0, 0],
-            [0, 0, 1, 0.5, 0.5],
-            [1, 0, 0.5, 0, 1, 0.5],
-            [0, 1, 0, 0.5]
+            // nilai data latih
+            // [0, 0, 1, 0.5, 0],
+            // [0, 0.5, 0, 0, 1],
+            // [0.5, 0, 1, 0.5],
+            // [0.5, 1, 1, 0],
+            // [0.5, 1, 0, 0],
+            // [0, 0, 1, 0.5, 0.5],
+            // [1, 0, 0.5, 0, 1, 0.5],
+            // [0, 1, 0, 0.5]
         );
 
-        // Array yang berisi nama-nama kriteria
         $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
 
+        for ($i = 0; $i < count($kriteria); $i++) {
+            array_push($kriteriaNilai, $this->Kriteria_model->get_cf_user($kriteria[$i], 3, 1));
+        }
+
+        // Array yang berisi nama-nama kriteria
         $maxCfCombine = array();
 
         // Menggunakan perulangan untuk mendapatkan nilai maksimum untuk setiap kriteria
@@ -69,18 +75,25 @@ class Ciri extends CI_Controller
     public function bayes()
     {
         $kriteriaNilai = array(
-            [0, 0, 1, 0.5, 0],
-            [0, 0.5, 0, 0, 1],
-            [0.5, 0, 1, 0.5],
-            [0.5, 1, 1, 0],
-            [0.5, 1, 0, 0],
-            [0, 0, 1, 0.5, 0.5],
-            [1, 0, 0.5, 0, 1, 0.5],
-            [0, 1, 0, 0.5]
+            // [0, 0, 1, 0.5, 0],
+            // [0, 0.5, 0, 0, 1],
+            // [0.5, 0, 1, 0.5],
+            // [0.5, 1, 1, 0],
+            // [0.5, 1, 0, 0],
+            // [0, 0, 1, 0.5, 0.5],
+            // [1, 0, 0.5, 0, 1, 0.5],
+            // [0, 1, 0, 0.5]
         );
 
+        $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
 
-        echo $this->Bayes_model->nilai_gejala('K1', $kriteriaNilai[0]);
+        for ($i = 0; $i < count($kriteria); $i++) {
+            array_push($kriteriaNilai, $this->Kriteria_model->get_cf_user($kriteria[$i], 3, 1));
+        }
+
+        for ($i = 0; $i < count($kriteria); $i++) {
+            echo $this->Bayes_model->nilai_gejala($kriteria[$i], $kriteriaNilai[$i]) . " ";
+        }
     }
 
     ///data untuk kriteria
@@ -146,6 +159,7 @@ class Ciri extends CI_Controller
     {
         // Proses hapus data kriteria dari database
         $this->Admin_model->deleteKriteria($id_kriteria); // Panggil fungsi delete pada model
+
         // Redirect ke halaman daftar kriteria setelah penghapusan berhasil
         redirect('admin/ciri');
     }

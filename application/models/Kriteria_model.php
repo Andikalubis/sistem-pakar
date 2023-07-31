@@ -29,4 +29,32 @@ class Kriteria_model extends CI_Model
 
         return $result;
     }
+
+    public function get_cf_user($kode_kriteria, $id_user, $sesi)
+    {
+        $table = 'variabel';
+        $query = $this->db->get_where($table, array('kode_kriteria' => $kode_kriteria));
+        $result = $query->result();
+
+        $kode_gejala = [];
+        foreach ($result as $key => $value) {
+            array_push($kode_gejala, $value->kode_gejala);
+        }
+
+        $this->db->select('kode_gejala, cf_user');
+        $this->db->where_in('kode_gejala', $kode_gejala);
+        $this->db->where('id_user', $id_user);
+        $this->db->where('sesi', $sesi);
+        $results = $this->db->get('jawaban')->result();
+
+        $cf_user_by_kriteria = [];
+        foreach ($results as $result) {
+            $kode_gejala = $result->kode_gejala;
+            $cf_user = $result->cf_user;
+
+            array_push($cf_user_by_kriteria, $cf_user);
+        }
+
+        return $cf_user_by_kriteria;
+    }
 }

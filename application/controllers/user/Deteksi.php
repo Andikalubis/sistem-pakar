@@ -32,33 +32,50 @@ class Deteksi extends CI_Controller
         $this->load->view('user/layout/template', $data);
     }
 
-    public function hasil()
+    public function hasil($id)
     {
         $username = $this->session->userdata('username');
-        
+
         $data = array(
             'title' => 'hasil',
             'usernmae' => $username
         );
 
+        var_dump($id);
+
         $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
         $this->load->view('user/layout/template', $data);
     }
 
-    public function submit_jawaban() {
+    public function submit_jawaban()
+    {
         $nama = $this->input->post('nama');
         $usia = $this->input->post('usia');
         $username = $this->session->userdata('username');
-    
+
         // Get the user ID based on the username (assuming 'users' table has 'id_user' and 'username' columns).
         $this->db->where('username', $username);
         $user = $this->db->get('user')->row();
-    
+
+        // check apakah user sudah pernah tes?
+        $this->db->where('id_user', $user->id_user);
+        $isSesion = $this->db->get('jawaban')->row();
+
+
+        if ($isSesion !== null) {
+            // Jika user sudah pernah tes, ambil nilai sesi dari $isSesion dan tambahkan 1
+            $sesi = $isSesion->sesi + 1;
+        } else {
+            // Jika user belum pernah tes, set nilai sesi menjadi 1
+            $sesi = 1;
+        }
+
         // Save each answer to the 'jawaban' table.
         foreach ($_POST['jawaban'] as $id_pertanyaan => $jawaban) {
             $kriteria = $this->Pertanyaan_model->get_kriteria_id($id_pertanyaan);
             $gejala = $this->Pertanyaan_model->get_gejala_id($id_pertanyaan);
-    
+            var_dump($gejala);
+
             $data = array(
                 'id_user' => $user->id_user,
                 'nama' => $nama,
@@ -66,14 +83,15 @@ class Deteksi extends CI_Controller
                 'id_pertanyaan' => $id_pertanyaan,
                 'id_kriteria' => $kriteria->id_kriteria,
                 'id_gejala' => $gejala->id_gejala,
-                'jawaban' => $jawaban,
+                'kode_gejala' => $gejala->kode_gejala,
+                'cf_user' => $jawaban,
+                'sesi' => $sesi,
                 'tanggal' => date('Y-m-d'),
             );
-    
+
             $this->Pertanyaan_model->save_jawaban($data);
         }
-    
+
         redirect('user/beranda');
     }
-    
 }
