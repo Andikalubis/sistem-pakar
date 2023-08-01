@@ -16,7 +16,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="<?= base_url(); ?>admin/dashboard" class="nav-link text-capitalize"><?= $title ?></a>
+                    <a href="<?= base_url(); ?>admin/beranda" class="nav-link text-capitalize"><?= $title ?></a>
                 </li>
             </ul>
 
@@ -80,7 +80,7 @@
 
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2023 <a href="<?= base_url('home'); ?>">Sistem Pakar Anak</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.2.0

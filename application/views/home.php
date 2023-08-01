@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?= base_url() ?> assets/template/landing_page/assets/img/favicon.png" rel="icon">
+    <link href="<?= base_url('assets/') ?>template/landing_page/assets/img/MI1.png" rel="icon">
     <link href="<?= base_url() ?> assets/template/landing_page/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -28,6 +28,13 @@
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>assets/template/landing_page/assets/css/style.css" rel="stylesheet">
 
+    <style>
+        .gambar {
+            width: 50px;  
+            height: auto;  
+            margin-right: 20px;
+        }
+    </style>
     <!-- =======================================================
   * Template Name: Arsha
   * Updated: Jul 05 2023 with Bootstrap v5.3.0
@@ -42,8 +49,8 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center">
-
-            <h1 class="logo me-auto"><a href="index.html">Sistem pakar anak</a></h1>
+        <img src="<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png" class="gambar">
+            <h1 class="logo me-auto"><a href="<?= base_url('home'); ?>">Sistem pakar anak</a></h1>
 
             <nav id="navbar" class="navbar">
                 <ul>
@@ -305,7 +312,7 @@
 
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Sistem Pakar Anak</span></strong>
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
