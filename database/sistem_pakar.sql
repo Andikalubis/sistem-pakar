@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Jul 2023 pada 14.54
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.2.4
+-- Waktu pembuatan: 06 Agu 2023 pada 13.46
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `gejala` (
   `id_gejala` int(11) NOT NULL,
   `kode_gejala` varchar(25) DEFAULT NULL,
   `nama_gejala` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `gejala`
@@ -83,7 +83,7 @@ CREATE TABLE `hasil` (
   `tanggal` date DEFAULT NULL,
   `usia` int(50) DEFAULT NULL,
   `hasil_kriteria` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE `jawaban` (
   `cf_user` float DEFAULT NULL,
   `sesi` int(11) NOT NULL,
   `tanggal` date DEFAULT curdate()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `jawaban`
@@ -152,7 +152,7 @@ CREATE TABLE `kriteria` (
   `kode_kriteria` varchar(25) DEFAULT NULL,
   `nama_kriteria` varchar(50) DEFAULT NULL,
   `deskripsi` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `kriteria`
@@ -179,7 +179,7 @@ CREATE TABLE `pakar` (
   `kode_kriteria` varchar(10) NOT NULL,
   `kode_gejala` varchar(10) NOT NULL,
   `cf_pakar` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pakar`
@@ -237,7 +237,7 @@ CREATE TABLE `pertanyaan` (
   `kode_gejala` varchar(25) NOT NULL,
   `kode_pertanyaan` varchar(25) DEFAULT NULL,
   `pertanyaan` tinytext DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `pertanyaan`
@@ -289,18 +289,18 @@ CREATE TABLE `user` (
   `alamat` varchar(70) DEFAULT NULL,
   `jenis_kelamin` enum('laki-laki','perempuan') DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
-  `tlp` int(20) DEFAULT NULL,
+  `tlp` varchar(20) DEFAULT NULL,
   `level` enum('admin','user') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `alamat`, `jenis_kelamin`, `email`, `tlp`, `level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'cirebon', 'perempuan', 'admin@gmail.com', 238572345, 'admin'),
-(3, 'velya', 'ee11cbb19052e40b07aac0ca060c23ee', 'Velya', 'cirebon', 'perempuan', 'user@gmail.com', 2934092, 'user'),
-(4, 'inamfalahuddin', '598147631c57ef841def7ae8ed9a87da', 'In\'am Falahuddin', 'kudumulya', 'laki-laki', 'inam@mail.com', 2147483647, 'user');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'cirebon', 'perempuan', 'admin@gmail.com', '238572345', 'admin'),
+(3, 'velya', 'ee11cbb19052e40b07aac0ca060c23ee', 'Velya', 'Cirebon', 'perempuan', 'velya@gmail.com', '0865771887905', 'user'),
+(4, 'inamfalahuddin', '598147631c57ef841def7ae8ed9a87da', 'In\'am Falahuddin', 'kudumulya', 'laki-laki', 'inam@mail.com', '2147483647', 'user');
 
 -- --------------------------------------------------------
 
@@ -313,7 +313,7 @@ CREATE TABLE `variabel` (
   `kode_kriteria` varchar(25) NOT NULL,
   `kode_gejala` varchar(25) NOT NULL,
   `cf_pakar` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `variabel`
