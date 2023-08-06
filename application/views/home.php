@@ -169,7 +169,7 @@
                                 <li class="bg-light">
                                     <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                                        <p>
+                                        <p style="text-align: justify;">
                                             Certainty Factor, dalam konteks sistem pakar dan kecerdasan buatan, adalah metode yang digunakan untuk mengukur dan menggambarkan tingkat kepastian atau keyakinan dalam sebuah pernyataan atau diagnosis. Hal ini membantu dalam pengambilan keputusan berdasarkan pengetahuan dan informasi yang tersedia. 
                                         </p>
                                     </div>
@@ -178,7 +178,7 @@
                                 <li class="bg-light">
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
+                                        <p style="text-align: justify;">
                                             Certainty Factor diperkenalkan sebagai salah satu teknik dalam sistem pakar oleh Arthur L. Bier pada tahun 1975. Metode ini digunakan untuk menggambungkan pengetahuan ahli manusia dengan data dan informasi yang dihasilkan oleh sistem untuk menghasikan kesimpulan atau diagnosis yang akurat. 
                                         </p>
                                     </div>
@@ -187,7 +187,7 @@
                                 <li class="bg-light">
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
+                                        <p style="text-align: justify;">
                                             Certainty Factor menghitung tingkat keyakinan berdasarkan dua faktor utama yaitu faktor penunjang (supporting factor), dan faktor penolakan (opposing factor). Faktor penunjang adalah informasi yang mendukung suatu pernyataan atau diagnosis, sedangkan faktor penolakan adalah informasi yang bertentangan dengan pernyataan
                                             atau diagnosis tersebut.
                                         </p>
@@ -217,12 +217,12 @@
                             <h3>Apa itu metode <strong>Naive Bayes</strong></h3>
                         </div>
 
-                        <div class="accordion-list text-justify">
+                        <div class="accordion-list">
                             <ul>
                                 <li>
                                     <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
-                                        <p>
+                                        <p style="text-align: justify;">
                                             Naives Bayes, atau yang dikenal juga dengan Naives Bayes Classifier, adalah sebuah metode klasisfikasi yang berdasarkan pada teorema bayes dengan asumsi yang diamati adalah independen satu sama lain.  
                                         </p>
                                     </div>
@@ -231,7 +231,7 @@
                                 <li>
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Sejarah Naive Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
+                                        <p style="text-align: justify;">
                                         Naives Bayes sangat populer dalam bidang kecerdasan buatan dan pembelajaran mesin karena sifatnya yang efisien, mudah di implementasikan dan memberikan kinerja yang baik dalam banyak kasus. Meskipun memiliki asumsi sederhana tentang indepedensi fitur,Naives Bayes seringkali memberikan hasil yang cukup baik dalam banyak tugas klasifikasi.
                                         </p>
                                     </div>
@@ -240,7 +240,7 @@
                                 <li>
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Naive Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
-                                        <p>
+                                        <p style="text-align: justify;">
                                             Pada dasarnya, Naives Bayes menggunakan teorema Bayes untuk menghitung probabilitas
                                             kelas target berdasarkan fitur-fitur yang diamati. Metode ini memperhitungkan frekuensi kemunculan fitur-fitur dalam set data pelatihan tersebut. Kemudian, saat diberikan data baru,Naives Bayes menghitung probabilitas kelas untuk data tersebut berdasarkan probabilitas yang dihitung sebelumnya dan memilih kelas dengan probabilitas terbesar sebagai hasil klasifikasi 
                                         </p>
