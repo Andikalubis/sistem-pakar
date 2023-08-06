@@ -30,23 +30,22 @@ class Profil extends CI_Controller
         $this->load->view('admin/layout/template', $data);
     }
 
-    public function editPengguna($id_user)
+    public function editProfil($id_user)
     {
+        $data['title'] = 'update data Profil';
+        $data['user'] = $this->User_model->get_user_by_id($id_user);
+
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('alamat', 'Alamat', 'required');
             $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required');
-            $this->form_validation->set_rules('tlp', 'Telepon', 'required');
-
-
-            var_dump($this->form_validation->run());
-            echo validation_errors();
-
+            $this->form_validation->set_rules('tlp', 'Telphone', 'required');
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
+                $id_user = $this->input->post('id_user');
                 $data = array(
                     'nama' => $this->input->post('nama'),
                     'alamat' => $this->input->post('alamat'),
@@ -61,6 +60,5 @@ class Profil extends CI_Controller
                 redirect('admin/profil');
             }
         }
-        redirect('admin/profil');
     }
 }
