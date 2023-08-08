@@ -27,7 +27,7 @@ class Bayes_model extends CI_Model
             }
         }
 
-        return array_sum($nilaiNB);
+        return array_sum($nilaiNB) * 100;
     }
 
 

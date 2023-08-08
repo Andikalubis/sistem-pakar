@@ -3,6 +3,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Kriteria_model extends CI_Model
 {
+    public function get_kode_kriteria()
+    {
+        $this->db->select('kode_kriteria');
+        $query = $this->db->get('kriteria');
+
+        $kode_kriteria = array();
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $kode_kriteria[] = $row->kode_kriteria;
+            }
+        }
+
+        return $kode_kriteria;
+    }
+
     public function nilai_gejala($cfPakar, $cfUser)
     {
         $result = $this->get_cf_pakar($cfPakar);
@@ -23,7 +39,7 @@ class Kriteria_model extends CI_Model
 
     public function get_cf_pakar($kode_kriteria)
     {
-        $table = 'variabel';
+        $table = 'pakar';
         $query = $this->db->get_where($table, array('kode_kriteria' => $kode_kriteria));
         $result = $query->result();
 

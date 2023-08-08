@@ -55,4 +55,10 @@ class Pertanyaan_model extends CI_Model
         $this->db->insert('jawaban', $data);
         return $this->db->insert_id();
     }
+
+    public function save_hasil($data)
+    {
+        $this->db->insert('hasil', $data);
+        return $this->db->insert_id();
+    }
 }

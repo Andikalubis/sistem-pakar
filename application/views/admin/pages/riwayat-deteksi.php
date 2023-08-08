@@ -23,39 +23,40 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
-                                <table class="table table-hover text-nowrap text-center">
+                                <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Usia</th>
                                             <th>Tanggal</th>
+                                            <th>Bobot</th>
                                             <th>Hasil</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                        $no=1;
-                                        foreach($hasil as $data) : ?>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($hasil as $data) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><?php echo $data->nama ?></td>
-                                                <td><?php echo $data->bobot ?></td>
-                                                <td><?php echo $data->tanggal ?></td>
-                                                <td><?php echo $data->usia ?></td>
-                                                <td><?php echo $data->hasil ?></td>
+                                                <td><?php echo $data['nama'] ?></td>
+                                                <td><?php echo $data['usia'] ?></td>
+                                                <td><?php echo $data['tanggal'] ?></td>
+                                                <td><?php echo $data['bobot'] ?></td>
+                                                <td><?php echo $data['hasil_kriteria'] ?></td>
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/riwayat/').$data->id_hasil ?>" class="btn btn-sm btn-success">
+                                                    <!-- <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-show"></i>
-                                                    </a>
-                                                    <a href="<?php echo base_url('admin/riwayat/').$data->id_hasil ?>" class="btn btn-sm btn-danger">
+                                                    </a> -->
+                                                    <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
-                                </tbody>     
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->

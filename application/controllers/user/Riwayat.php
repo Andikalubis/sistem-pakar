@@ -32,7 +32,7 @@ class Riwayat extends CI_Controller
         $data['hasil'] = $this->Admin_model->getRiwayat();
 
         foreach ($data['hasil'] as $row) {
-            $row->nama = $this->User_model->get_user_by_id($row->id_user);
+            $row['nama'] = $this->User_model->get_user_by_id($row['id_user']);
         }
 
         $data['contents'] = $this->load->view('user/pages/riwayat', $data, TRUE);

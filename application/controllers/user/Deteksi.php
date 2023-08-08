@@ -8,6 +8,8 @@ class Deteksi extends CI_Controller
         parent::__construct();
         $this->load->model('Pertanyaan_model');
         $this->load->model('User_model');
+        $this->load->model('Kriteria_model');
+        $this->load->model('Hasil_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -91,6 +93,60 @@ class Deteksi extends CI_Controller
             $this->Pertanyaan_model->save_jawaban($data);
         }
 
+        $result = $this->certainty_factor($user->id_user, $sesi);
+
+        $this->Pertanyaan_model->save_hasil(array(
+            'id_user' => $user->id_user,
+            'nama' => $nama,
+            'bobot' => $result['bobot'],
+            'tanggal' => date('Y-m-d'),
+            'usia' => $usia,
+            'hasil_kriteria' => $result['kode_kriteria'],
+        ));
+
         redirect(base_url("user/deteksi/hasil/$user->id_user"));
+    }
+
+    public function certainty_factor($id_user, $sesi)
+    {
+        // Array yang berisi nilai-nilai kriteria
+        $kriteriaNilai = array(
+            // nilai data latih
+            // [0, 0, 1, 0.5, 0],
+            // [0, 0.5, 0, 0, 1],
+            // [0.5, 0, 1, 0.5],
+            // [0.5, 1, 1, 0],
+            // [0.5, 1, 0, 0],
+            // [0, 0, 1, 0.5, 0.5],
+            // [1, 0, 0.5, 0, 1, 0.5],
+            // [0, 1, 0, 0.5]
+        );
+
+        // $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
+        $kriteria = $this->Kriteria_model->get_kode_kriteria();
+
+        for ($i = 0; $i < count($kriteria); $i++) {
+            array_push($kriteriaNilai, $this->Kriteria_model->get_cf_user($kriteria[$i], $id_user, $sesi));
+        }
+
+        // Array yang berisi nama-nama kriteria
+        $maxCfCombine = array();
+
+        // Menggunakan perulangan untuk mendapatkan nilai maksimum untuk setiap kriteria
+        foreach ($kriteria as $index => $kriteriaNama) {
+            $nilaiGejala = $kriteriaNilai[$index];
+            $maxCfCombine[$index] = $this->Kriteria_model->nilai_gejala($kriteriaNama, $nilaiGejala);
+        }
+
+        // Mendapatkan semua indeks yang memiliki nilai maksimum
+        $maxValueIndices = array_keys($maxCfCombine, max($maxCfCombine));
+
+        // Mengambil indeks pertama dari array $maxValueIndices
+        $firstIndex = reset($maxValueIndices);
+
+        return array(
+            'bobot' =>  max($maxCfCombine),
+            'kode_kriteria' =>  $kriteria[$firstIndex]
+        );
     }
 }
