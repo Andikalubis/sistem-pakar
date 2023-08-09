@@ -6,6 +6,8 @@ class Riwayat extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Admin_model');
+        $this->load->model('User_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -24,10 +26,6 @@ class Riwayat extends CI_Controller
             'username' => $username
         );
 
-        // Load model 
-        $this->load->model('Admin_model');
-        $this->load->model('User_model');
-
         // Ambil data riwayat dari model
         $data['hasil'] = $this->Admin_model->getRiwayat();
 
@@ -38,26 +36,5 @@ class Riwayat extends CI_Controller
         $data['contents'] = $this->load->view('admin/pages/riwayat-deteksi', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }
-
-    // public function index()
-    // {
-    //     $tmp = array(
-    //         'title' => 'riwayat',
-    //     );
-
-    //     // Load model 'riwayat_model'
-    //     $this->load->model('Riwayat_model');
-
-    //     // Ambil data riwayat dari model
-    //     $data['riwayat'] = $this->Riwayat_model->getRiwayat();
-
-    //     // Get the user name for each row from the 'user' table using the 'id_user' field
-    //     foreach ($data['riwayat'] as $row) {
-    //         $row->nama = $this->Riwayat_model->getUserNamaById($row->id_user);
-    //     }
-
-    //     $tmp['contents'] = $this->load->view('admin/pages/riwayat-deteksi', $data, TRUE);
-    //     $this->load->view('admin/layout/template', $tmp);
-    // }
 
 }

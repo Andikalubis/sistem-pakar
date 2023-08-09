@@ -86,4 +86,12 @@ class Admin_model extends CI_Model {
         return $this->db->get_where('gejala', 
             array('id_gejala' => $id_gejala))->row();
     }
+
+    //Riwayat
+    public function deleteRiwayat($id_hasil)
+    {
+        // Menghapus data gejala berdasarkan ID dari tabel "gejala"
+        $this->db->where('id_hasil', $id_hasil);
+        $this->db->delete('hasil');
+    }
 }

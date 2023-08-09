@@ -42,15 +42,15 @@
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $data['nama'] ?></td>
-                                                <td><?php echo $data['usia'] ?></td>
+                                                <td><?php echo $data['usia'] ?> Tahun</td>
                                                 <td><?php echo $data['tanggal'] ?></td>
-                                                <td><?php echo $data['bobot'] ?></td>
+                                                <td><?php echo $data['bobot'] ?> %</td>
                                                 <td><?= $data['hasil_kriteria'] ?></td>
                                                 <td>
                                                     <!-- <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-show"></i>
                                                     </a> -->
-                                                    <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
