@@ -37,4 +37,18 @@ class User_model extends CI_Model
     {
         return $this->db->get_where('user', ['username' => $username])->row_array();
     }
+
+    public function updatePassword($username, $hashed_password)
+    {
+        $this->db->where('username', $username);
+        $this->db->update('user', array('password' => $hashed_password));
+    }
+
+    public function searchByUsername($username) {
+        // Query untuk mencari data user berdasarkan username
+        $this->db->like('username', $username);
+        $query = $this->db->get('user');
+
+        return $query->result();
+    }
 }

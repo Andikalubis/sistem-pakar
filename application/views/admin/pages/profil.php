@@ -17,11 +17,15 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="mtext-112 cl2">Edit Profil</h4>
             </div>
-            <div class="row">
-              <div class="col-lg-12">
-                  <?= $this->session->flashdata('message'); ?>
-              </div>
-            </div>
+            
+            <?php
+            if ($this->session->flashdata('error_msg')) {
+                echo '<p style="color: red;">' . $this->session->flashdata('error_msg') . '</p>';
+            }
+            if ($this->session->flashdata('success_msg')) {
+                echo '<p style="color: green;">' . $this->session->flashdata('success_msg') . '</p>';
+            }
+            ?>
 
             <?php echo form_open('admin/profil/editProfil/' . $user['id_user']); ?>
 
@@ -74,31 +78,26 @@
           <h4 class="text-right mtext-112 cl2 ">Ubah Password</h4>
         </div>
 
-        <div class="row">
-          <div class="col-lg-12">
-              <?= $this->session->flashdata('pesan'); ?>
-          </div>
-        </div>
+        <?php
+         if ($this->session->flashdata('error_msg')) {
+            echo '<p style="color: red;">' . $this->session->flashdata('error_msg') . '</p>';
+        }
+        if ($this->session->flashdata('success_msg')) {
+            echo '<p style="color: green;">' . $this->session->flashdata('success_msg') . '</p>';
+        }
+        ?>
 
-        <form action="<?= base_url('wisatawan/password'); ?>" method="post">
+        <?php echo form_open('admin/profil/updatepassword/'); ?>
 
           <div class="row mt-3">
             <div class="col-md-12 pb-2">
-              <label for="current_password" class="stext-110 cl2">Password saat ini</label>
-              <input type="password" class="form-control" id="current_password" name="current_password">
-              <?= form_error('current_password',' <small class="text-danger">', '</small>'); ?>
-            </div>
-
-            <div class="col-md-12 pb-2">
-              <label for ="new_password1" class="stext-110 cl2">Password baru</label>
-              <input type="password" class="form-control" id="new_password1" name="new_password1">
-              <?= form_error('new_password1',' <small class="text-danger">', '</small>'); ?>
+              <label for ="new_password" class="stext-110 cl2">Password baru</label>
+              <input type="password" class="form-control" id="new_password" name="new_password">
             </div>
 
             <div class="col-md-12 pb-3">
-              <label for ="new_password2" class="stext-110 cl2">Konfirmasi password baru</label>
-              <input type="password" class="form-control" id="new_password2" name="new_password2">
-              <?= form_error('new_password2',' <small class="text-danger">', '</small>'); ?>
+              <label for ="confirm_password" class="stext-110 cl2">Konfirmasi password baru</label>
+              <input type="password" class="form-control" id="confirm_password" name="confirm_password">
             </div>
           </div>
 
@@ -109,7 +108,7 @@
                     </button>
                 </div>
           </div>
-      </form>
+        <?php echo form_close() ?>
     </div>
   </div>
 </div>

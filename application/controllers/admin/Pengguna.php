@@ -6,6 +6,7 @@ class Pengguna extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Admin_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -18,7 +19,6 @@ class Pengguna extends CI_Controller
     public function index()
     {
         $username = $this->session->userdata('username');
-        $this->load->model('Admin_model'); // Memuat model Admin_model
 
         $data = array(
             'title' => 'pengguna',

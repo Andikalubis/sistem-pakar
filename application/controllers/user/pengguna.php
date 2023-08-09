@@ -87,9 +87,32 @@ class Pengguna extends CI_Controller
 
                 $this->User_model->updateUser($id_user, $data);
 
-                // Redirect ke halaman ciri ketika halaman sukses update data
+                $this->session->set_flashdata('success_msg', 'Profil updated successfully.');
+
+                // Redirect ke halaman profil ketika halaman sukses update data
                 redirect('user/pengguna');
             }
         }
     }
+
+    public function updatePassword()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('new_password', 'Password baru', 'required|min_length[5]');
+        $this->form_validation->set_rules('confirm_password', 'Konfirmasi password baru', 'required|matches[new_password]');
+    
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('admin/pages/profil');
+        } else {
+            $new_password = $this->input->post('new_password');
+            $hashed_password = md5($new_password); 
+    
+            $username = $this->session->userdata('username');
+            $this->User_model->updatePassword($username, $hashed_password); 
+
+            $this->session->set_flashdata('success_msg', 'Password updated successfully.');
+
+            redirect('user/pengguna'); //
+        }
+    }  
 }
