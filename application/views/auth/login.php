@@ -72,10 +72,6 @@
                     </div>
                 </form>
                 <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    <a href="forgot-password.html">Saya lupa password</a>
-                </p>
                 <p class="mb-0">
                     <a href="<?= base_url('auth/register') ?>" class="text-center">Daftar sekarang</a>
                 </p>
