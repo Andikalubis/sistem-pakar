@@ -72,13 +72,46 @@
                                 </div>
                             </div>
                             <div class="card-body p-4">
+
+                                <div class="row my-4">
+                                    <div class="col">
+                                        <div class="card-body table-responsive p-0">
+                                            <table class="table table-hover text-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Kode</th>
+                                                        <th>Kriteria</th>
+                                                        <th>Bobot</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($hasil as $data) : ?>
+                                                        <tr>
+                                                            <td><?= $no++ ?></td>
+                                                            <td><?= $data->kode ?></td>
+                                                            <td><?= $data->nama ?></td>
+                                                            <td><?= $data->bobot ?></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col text-center bg-info py-2">Kecerdasan Kinestik: 88%</div>
+                                    <div class="col text-center bg-info py-2"><?= $hasil[0]->nama ?>: <?= $hasil[0]->bobot ?>%</div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col">
-                                        <strong class="mb-2 d-inline-block">Dengan ciri-ciri:</strong>
-                                        <p>Suka melakukan berbagai kegiatan fisik seperti bersepeda, berenang, suka menari, suka olahraga, atau bela diri, suka menirukan gerak, suka menggunakan banyak gerak tubuh untuk berbicara. </p>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($hasil as $data) : ?>
+                                            <strong class="mb-2 d-inline-block"><?= $data->nama ?></strong>
+                                            <p><?= $data->deskripsi ?> </p>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>

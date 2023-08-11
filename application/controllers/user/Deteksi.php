@@ -44,11 +44,32 @@ class Deteksi extends CI_Controller
         $sortedDataFromCF = $this->quickSort($this->certainty_factor($id, 1));
         $sortedDataFromBayes = $this->quickSort($this->bayes($id, 1));
 
+        // var_dump($this->certainty_factor($id, 1));
+        // var_dump($sortedDataFromBayes)
+
+        $hasil_deskripsi = array();
+
+        for ($i = 0; $i < 3; $i++) {
+            $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
+            $nama = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
+            $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
+            $kode = $sortedDataFromCF[$i]['kode_ciri'];
+            $bobot = $sortedDataFromCF[$i]['nilai'];
+
+            $hasil_deskripsi[] = (object) array(
+                'kode' => $kode,
+                'nama' => $nama,
+                'deskripsi' => $deskripsi,
+                'bobot' => $bobot
+            );
+        }
+
         $data = array(
             'title' => 'hasil',
             'usernmae' => $username,
-            'hasil_bayes' => $sortedDataFromBayes,
-            'hasil_cf' => $sortedDataFromCF
+            'hasil_bayes' => $this->bayes($id, 1),
+            'hasil_cf' => $this->certainty_factor($id, 1),
+            'hasil' => $hasil_deskripsi,
         );
 
         $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
@@ -163,11 +184,15 @@ class Deteksi extends CI_Controller
 
     public function _bayes($ciri, $user_id, $user_sesi)
     {
-        $cf_pakar = $this->Kriteria_model->get_cf_pakar($ciri, $user_id, $user_sesi);
+        // $cf_pakar = $this->Kriteria_model->get_cf_pakar($ciri, $user_id, $user_sesi);
+        $cf_pakar = $this->Kriteria_model->get_cf_user($ciri, $user_id, $user_sesi);
+
+        // var_dump($this->Kriteria_model->get_cf_pakar('K1', 3, 1));
+        // var_dump($this->Kriteria_model->get_cf_user('K1', 3, 1));
 
         $cf_pakar_arr = array(); // Inisialisasi array kosong
         for ($i = 0; $i < count($cf_pakar); $i++) {
-            $cf_pakar_arr[] = $cf_pakar[$i]->cf_pakar;
+            $cf_pakar_arr[] = $cf_pakar[$i];
         }
 
         // mencari nilai semesta

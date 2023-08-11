@@ -73,4 +73,14 @@ class Kriteria_model extends CI_Model
 
         return $cf_user_by_kriteria;
     }
+
+    public function get_kriteria($kode_kriteria)
+    {
+        $table = 'kriteria';
+        $this->db->select('nama_kriteria, deskripsi');
+        $query = $this->db->get_where($table, array('kode_kriteria' => $kode_kriteria));
+        $result = $query->row();
+
+        return $result;
+    }
 }
