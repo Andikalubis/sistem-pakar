@@ -37,4 +37,13 @@ class Riwayat extends CI_Controller
         $this->load->view('admin/layout/template', $data);
     }
 
+    public function hapusRiwayat($id_hasil)
+    {
+        // Proses hapus data hasil dari database
+        $this->Admin_model->deleteRiwayat($id_hasil); // Panggil fungsi delete pada model
+
+        // Redirect ke halaman daftar hasil setelah penghapusan berhasil
+        redirect('admin/riwayat/');
+    }
+
 }
