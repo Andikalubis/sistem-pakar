@@ -26,21 +26,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Musical</td>
-                                                    <td>99,5%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Linguistik Verbal</td>
-                                                    <td>99%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Kinestik</td>
-                                                    <td>99,2%</td>
-                                                </tr>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($hasil_cf as $data) : ?>
+                                                    <tr>
+                                                        <td><?= $no++ ?></td>
+                                                        <td><?= $data['kode_ciri'] ?></td>
+                                                        <td><?= $data['nilai'] ?>%</td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -63,21 +57,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Musical</td>
-                                                    <td>99,5%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Linguistik Verbal</td>
-                                                    <td>99%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Kinestik</td>
-                                                    <td>99,2%</td>
-                                                </tr>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($hasil_bayes as $data) : ?>
+                                                    <tr>
+                                                        <td><?= $no++ ?></td>
+                                                        <td><?= $data['kode_ciri'] ?></td>
+                                                        <td><?= $data['nilai'] ?>%</td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
