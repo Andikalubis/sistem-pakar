@@ -41,11 +41,17 @@
                                         <div class="form-check">
                                             <input class="form-check-input" id="sering<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="1">
                                             <label class="form-check-label" for="sering<?= $no ?>">
+                                                Sangat Sering
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" id="sering<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0.7">
+                                            <label class="form-check-label" for="sering<?= $no ?>">
                                                 Sering
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" id="jarang<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0.5">
+                                            <input class="form-check-input" id="jarang<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="0.4">
                                             <label class="form-check-label" for="jarang<?= $no ?>">
                                                 Jarang
                                             </label>
