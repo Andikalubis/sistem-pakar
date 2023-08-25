@@ -93,7 +93,7 @@
                                                             <td><?= $no++ ?></td>
                                                             <td><?= $data->kode ?></td>
                                                             <td><?= $data->nama ?></td>
-                                                            <td><?= $data->bobot ?></td>
+                                                            <td><?= $data->bobot ?>%</td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
