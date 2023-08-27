@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Agu 2023 pada 13.46
+-- Waktu pembuatan: 27 Agu 2023 pada 18.55
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -77,12 +77,37 @@ INSERT INTO `gejala` (`id_gejala`, `kode_gejala`, `nama_gejala`) VALUES
 
 CREATE TABLE `hasil` (
   `id_hasil` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `nama` varchar(50) DEFAULT NULL,
-  `bobot` double DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `usia` int(11) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
-  `usia` int(50) DEFAULT NULL,
-  `hasil_kriteria` varchar(45) DEFAULT NULL
+  `sesi` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `hasil_cf`
+--
+
+CREATE TABLE `hasil_cf` (
+  `id_hasil_cf` int(11) NOT NULL,
+  `id_hasil` int(11) DEFAULT NULL,
+  `id_kriteria` int(11) DEFAULT NULL,
+  `bobot` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `hasil_nb`
+--
+
+CREATE TABLE `hasil_nb` (
+  `id_hasil_nb` int(11) NOT NULL,
+  `id_hasil` int(11) DEFAULT NULL,
+  `id_kriteria` int(11) DEFAULT NULL,
+  `bobot` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -110,36 +135,36 @@ CREATE TABLE `jawaban` (
 --
 
 INSERT INTO `jawaban` (`id_jawaban`, `id_user`, `nama`, `usia`, `id_pertanyaan`, `id_kriteria`, `id_gejala`, `kode_gejala`, `cf_user`, `sesi`, `tanggal`) VALUES
-(93, 3, 'Velya', 22, 5, 1, 4, 'G1', 1, 1, '2023-07-29'),
-(94, 3, 'Velya', 22, 9, 1, 5, 'G2', 0.5, 1, '2023-07-29'),
-(95, 3, 'Velya', 22, 10, 1, 6, 'G3', 0.5, 1, '2023-07-29'),
-(96, 3, 'Velya', 22, 11, 1, 7, 'G4', 0.5, 1, '2023-07-29'),
-(97, 3, 'Velya', 22, 12, 1, 8, 'G5', 1, 1, '2023-07-29'),
-(98, 3, 'Velya', 22, 13, 2, 10, 'G6', 1, 1, '2023-07-29'),
-(99, 3, 'Velya', 22, 14, 2, 11, 'G7', 0, 1, '2023-07-29'),
-(100, 3, 'Velya', 22, 15, 2, 12, 'G8', 0.5, 1, '2023-07-29'),
-(101, 3, 'Velya', 22, 16, 2, 13, 'G9', 0, 1, '2023-07-29'),
-(102, 3, 'Velya', 22, 18, 3, 14, 'G10', 0, 1, '2023-07-29'),
-(103, 3, 'Velya', 22, 19, 3, 15, 'G11', 0, 1, '2023-07-29'),
-(104, 3, 'Velya', 22, 20, 4, 16, 'G12', 0.5, 1, '2023-07-29'),
-(105, 3, 'Velya', 22, 21, 4, 17, 'G13', 0.5, 1, '2023-07-29'),
-(106, 3, 'Velya', 22, 22, 4, 20, 'G14', 0.5, 1, '2023-07-29'),
-(107, 3, 'Velya', 22, 23, 4, 21, 'G15', 0.5, 1, '2023-07-29'),
-(108, 3, 'Velya', 22, 24, 5, 22, 'G16', 0.5, 1, '2023-07-29'),
-(109, 3, 'Velya', 22, 25, 5, 23, 'G17', 0, 1, '2023-07-29'),
-(110, 3, 'Velya', 22, 26, 5, 24, 'G18', 0, 1, '2023-07-29'),
-(111, 3, 'Velya', 22, 27, 5, 25, 'G19', 0, 1, '2023-07-29'),
-(112, 3, 'Velya', 22, 28, 6, 26, 'G20', 0, 1, '2023-07-29'),
-(113, 3, 'Velya', 22, 29, 6, 27, 'G21', 0, 1, '2023-07-29'),
-(114, 3, 'Velya', 22, 30, 6, 28, 'G22', 0, 1, '2023-07-29'),
-(115, 3, 'Velya', 22, 31, 6, 29, 'G23', 0.5, 1, '2023-07-29'),
-(116, 3, 'Velya', 22, 32, 7, 30, 'G24', 0.5, 1, '2023-07-29'),
-(117, 3, 'Velya', 22, 33, 7, 31, 'G25', 0.5, 1, '2023-07-29'),
-(118, 3, 'Velya', 22, 34, 7, 32, 'G26', 0, 1, '2023-07-29'),
-(119, 3, 'Velya', 22, 35, 9, 33, 'G27', 0.5, 1, '2023-07-29'),
-(120, 3, 'Velya', 22, 36, 9, 34, 'G28', 1, 1, '2023-07-29'),
-(121, 3, 'Velya', 22, 37, 7, 35, 'G29', 0.5, 1, '2023-07-29'),
-(122, 3, 'Velya', 22, 38, 9, 36, 'G30', 0.5, 1, '2023-07-29');
+(678, 3, 'Andika Lubis', 23, 5, 1, 4, 'G1', 0.7, 1, '2023-08-25'),
+(679, 3, 'Andika Lubis', 23, 9, 1, 5, 'G2', 0.7, 1, '2023-08-25'),
+(680, 3, 'Andika Lubis', 23, 10, 1, 6, 'G3', 0.4, 1, '2023-08-25'),
+(681, 3, 'Andika Lubis', 23, 11, 1, 7, 'G4', 0, 1, '2023-08-25'),
+(682, 3, 'Andika Lubis', 23, 12, 1, 8, 'G5', 0, 1, '2023-08-25'),
+(683, 3, 'Andika Lubis', 23, 13, 2, 10, 'G6', 0.7, 1, '2023-08-25'),
+(684, 3, 'Andika Lubis', 23, 14, 2, 11, 'G7', 0.4, 1, '2023-08-25'),
+(685, 3, 'Andika Lubis', 23, 15, 2, 12, 'G8', 0.7, 1, '2023-08-25'),
+(686, 3, 'Andika Lubis', 23, 16, 2, 13, 'G9', 0.7, 1, '2023-08-25'),
+(687, 3, 'Andika Lubis', 23, 18, 3, 14, 'G10', 0.7, 1, '2023-08-25'),
+(688, 3, 'Andika Lubis', 23, 19, 3, 15, 'G11', 0.7, 1, '2023-08-25'),
+(689, 3, 'Andika Lubis', 23, 20, 4, 16, 'G12', 0, 1, '2023-08-25'),
+(690, 3, 'Andika Lubis', 23, 21, 4, 17, 'G13', 0, 1, '2023-08-25'),
+(691, 3, 'Andika Lubis', 23, 22, 4, 20, 'G14', 0.7, 1, '2023-08-25'),
+(692, 3, 'Andika Lubis', 23, 23, 4, 21, 'G15', 0.4, 1, '2023-08-25'),
+(693, 3, 'Andika Lubis', 23, 24, 5, 22, 'G16', 0, 1, '2023-08-25'),
+(694, 3, 'Andika Lubis', 23, 25, 5, 23, 'G17', 0, 1, '2023-08-25'),
+(695, 3, 'Andika Lubis', 23, 26, 5, 24, 'G18', 0.7, 1, '2023-08-25'),
+(696, 3, 'Andika Lubis', 23, 27, 5, 25, 'G19', 0, 1, '2023-08-25'),
+(697, 3, 'Andika Lubis', 23, 28, 6, 26, 'G20', 0, 1, '2023-08-25'),
+(698, 3, 'Andika Lubis', 23, 29, 6, 27, 'G21', 0, 1, '2023-08-25'),
+(699, 3, 'Andika Lubis', 23, 30, 6, 28, 'G22', 0.4, 1, '2023-08-25'),
+(700, 3, 'Andika Lubis', 23, 31, 6, 29, 'G23', 0.7, 1, '2023-08-25'),
+(701, 3, 'Andika Lubis', 23, 32, 7, 30, 'G24', 0.7, 1, '2023-08-25'),
+(702, 3, 'Andika Lubis', 23, 33, 7, 31, 'G25', 0, 1, '2023-08-25'),
+(703, 3, 'Andika Lubis', 23, 34, 7, 32, 'G26', 0, 1, '2023-08-25'),
+(704, 3, 'Andika Lubis', 23, 35, 9, 33, 'G27', 0.7, 1, '2023-08-25'),
+(705, 3, 'Andika Lubis', 23, 36, 9, 34, 'G28', 0.4, 1, '2023-08-25'),
+(706, 3, 'Andika Lubis', 23, 37, 7, 35, 'G29', 0.7, 1, '2023-08-25'),
+(707, 3, 'Andika Lubis', 23, 38, 9, 36, 'G30', 0.7, 1, '2023-08-25');
 
 -- --------------------------------------------------------
 
@@ -167,62 +192,6 @@ INSERT INTO `kriteria` (`id_kriteria`, `kode_kriteria`, `nama_kriteria`, `deskri
 (6, 'K6', 'Interpersonal', 'Kecerdasan Interpersonal (Antara pribadi) berkaitan dengan  kemampuan seseorang dalam memahami, berinteraksi, dan  bekerja sama dengan orang lain.'),
 (7, 'K7', 'Intrapersonal', 'Kecerdasan Intrapersonal (Intropeksi) berkaitan dengan  kemampuan seseorang dalam hubungannya dengan kapasitas  introspektif, memiliki pemahaman yang mendalam tentang diri  mereka sendiri, apa kekuatan atau kelemahan dirinya, dan apa  yang membuat dirinya unik.'),
 (9, 'K8', 'Naturalisme', 'Kecerdasan Naturalis (Alami) berkaitan dengan kepekaan  seseorang dalam menghadapi fenomena alam.');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pakar`
---
-
-CREATE TABLE `pakar` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `kode_kriteria` varchar(10) NOT NULL,
-  `kode_gejala` varchar(10) NOT NULL,
-  `cf_pakar` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pakar`
---
-
-INSERT INTO `pakar` (`id`, `kode_kriteria`, `kode_gejala`, `cf_pakar`) VALUES
-(38, 'K1', 'G1', 0.7),
-(39, 'K1', 'G2', 0.4),
-(40, 'K1', 'G3', 0.7),
-(41, 'K1', 'G4', 1),
-(42, 'K1', 'G5', 0.7),
-(43, 'K2', 'G2', 1),
-(44, 'K2', 'G6', 0.7),
-(45, 'K2', 'G7', 0.4),
-(46, 'K2', 'G8', 0.7),
-(47, 'K2', 'G9', 0.4),
-(48, 'K3', 'G3', 0.4),
-(49, 'K3', 'G9', 0.7),
-(50, 'K3', 'G10', 0.7),
-(51, 'K3', 'G11', 0.4),
-(52, 'K4', 'G12', 0.4),
-(53, 'K4', 'G13', 0.4),
-(54, 'K4', 'G14', 0.7),
-(55, 'K4', 'G15', 0.4),
-(56, 'K5', 'G16', 0.4),
-(57, 'K5', 'G17', 0.7),
-(58, 'K5', 'G18', 0.4),
-(59, 'K5', 'G19', 1),
-(60, 'K6', 'G5', 1),
-(61, 'K6', 'G20', 0.4),
-(62, 'K6', 'G21', 0.7),
-(63, 'K6', 'G22', 0.4),
-(64, 'K6', 'G23', 1),
-(65, 'K7', 'G2', 0.4),
-(66, 'K7', 'G7', 0.4),
-(67, 'K7', 'G15', 0.4),
-(68, 'K7', 'G24', 0.7),
-(69, 'K7', 'G25', 0.7),
-(70, 'K7', 'G26', 1),
-(71, 'K8', 'G27', 0.4),
-(72, 'K8', 'G28', 0.4),
-(73, 'K8', 'G29', 0.7),
-(74, 'K8', 'G30', 0.1);
 
 -- --------------------------------------------------------
 
@@ -289,7 +258,7 @@ CREATE TABLE `user` (
   `alamat` varchar(70) DEFAULT NULL,
   `jenis_kelamin` enum('laki-laki','perempuan') DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
-  `tlp` varchar(20) DEFAULT NULL,
+  `tlp` int(20) DEFAULT NULL,
   `level` enum('admin','user') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -298,9 +267,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama`, `alamat`, `jenis_kelamin`, `email`, `tlp`, `level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'cirebon', 'perempuan', 'admin@gmail.com', '238572345', 'admin'),
-(3, 'velya', 'ee11cbb19052e40b07aac0ca060c23ee', 'Velya', 'Cirebon', 'perempuan', 'velya@gmail.com', '0865771887905', 'user'),
-(4, 'inamfalahuddin', '598147631c57ef841def7ae8ed9a87da', 'In\'am Falahuddin', 'kudumulya', 'laki-laki', 'inam@mail.com', '2147483647', 'user');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'cirebon', 'perempuan', 'admin@gmail.com', 34592839, 'admin'),
+(3, 'velya', 'ee11cbb19052e40b07aac0ca060c23ee', 'Velya', 'cirebon', 'perempuan', 'user@gmail.com', 2934092, 'user'),
+(4, 'inamfalahuddin', '598147631c57ef841def7ae8ed9a87da', 'In\'am Falahuddin', 'kudumulya', 'laki-laki', 'inam@mail.com', 2147483647, 'user');
 
 -- --------------------------------------------------------
 
@@ -320,43 +289,43 @@ CREATE TABLE `variabel` (
 --
 
 INSERT INTO `variabel` (`id_variabel`, `kode_kriteria`, `kode_gejala`, `cf_pakar`) VALUES
-(1, 'K1', 'G1', 0.7),
-(2, 'K1', 'G2', 0.4),
-(3, 'K1', 'G3', 0.7),
-(4, 'K1', 'G4', 1),
-(5, 'K1', 'G5', 0.7),
-(6, 'K2', 'G2', 1),
-(7, 'K2', 'G6', 0.7),
-(8, 'K2', 'G7', 0.4),
-(9, 'K2', 'G8', 0.7),
-(10, 'K2', 'G9', 0.4),
-(11, 'K3', 'G3', 0.4),
-(12, 'K3', 'G9', 0.7),
-(13, 'K3', 'G10', 0.7),
-(14, 'K3', 'G11', 0.4),
-(15, 'K4', 'G12', 0.4),
-(16, 'K4', 'G13', 0.4),
-(17, 'K4', 'G14', 0.7),
-(18, 'K4', 'G15', 0.4),
-(19, 'K5', 'G16', 0.4),
-(20, 'K5', 'G17', 0.7),
-(21, 'K5', 'G18', 0.4),
-(22, 'K5', 'G19', 1),
-(23, 'K6', 'G5', 1),
-(24, 'K6', 'G20', 0.4),
-(25, 'K6', 'G21', 0.7),
-(26, 'K6', 'G22', 0.4),
-(27, 'K6', 'G23', 1),
-(28, 'K7', 'G2', 0.4),
-(29, 'K7', 'G7', 0.4),
-(30, 'K7', 'G15', 0.4),
-(31, 'K7', 'G24', 0.7),
-(32, 'K7', 'G25', 0.7),
-(33, 'K7', 'G26', 1),
-(34, 'K8', 'G27', 0.4),
-(35, 'K8', 'G28', 0.4),
-(36, 'K8', 'G29', 0.7),
-(37, 'K8', 'G30', 0.1);
+(58, 'K1', 'G1', 0.2),
+(59, 'K1', 'G2', 0.5),
+(60, 'K1', 'G3', 0.6),
+(61, 'K1', 'G4', 0.4),
+(62, 'K1', 'G5', 0.2),
+(63, 'K2', 'G2', 0.8),
+(64, 'K2', 'G6', 0.6),
+(65, 'K2', 'G7', 0.5),
+(66, 'K2', 'G8', 0.4),
+(67, 'K2', 'G9', 0.5),
+(68, 'K3', 'G3', 0.8),
+(69, 'K3', 'G9', 0.5),
+(70, 'K3', 'G10', 0.2),
+(71, 'K3', 'G11', 0.4),
+(72, 'K4', 'G12', 0.8),
+(73, 'K4', 'G13', 0.6),
+(74, 'K4', 'G14', 0.2),
+(75, 'K4', 'G15', 0.4),
+(76, 'K5', 'G16', 0.4),
+(77, 'K5', 'G17', 0.8),
+(78, 'K5', 'G18', 0.6),
+(79, 'K5', 'G19', 0.2),
+(80, 'K6', 'G5', 0.6),
+(81, 'K6', 'G20', 0.4),
+(82, 'K6', 'G21', 0.2),
+(83, 'K6', 'G22', 0.5),
+(84, 'K6', 'G23', 0.8),
+(85, 'K7', 'G2', 0.4),
+(86, 'K7', 'G7', 0.2),
+(87, 'K7', 'G15', 0.2),
+(88, 'K7', 'G24', 0.5),
+(89, 'K7', 'G25', 0.2),
+(90, 'K7', 'G26', 0.4),
+(91, 'K8', 'G27', 0.2),
+(92, 'K8', 'G28', 0.5),
+(93, 'K8', 'G29', 0.6),
+(94, 'K8', 'G30', 0.4);
 
 --
 -- Indexes for dumped tables
@@ -373,7 +342,23 @@ ALTER TABLE `gejala`
 --
 ALTER TABLE `hasil`
   ADD PRIMARY KEY (`id_hasil`),
-  ADD KEY `hasil` (`id_user`);
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- Indeks untuk tabel `hasil_cf`
+--
+ALTER TABLE `hasil_cf`
+  ADD PRIMARY KEY (`id_hasil_cf`),
+  ADD KEY `id_hasil` (`id_hasil`),
+  ADD KEY `id_kriteria` (`id_kriteria`);
+
+--
+-- Indeks untuk tabel `hasil_nb`
+--
+ALTER TABLE `hasil_nb`
+  ADD PRIMARY KEY (`id_hasil_nb`),
+  ADD KEY `id_hasil` (`id_hasil`),
+  ADD KEY `id_kriteria` (`id_kriteria`);
 
 --
 -- Indeks untuk tabel `jawaban`
@@ -390,12 +375,6 @@ ALTER TABLE `jawaban`
 --
 ALTER TABLE `kriteria`
   ADD PRIMARY KEY (`id_kriteria`);
-
---
--- Indeks untuk tabel `pakar`
---
-ALTER TABLE `pakar`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `pertanyaan`
@@ -432,22 +411,28 @@ ALTER TABLE `hasil`
   MODIFY `id_hasil` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `hasil_cf`
+--
+ALTER TABLE `hasil_cf`
+  MODIFY `id_hasil_cf` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `hasil_nb`
+--
+ALTER TABLE `hasil_nb`
+  MODIFY `id_hasil_nb` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `jawaban`
 --
 ALTER TABLE `jawaban`
-  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=708;
 
 --
 -- AUTO_INCREMENT untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
   MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT untuk tabel `pakar`
---
-ALTER TABLE `pakar`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -459,7 +444,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `variabel`
 --
 ALTER TABLE `variabel`
-  MODIFY `id_variabel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_variabel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -469,7 +454,21 @@ ALTER TABLE `variabel`
 -- Ketidakleluasaan untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
-  ADD CONSTRAINT `hasil` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `hasil_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `hasil_cf`
+--
+ALTER TABLE `hasil_cf`
+  ADD CONSTRAINT `hasil_cf_ibfk_1` FOREIGN KEY (`id_hasil`) REFERENCES `hasil` (`id_hasil`),
+  ADD CONSTRAINT `hasil_cf_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`);
+
+--
+-- Ketidakleluasaan untuk tabel `hasil_nb`
+--
+ALTER TABLE `hasil_nb`
+  ADD CONSTRAINT `hasil_nb_ibfk_1` FOREIGN KEY (`id_hasil`) REFERENCES `hasil` (`id_hasil`),
+  ADD CONSTRAINT `hasil_nb_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id_kriteria`);
 
 --
 -- Ketidakleluasaan untuk tabel `jawaban`
