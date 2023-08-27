@@ -39,7 +39,7 @@ class Kriteria_model extends CI_Model
 
     public function get_cf_pakar($kode_kriteria)
     {
-        $table = 'pakar';
+        $table = 'variabel';
         $query = $this->db->get_where($table, array('kode_kriteria' => $kode_kriteria));
         $result = $query->result();
 
