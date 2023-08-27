@@ -48,10 +48,9 @@ class Deteksi extends CI_Controller
         $sortedDataFromBayes = $this->quickSort($this->bayes($id, 1));
 
         // var_dump($this->certainty_factor($id, 1));
-        // var_dump($sortedDataFromBayes)
+        // var_dump($sortedDataFromCF);
 
-        $hasil_deskripsi = array();
-
+        $hasil_cf = array();
         for ($i = 0; $i < 3; $i++) {
             $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
             $nama = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
@@ -59,7 +58,23 @@ class Deteksi extends CI_Controller
             $kode = $sortedDataFromCF[$i]['kode_ciri'];
             $bobot = $sortedDataFromCF[$i]['nilai'];
 
-            $hasil_deskripsi[] = (object) array(
+            $hasil_cf[] = (object) array(
+                'kode' => $kode,
+                'nama' => $nama,
+                'deskripsi' => $deskripsi,
+                'bobot' => $bobot
+            );
+        }
+
+        $hasil_nb = array();
+        for ($i = 0; $i < 3; $i++) {
+            $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromBayes[$i]['kode_ciri']);
+            $nama = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
+            $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
+            $kode = $sortedDataFromBayes[$i]['kode_ciri'];
+            $bobot = $sortedDataFromBayes[$i]['nilai'];
+
+            $hasil_nb[] = (object) array(
                 'kode' => $kode,
                 'nama' => $nama,
                 'deskripsi' => $deskripsi,
@@ -70,9 +85,11 @@ class Deteksi extends CI_Controller
         $data = array(
             'title' => 'hasil',
             'usernmae' => $username,
-            'hasil_bayes' => $this->bayes($id, 1),
-            'hasil_cf' => $this->certainty_factor($id, 1),
-            'hasil' => $hasil_deskripsi,
+            // 'hasil_bayes' => $this->quickSort($this->bayes($id, 1)),
+            // 'hasil_cf' => $this->quickSort($this->certainty_factor($id, 1)),
+            // 'hasil' => $hasil_deskripsi,
+            'hasil_cf' => $hasil_cf,
+            'hasil_nb' => $hasil_nb
         );
 
         $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
@@ -183,7 +200,6 @@ class Deteksi extends CI_Controller
             );
         }
 
-        var_dump($result);
         return $result;
     }
 
