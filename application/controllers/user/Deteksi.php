@@ -140,18 +140,80 @@ class Deteksi extends CI_Controller
             $this->Pertanyaan_model->save_jawaban($data);
         }
 
-        $result = $this->certainty_factor($user->id_user, $sesi);
+        $result_cf = $this->certainty_factor($user->id_user, $sesi);
+        $result_nb = $this->bayes($user->id_user, $sesi);
+        $sortedDataFromCF = $this->quickSort($result_cf);
+        $sortedDataFromBayes = $this->quickSort($this->bayes($result_nb));
 
+        $id_hasil = rand(1000000, 9999);
+
+        $hasil_cf = array();
+        for ($i = 0; $i < 3; $i++) {
+            $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
+            $title = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
+            $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
+            $kode = $sortedDataFromCF[$i]['kode_ciri'];
+            $bobot = $sortedDataFromCF[$i]['nilai'];
+
+            $hasil_cf[] = (object) array(
+                'kode' => $kode,
+                'title' => $title,
+                'deskripsi' => $deskripsi,
+                'bobot' => $bobot
+            );
+        }
+
+
+        // menyimpen data cf
         $this->Pertanyaan_model->save_hasil(array(
+            'id_hasil' => $id_hasil, // Menggunakan uniqid() untuk mendapatkan nilai acak
             'id_user' => $user->id_user,
             'nama' => $nama,
-            'bobot' => $result['bobot'],
             'tanggal' => date('Y-m-d'),
             'usia' => $usia,
-            'hasil_kriteria' => $result['kode_kriteria'],
+            'sesi' => $sesi,
+            // 'bobot' => $result['nilai'],
+            // 'hasil_kriteria' => $result['kode_kriteria'],
         ));
 
-        redirect(base_url("user/deteksi/hasil/$user->id_user"));
+
+        foreach ($hasil_cf as $cf) {
+            $this->Certainty_model->save_hasil(array(
+                'id_hasil' => $id_hasil,
+                'kode_kriteria' => $cf->kode,
+                'kriteria' => $cf->title,
+                'bobot' => $cf->bobot,
+            ));
+        }
+
+        $hasil_nb = array();
+        for ($i = 0; $i < 3; $i++) {
+            $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromBayes[$i]['kode_ciri']);
+            $title = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
+            $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
+            $kode = $sortedDataFromCF[$i]['kode_ciri'];
+            $bobot = $sortedDataFromCF[$i]['nilai'];
+
+            $hasil_nb[] = (object) array(
+                'kode' => $kode,
+                'title' => $title,
+                'deskripsi' => $deskripsi,
+                'bobot' => $bobot
+            );
+        }
+
+        foreach ($hasil_nb as $nb) {
+            $this->Bayes_model->save_hasil(array(
+                'id_hasil' => $id_hasil,
+                'kode_kriteria' => $nb->kode,
+                'kriteria' => $nb->title,
+                'bobot' => $nb->bobot,
+            ));
+        }
+
+
+
+        // redirect(base_url("user/deteksi/hasil/$user->id_user"));
     }
 
     public function certainty_factor($user_id, $user_sesi)

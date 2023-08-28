@@ -39,4 +39,10 @@ class Certainty_model extends CI_Model
         var_dump($query);
         // return $nilaiGejala;
     }
+
+    public function save_hasil($data)
+    {
+        $this->db->insert('hasil_cf', $data);
+        return $this->db->insert_id();
+    }
 }

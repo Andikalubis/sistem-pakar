@@ -39,4 +39,10 @@ class Bayes_model extends CI_Model
 
         return $result;
     }
+
+    public function save_hasil($data)
+    {
+        $this->db->insert('hasil_nb', $data);
+        return $this->db->insert_id();
+    }
 }
