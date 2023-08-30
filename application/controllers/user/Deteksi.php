@@ -49,8 +49,8 @@ class Deteksi extends CI_Controller
             $username = $this->session->userdata('username');
             $id_user = $this->User_model->get_user_by_username($username)['id_user'];
 
-            $sortedDataFromCF = $this->_quickSort($this->cf($id_user, 1));
-            $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, 1));
+            $sortedDataFromCF = $this->_quickSort($this->cf($id_user, $sesi));
+            $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, $sesi));
 
             $hasil_cf = array();
             for ($i = 0; $i < 3; $i++) {
@@ -225,7 +225,7 @@ class Deteksi extends CI_Controller
     public function coba()
     {
         $id = 4;
-        $sesi = 14;
+        $sesi = 3;
         $result_cf = $this->cf($id, $sesi);
         $result_nb = $this->bayes($id, $sesi);
 

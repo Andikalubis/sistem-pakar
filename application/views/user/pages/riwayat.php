@@ -54,9 +54,9 @@
                                                     <small> <?= $data['cf_kriteria'] ?></small>
                                                 </td>
                                                 <td>
-                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <?php echo $data['nb_bobot'] ?> %
                                                     <br>
-                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                    <small> <?= $data['nb_kriteria'] ?></small>
                                                 </td>
                                                 <td>
                                                     <a href="<?php echo base_url('user/deteksi/hasil?id=' . $data['id_hasil'] . '&sesi=' . $data['sesi']) ?>" class="btn btn-sm btn-success">

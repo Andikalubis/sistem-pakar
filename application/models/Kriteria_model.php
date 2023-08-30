@@ -31,7 +31,6 @@ class Kriteria_model extends CI_Model
             // echo $value->cf_pakar . "*" . $cfUser[$key] . "<br/>";
             array_push($cfHE, $nilaiGejala);
         }
-        echo "<br/>";
 
         for ($i = 0; $i < count($cfHE); $i++) {
             $cfCombine = $cfCombine + $cfHE[$i] * (1 - $cfCombine);
