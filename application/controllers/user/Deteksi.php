@@ -96,7 +96,7 @@ class Deteksi extends CI_Controller
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);
         } else {
-            redirect(base_url("user/deteksi"));
+            // redirect(base_url("user/deteksi"));
         }
     }
 
@@ -224,7 +224,7 @@ class Deteksi extends CI_Controller
             ));
         }
 
-        redirect(base_url("user/deteksi/hasil?=" . $id_hasil . "&sesi?=" . $sesi));
+        redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
     }
 
     public function certainty_factor($user_id, $user_sesi)
@@ -264,6 +264,20 @@ class Deteksi extends CI_Controller
 
     public function coba()
     {
+        $id = 4;
+        $sesi = 5;
+        $result_cf = $this->cf($id, $sesi);
+        $result_nb = $this->bayes($id, $sesi);
+
+        $sortedDataFromCF = $this->_quickSort($result_cf);
+        $sortedDataFromNB = $this->_quickSort($result_nb);
+
+        // var_dump($sortedDataFromBayes)
+
+        for ($i = 0; $i < 3; $i++) {
+            echo $sortedDataFromNB[$i]['nilai'] .  $sortedDataFromNB[$i]['nilai'] . '<br/>';
+            echo $sortedDataFromCF[$i]['nilai'] .  $sortedDataFromNB[$i]['nilai'] . '<br/>';
+        }
     }
 
     // public function bayes($user_id, $user_sesi)

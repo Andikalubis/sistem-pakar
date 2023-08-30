@@ -28,8 +28,10 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal</th>
+                                            <th>ID</th>
                                             <th>Nama</th>
                                             <th>Usia</th>
+                                            <th>Sesi</th>
                                             <th>Bobot CF</th>
                                             <th>Bobot NB</th>
                                             <th>Aksi</th>
@@ -42,8 +44,10 @@
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $data['tanggal'] ?></td>
+                                                <td><?php echo $data['id_hasil'] ?></td>
                                                 <td><?php echo $data['nama'] ?></td>
                                                 <td><?php echo $data['usia'] ?> Tahun</td>
+                                                <td><?php echo $data['sesi'] ?></td>
                                                 <td>
                                                     <?php echo $data['cf_bobot'] ?> %
                                                     <br>
