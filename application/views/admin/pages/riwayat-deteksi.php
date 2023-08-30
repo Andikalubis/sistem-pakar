@@ -7,7 +7,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Tabel Data Riwayar Deteksi Pengguna</h3>
+                                <h3 class="card-title">Tabel Riwayat Deteksi User</h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -27,31 +27,38 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Tanggal</th>
                                             <th>Nama</th>
                                             <th>Usia</th>
-                                            <th>Tanggal</th>
-                                            <th>Bobot</th>
-                                            <th>Hasil</th>
+                                            <th>Bobot CF</th>
+                                            <th>Bobot NB</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    <?php var_dump($hasil) ?>
                                     <tbody>
                                         <?php
                                         $no = 1;
                                         foreach ($hasil as $data) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
-                                                <td><?php echo $data['nama'] ?></td>
-                                                <td><?php echo $data['usia'] ?></td>
                                                 <td><?php echo $data['tanggal'] ?></td>
-                                                <td><?php echo $data['nilai'] ?></td>
-                                                <td><?php echo $data['hasil_kriteria'] ?></td>
+                                                <td><?php echo $data['nama'] ?></td>
+                                                <td><?php echo $data['usia'] ?> Tahun</td>
                                                 <td>
-                                                    <!-- <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
-                                                        <i class="fas fa-show"></i>
+                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <br>
+                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                </td>
+                                                <td>
+                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <br>
+                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                </td>
+                                                <td>
+                                                    <!-- <a href="<?php echo base_url('user/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
+                                                        <i class="fa fa-eye"></i>
                                                     </a> -->
-                                                    <a href="<?php echo base_url('admin/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
