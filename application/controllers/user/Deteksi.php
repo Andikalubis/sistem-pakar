@@ -147,79 +147,41 @@ class Deteksi extends CI_Controller
             $this->Pertanyaan_model->save_jawaban($data);
         }
 
+        $id_hasil = rand(1000000, 9999);
+
         $result_cf = $this->cf($user->id_user, $sesi);
         $result_nb = $this->bayes($user->id_user, $sesi);
 
         $sortedDataFromCF = $this->_quickSort($result_cf);
-        $sortedDataFromBayes = $this->_quickSort($result_nb);
+        $sortedDataFromNB = $this->_quickSort($result_nb);
 
-        $id_hasil = rand(1000000, 9999);
+        $data_hasil = array(
+            "id_hasil" => $id_hasil,
+            "id_user" => $user->id_user,
+            "nama" => $nama,
+            "usia" => $usia,
+            "sesi" => $sesi
+        );
 
-        $hasil_cf = array();
+        $this->Pertanyaan_model->save_hasil($data_hasil);
+
         for ($i = 0; $i < 3; $i++) {
-            $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
-            $title = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
-            $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
-            $kode = $sortedDataFromCF[$i]['kode_ciri'];
-            $bobot = $sortedDataFromCF[$i]['nilai'];
-
-            $hasil_cf[] = (object) array(
-                'kode' => $kode,
-                'title' => $title,
-                'deskripsi' => $deskripsi,
-                'bobot' => $bobot
+            // menyimpan kedalam tabel hasil
+            $data_hasil_cf = array(
+                "id_hasil" => $id_hasil,
+                "kode_kriteria" => $sortedDataFromCF[$i]['kode_ciri'],
+                "kriteria" => $sortedDataFromCF[$i]['kode_ciri'],
+                "bobot" => $sortedDataFromCF[$i]['nilai'],
             );
-        }
-
-        // menyimpen data cf
-        $this->Pertanyaan_model->save_hasil(array(
-            'id_hasil' => $id_hasil, // Menggunakan uniqid() untuk mendapatkan nilai acak
-            'id_user' => $user->id_user,
-            'nama' => $nama,
-            'tanggal' => date('Y-m-d'),
-            'usia' => $usia,
-            'sesi' => $sesi,
-            // 'bobot' => $result['nilai'],
-            // 'hasil_kriteria' => $result['kode_kriteria'],
-        ));
-
-        foreach ($hasil_cf as $cf) {
-            $this->Certainty_model->save_hasil(array(
-                'id_hasil' => $id_hasil,
-                'kode_kriteria' => $cf->kode,
-                'kriteria' => $cf->title,
-                'bobot' => $cf->bobot,
-            ));
-        }
-
-        $hasil_nb = array();
-        for ($i = 0; $i < 3; $i++) {
-            $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromBayes[$i]['kode_ciri']);
-            $title = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
-            $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
-            $kode = $sortedDataFromCF[$i]['kode_ciri'];
-            $bobot = $sortedDataFromCF[$i]['nilai'];
-
-            $hasil_nb[] = (object) array(
-                'kode' => $kode,
-                'title' => $title,
-                'deskripsi' => $deskripsi,
-                'bobot' => $bobot
+            $data_hasil_nb = array(
+                "id_hasil" => $id_hasil,
+                "kode_kriteria" => $sortedDataFromNB[$i]['kode_ciri'],
+                "kriteria" => $sortedDataFromNB[$i]['kode_ciri'],
+                "bobot" => $sortedDataFromNB[$i]['nilai'],
             );
-        }
 
-        foreach ($hasil_nb as $nb) {
-            $id_user = 4;
-            $sesi = 5;
-
-            $result_cf = $this->cf($user->id_user, $sesi);
-            $result_nb = $this->bayes($user->id_user, $sesi);
-            $this->Bayes_model->save_hasil(array(
-                'id_hasil' => $id_hasil,
-                'kode_kriteria' => $nb->kode,
-                'kriteria' => $nb->title,
-                'bobot' => $nb->bobot,
-            ));
+            $this->Certainty_model->save_hasil($data_hasil_cf);
+            $this->Bayes_model->save_hasil($data_hasil_nb);
         }
 
         redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
@@ -263,7 +225,7 @@ class Deteksi extends CI_Controller
     public function coba()
     {
         $id = 4;
-        $sesi = 5;
+        $sesi = 14;
         $result_cf = $this->cf($id, $sesi);
         $result_nb = $this->bayes($id, $sesi);
 
@@ -271,6 +233,7 @@ class Deteksi extends CI_Controller
         $sortedDataFromNB = $this->_quickSort($result_nb);
 
         for ($i = 0; $i < 3; $i++) {
+
             echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
 
             echo  ' | ';
