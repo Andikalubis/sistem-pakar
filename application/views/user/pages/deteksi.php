@@ -39,8 +39,8 @@
                                     <td><?php echo $data->pertanyaan ?></td>
                                     <td>
                                         <div class="form-check">
-                                            <input class="form-check-input" id="sering<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="1">
-                                            <label class="form-check-label" for="sering<?= $no ?>">
+                                            <input class="form-check-input" id="sangatsering<?= $no ?>" type="radio" name="jawaban[<?php echo $data->id_pertanyaan ?>]" value="1">
+                                            <label class="form-check-label" for="sangatsering<?= $no ?>">
                                                 Sangat Sering
                                             </label>
                                         </div>

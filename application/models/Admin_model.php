@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_model extends CI_Model {
+class Admin_model extends CI_Model
+{
 
-    public function get_admin_users() {
+    public function get_admin_users()
+    {
         $this->db->where('level', 'admin');
         return $this->db->get('user')->result();
     }
@@ -11,8 +13,29 @@ class Admin_model extends CI_Model {
     public function getRiwayat()
     {
         // Ambil data riwayat dari tabel 'hasil'
-        $query = $this->db->get('hasil');
+        $columns = array(
+            'hasil.*',
+            'hasil_cf.kode_kriteria AS cf_kode_kriteria',
+            'hasil_cf.kriteria AS cf_kriteria',
+            'hasil_cf.bobot AS cf_bobot',
+            'hasil_nb.kode_kriteria AS nb_kode_kriteria',
+            'hasil_nb.kriteria AS nb_kriteria',
+            'hasil_nb.bobot AS nb_bobot'
+        );
+
+        $this->db->select($columns)
+            ->from('hasil')
+            ->join('hasil_cf', 'hasil.id_hasil = hasil_cf.id_hasil', 'left')
+            ->join('hasil_nb', 'hasil.id_hasil = hasil_nb.id_hasil', 'left')
+            ->group_by('hasil.id_hasil')
+            ->order_by('hasil.tanggal', 'asc'); // Ubah 'asc' menjadi 'desc' jika ingin urutan menurun
+
+        $query = $this->db->get();
         return $query->result_array();
+
+
+        // $query = $this->db->get('hasil');
+        // return $query->result_array();
     }
 
     public function getUser($level)
@@ -48,7 +71,7 @@ class Admin_model extends CI_Model {
         $this->db->delete('kriteria');
     }
 
-    public function get_kriteria_by_id($id_kriteria) 
+    public function get_kriteria_by_id($id_kriteria)
     {
         // Mengambil data kriteria berdasarkan ID dari tabel "kriteria"
         $this->db->where('id_kriteria', $id_kriteria);
@@ -83,8 +106,10 @@ class Admin_model extends CI_Model {
 
     public function get_gejala_by_id($id_gejala)
     {
-        return $this->db->get_where('gejala', 
-            array('id_gejala' => $id_gejala))->row();
+        return $this->db->get_where(
+            'gejala',
+            array('id_gejala' => $id_gejala)
+        )->row();
     }
 
     //Riwayat

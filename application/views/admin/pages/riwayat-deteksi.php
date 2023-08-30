@@ -35,6 +35,7 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
+                                    <?php var_dump($hasil) ?>
                                     <tbody>
                                         <?php
                                         $no = 1;
@@ -44,7 +45,7 @@
                                                 <td><?php echo $data['nama'] ?></td>
                                                 <td><?php echo $data['usia'] ?></td>
                                                 <td><?php echo $data['tanggal'] ?></td>
-                                                <td><?php echo $data['bobot'] ?></td>
+                                                <td><?php echo $data['nilai'] ?></td>
                                                 <td><?php echo $data['hasil_kriteria'] ?></td>
                                                 <td>
                                                     <!-- <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">

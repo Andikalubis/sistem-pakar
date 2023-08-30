@@ -27,11 +27,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Tanggal</th>
                                             <th>Nama</th>
                                             <th>Usia</th>
-                                            <th>Tanggal</th>
-                                            <th>Bobot</th>
-                                            <th>Hasil</th>
+                                            <th>Bobot CF</th>
+                                            <th>Bobot NB</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -41,11 +41,19 @@
                                         foreach ($hasil as $data) : ?>
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data['tanggal'] ?></td>
                                                 <td><?php echo $data['nama'] ?></td>
                                                 <td><?php echo $data['usia'] ?> Tahun</td>
-                                                <td><?php echo $data['tanggal'] ?></td>
-                                                <td><?php echo $data['bobot'] ?> %</td>
-                                                <td><?= $data['hasil_kriteria'] ?></td>
+                                                <td>
+                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <br>
+                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                </td>
+                                                <td>
+                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <br>
+                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                </td>
                                                 <td>
                                                     <!-- <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fas fa-show"></i>

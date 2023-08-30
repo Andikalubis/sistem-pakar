@@ -23,12 +23,15 @@ class Kriteria_model extends CI_Model
     {
         $result = $this->get_cf_pakar($cfPakar);
         $cfHE = [];
+        $cfCombine = 0;
+
         foreach ($result as $key => $value) {
             $nilaiGejala = ($value->cf_pakar * $cfUser[$key]);
+
+            // echo $value->cf_pakar . "*" . $cfUser[$key] . "<br/>";
             array_push($cfHE, $nilaiGejala);
         }
 
-        $cfCombine = 0;
         for ($i = 0; $i < count($cfHE); $i++) {
             $cfCombine = $cfCombine + $cfHE[$i] * (1 - $cfCombine);
         }
@@ -66,7 +69,7 @@ class Kriteria_model extends CI_Model
         $cf_user_by_kriteria = [];
         foreach ($results as $result) {
             $kode_gejala = $result->kode_gejala;
-            $cf_user = $result->cf_user;
+            $cf_user = (float) $result->cf_user;
 
             array_push($cf_user_by_kriteria, $cf_user);
         }
