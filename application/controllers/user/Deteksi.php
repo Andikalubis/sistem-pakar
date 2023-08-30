@@ -91,8 +91,6 @@ class Deteksi extends CI_Controller
                 'hasil_nb' => $hasil_nb
             );
 
-            var_dump($data);
-
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);
         } else {
@@ -153,7 +151,7 @@ class Deteksi extends CI_Controller
         $result_nb = $this->bayes($user->id_user, $sesi);
 
         $sortedDataFromCF = $this->_quickSort($result_cf);
-        $sortedDataFromBayes = $this->_quickSort($this->bayes($result_nb));
+        $sortedDataFromBayes = $this->_quickSort($result_nb);
 
         $id_hasil = rand(1000000, 9999);
 
@@ -272,16 +270,19 @@ class Deteksi extends CI_Controller
         $sortedDataFromCF = $this->_quickSort($result_cf);
         $sortedDataFromNB = $this->_quickSort($result_nb);
 
-        // var_dump($sortedDataFromBayes)
-
         for ($i = 0; $i < 3; $i++) {
-            echo $sortedDataFromNB[$i]['nilai'] .  $sortedDataFromNB[$i]['nilai'] . '<br/>';
-            echo $sortedDataFromCF[$i]['nilai'] .  $sortedDataFromNB[$i]['nilai'] . '<br/>';
+            echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
+
+            echo  ' | ';
+
+            echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
+
+            echo  '<br/>';
         }
     }
 
     // public function bayes($user_id, $user_sesi)
-    public function bayes()
+    public function bayes($user_id, $user_sesi)
     {
         $result = array();
         $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
@@ -290,7 +291,7 @@ class Deteksi extends CI_Controller
         for ($index = 0; $index < count($kriteria); $index++) {
             $result[$index] = array(
                 "kode_ciri" => $kriteria[$index],
-                "nilai" => $this->_bayes($kriteria[$index], 4, 1),
+                "nilai" => $this->_nb($kriteria[$index], $user_id, $user_sesi),
             );
         }
 
