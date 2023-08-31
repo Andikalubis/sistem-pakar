@@ -49,6 +49,10 @@ class Deteksi extends CI_Controller
             $username = $this->session->userdata('username');
             $id_user = $this->User_model->get_user_by_username($username)['id_user'];
 
+            $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
+
+            $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
+
             // mengurutkan hasil cf dan nb dari yang terbesar ke terkecil
             $sortedDataFromCF = $this->_quickSort($this->cf($id_user, $sesi));
             $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, $sesi));
@@ -90,6 +94,8 @@ class Deteksi extends CI_Controller
             $data = array(
                 'title' => 'hasil',
                 'usernmae' => $username,
+                'nama' => $data['nama'],
+                'usia' => $data['usia'],
                 'hasil_cf' => $hasil_cf,
                 'hasil_nb' => $hasil_nb
             );
