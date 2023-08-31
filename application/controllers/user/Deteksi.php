@@ -49,9 +49,11 @@ class Deteksi extends CI_Controller
             $username = $this->session->userdata('username');
             $id_user = $this->User_model->get_user_by_username($username)['id_user'];
 
+            // mengurutkan hasil cf dan nb dari yang terbesar ke terkecil
             $sortedDataFromCF = $this->_quickSort($this->cf($id_user, $sesi));
             $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, $sesi));
 
+            // mengambil hasil dari tabel hasil_cf
             $hasil_cf = array();
             for ($i = 0; $i < 3; $i++) {
                 $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
@@ -68,6 +70,7 @@ class Deteksi extends CI_Controller
                 );
             }
 
+            // mengambil hasil dari tabel hasil_nb
             $hasil_nb = array();
             for ($i = 0; $i < 3; $i++) {
                 $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromBayes[$i]['kode_ciri']);
@@ -94,7 +97,7 @@ class Deteksi extends CI_Controller
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);
         } else {
-            // redirect(base_url("user/deteksi"));
+            redirect(base_url("user/deteksi"));
         }
     }
 
@@ -187,41 +190,6 @@ class Deteksi extends CI_Controller
         redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
     }
 
-    public function certainty_factor($user_id, $user_sesi)
-    {
-        // Array yang berisi nilai-nilai kriteria
-        echo "<br/>";
-
-        $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
-
-        $cf_user = array();
-        for ($i = 0; $i < count($kriteria); $i++) {
-            array_push($cf_user, $this->Kriteria_model->get_cf_user($kriteria[$i], $user_id, $user_sesi));
-        }
-
-        // Array yang berisi nama-nama kriteria
-        $maxCfCombine = array();
-        // Menggunakan perulangan untuk mendapatkan nilai maksimum untuk setiap kriteria
-        foreach ($kriteria as $index => $kriteriaNama) {
-            $nilaiGejala = $cf_user[$index];
-
-            $result = $this->Kriteria_model->nilai_gejala($kriteriaNama, $nilaiGejala);
-
-            // $result = $this->Kriteria_model->nilai_gejala($kriteriaNama, $nilaiGejala);
-            // $formatted_result = number_format($result, 15, '.', ''); // Format angka
-            $formatted_result = $result;
-
-
-            $decimal_position = strpos($formatted_result, '.') + 3;
-            $trimmed_result = substr($formatted_result, 0, $decimal_position);
-
-            $maxCfCombine[$index] = array(
-                "kode_ciri" => $kriteria[$index],
-                "nilai" => (float) $trimmed_result // Ubah menjadi float
-            );
-        }
-    }
-
     public function coba()
     {
         $id = 4;
@@ -244,13 +212,11 @@ class Deteksi extends CI_Controller
         }
     }
 
-    // public function bayes($user_id, $user_sesi)
     public function bayes($user_id, $user_sesi)
     {
         $result = array();
         $kriteria = array('K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8');
 
-        // $this->_bayes('K1', 3, 1);
         for ($index = 0; $index < count($kriteria); $index++) {
             $result[$index] = array(
                 "kode_ciri" => $kriteria[$index],
@@ -314,7 +280,6 @@ class Deteksi extends CI_Controller
             $decimal_position = strpos($formatted_result, '.') + 3; // Menentukan posisi dua digit di belakang koma
             $trimmed_result = substr($formatted_result, 0, $decimal_position); // Memotong angka
 
-            // echo $cf_pakar_arr[$i] . "/" . $sum_of_gejala . " = " . $trimmed_result . "<br/>";
             $result_of_division[] = (float) $trimmed_result;
         }
 
