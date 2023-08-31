@@ -51,8 +51,6 @@ class Deteksi extends CI_Controller
 
             $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
 
-            $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
-
             // mengurutkan hasil cf dan nb dari yang terbesar ke terkecil
             $sortedDataFromCF = $this->_quickSort($this->cf($id_user, $sesi));
             $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, $sesi));
