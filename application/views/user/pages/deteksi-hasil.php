@@ -3,7 +3,7 @@
     <div class="col-md-12">
         <div class="card card-default">
             <div class="card-header text-center">
-                <h5 class="text-center mt-2">Pria (6 tahun)</h5>
+                <h5 class="text-center mt-2"><?= $nama ?> (<?= $usia ?> tahun)</h5>
                 <p> Hasil deteksi untuk kriteria kecerdasan adalah</p>
             </div>
             <div class="bg0 m-t-150 p-b-100">
