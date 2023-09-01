@@ -91,7 +91,7 @@ class Deteksi extends CI_Controller
 
             $data = array(
                 'title' => 'hasil',
-                'usernmae' => $username,
+                'username' => $username,
                 'nama' => $data['nama'],
                 'usia' => $data['usia'],
                 'hasil_cf' => $hasil_cf,

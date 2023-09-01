@@ -21,16 +21,16 @@ class Hasil_model extends CI_Model
     }
 
     public function get_nama_umur_user_by_sesi($sesi)
-{
-    $this->db->select('nama, usia'); 
-    $this->db->where('sesi', $sesi);
-    $query = $this->db->get('hasil');
+    {
+        $this->db->select('nama, usia'); 
+        $this->db->where('sesi', $sesi);
+        $query = $this->db->get('hasil');
 
-    if ($query->num_rows() > 0) {
-        $result = $query->row_array();
-        return $result;
-    } else {
-        return array('nama' => 'Tidak Ditemukan', 'usia' => 'Tidak Ditemukan');
+        if ($query->num_rows() > 0) {
+            $result = $query->row_array();
+            return $result;
+        } else {
+            return array('nama' => 'Tidak Ditemukan', 'usia' => 'Tidak Ditemukan');
+        }
     }
-}
 }
