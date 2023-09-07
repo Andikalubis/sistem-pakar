@@ -80,7 +80,7 @@ class Kriteria_model extends CI_Model
     public function get_kriteria($kode_kriteria)
     {
         $table = 'kriteria';
-        $this->db->select('nama_kriteria, deskripsi');
+        $this->db->select('nama_kriteria, deskripsi, stimulasi');
         $query = $this->db->get_where($table, array('kode_kriteria' => $kode_kriteria));
         $result = $query->row();
 

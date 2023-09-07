@@ -63,12 +63,14 @@ class Deteksi extends CI_Controller
                 $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
                 $kode = $sortedDataFromCF[$i]['kode_ciri'];
                 $bobot = $sortedDataFromCF[$i]['nilai'];
+                $stimulasi = $kriteria->stimulasi;
 
                 $hasil_cf[] = (object) array(
                     'kode' => $kode,
                     'nama' => $nama,
                     'deskripsi' => $deskripsi,
-                    'bobot' => $bobot
+                    'bobot' => $bobot,
+                    'stimulasi' => $stimulasi,
                 );
             }
 
@@ -85,7 +87,8 @@ class Deteksi extends CI_Controller
                     'kode' => $kode,
                     'nama' => $nama,
                     'deskripsi' => $deskripsi,
-                    'bobot' => $bobot
+                    'bobot' => $bobot,
+                    'stimulasi' => $stimulasi,
                 );
             }
 
