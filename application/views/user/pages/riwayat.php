@@ -8,22 +8,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Tabel Riwayat Deteksi</h3>
-
-                                <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
-                                <table class="table table-hover text-nowrap">
+                                <table class="table table-hover text-nowrap text-center">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -51,12 +39,12 @@
                                                 <td>
                                                     <?php echo $data['cf_bobot'] ?> %
                                                     <br>
-                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                    <small>( <?= $data['cf_kriteria'] ?> )</small>
                                                 </td>
                                                 <td>
                                                     <?php echo $data['nb_bobot'] ?> %
                                                     <br>
-                                                    <small> <?= $data['nb_kriteria'] ?></small>
+                                                    <small>( <?= $data['nb_kriteria'] ?> )</small>
                                                 </td>
                                                 <td>
                                                     <a href="<?php echo base_url('user/deteksi/hasil?id=' . $data['id_hasil'] . '&sesi=' . $data['sesi']) ?>" class="btn btn-sm btn-success">
@@ -71,14 +59,48 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
                 </div>
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
+    </div>
+</div>
+
+<h3 class="text-center my-4">Kriteria</h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-default">
+            <div class="card-body p-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover table-bordered text-nowrap text-center">
+                                    <a>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kode Kriteria</th>
+                                            <th>Nama Kriteria</th>
+                                        </tr>
+                                    </a>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($kriteria as $data) : ?>
+                                            <tr>
+                                                <td><?php echo $no++ ?></td>
+                                                <td><?php echo $data->kode_kriteria ?></td>
+                                                <td><?php echo $data->nama_kriteria ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

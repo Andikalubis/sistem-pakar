@@ -29,6 +29,7 @@ class Riwayat extends CI_Controller
 
         // Ambil data riwayat dari model
         $data['hasil'] = $this->Admin_model->getRiwayat();
+        $data['kriteria'] = $this->Admin_model->getKriteria();
 
         foreach ($data['hasil'] as $row) {
             $row['nama'] = $this->User_model->get_user_by_id($row['id_user']);

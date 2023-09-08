@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Deteksi extends CI_Controller
@@ -15,6 +14,7 @@ class Deteksi extends CI_Controller
         $this->load->model('Kriteria_model');
         $this->load->model('Certainty_model');
         $this->load->model('Bayes_model');
+        $this->load->model('Pdf_model');
 
         $logged_in = $this->session->userdata('logged_in');
         $level = $this->session->userdata('level');
@@ -31,7 +31,7 @@ class Deteksi extends CI_Controller
 
         $data = array(
             'title' => 'deteksi',
-            'pertanyaan' =>  $this->Pertanyaan_model->getPertanyaan(),
+            'pertanyaan' => $this->Pertanyaan_model->getPertanyaan(),
             'username' => $username
         );
 
@@ -45,13 +45,10 @@ class Deteksi extends CI_Controller
         $sesi = isset($_GET['sesi']) ? $_GET['sesi'] : 1;
 
         if ($id) {
-            // Mengambil nilai parameter 'id' dan 'sesi' dari URL
             $username = $this->session->userdata('username');
             $id_user = $this->User_model->get_user_by_username($username)['id_user'];
 
             $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
-
-            // mengurutkan hasil cf dan nb dari yang terbesar ke terkecil
             $sortedDataFromCF = $this->_quickSort($this->cf($id_user, $sesi));
             $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, $sesi));
 
@@ -59,8 +56,8 @@ class Deteksi extends CI_Controller
             $hasil_cf = array();
             for ($i = 0; $i < 3; $i++) {
                 $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
-                $nama = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
-                $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
+                $nama = $kriteria->nama_kriteria;
+                $deskripsi = $kriteria->deskripsi;
                 $kode = $sortedDataFromCF[$i]['kode_ciri'];
                 $bobot = $sortedDataFromCF[$i]['nilai'];
                 $stimulasi = $kriteria->stimulasi;
@@ -78,8 +75,8 @@ class Deteksi extends CI_Controller
             $hasil_nb = array();
             for ($i = 0; $i < 3; $i++) {
                 $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromBayes[$i]['kode_ciri']);
-                $nama = $kriteria->nama_kriteria; // Ambil deskripsi dari objek $kriteria
-                $deskripsi = $kriteria->deskripsi; // Ambil deskripsi dari objek $kriteria
+                $nama = $kriteria->nama_kriteria;
+                $deskripsi = $kriteria->deskripsi;
                 $kode = $sortedDataFromBayes[$i]['kode_ciri'];
                 $bobot = $sortedDataFromBayes[$i]['nilai'];
 
@@ -98,7 +95,9 @@ class Deteksi extends CI_Controller
                 'nama' => $data['nama'],
                 'usia' => $data['usia'],
                 'hasil_cf' => $hasil_cf,
-                'hasil_nb' => $hasil_nb
+                'hasil_nb' => $hasil_nb,
+                'id' => $id,
+                'sesi' => $sesi,
             );
 
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
@@ -106,6 +105,34 @@ class Deteksi extends CI_Controller
         } else {
             redirect(base_url("user/deteksi"));
         }
+    }
+
+    public function generate_pdf($id_hasil, $sesi)
+    {
+        $this->load->library('pdf');
+        // Mengambil data hasil dari model berdasarkan id_hasil dan sesi
+        $data['hasil'] = $this->Pdf_model->getHasilData($id_hasil, $sesi);
+
+        if (!$data['hasil']) {
+            show_error('Data tidak ditemukan.');
+        }
+
+        // Mengambil data kriteria berdasarkan kode kriteria dari hasil
+        $kode_kriteria = $data['hasil']->kode_kriteria;
+        $data['kriteria'] = $this->Pdf_model->getKriteriaData($kode_kriteria);
+
+        // Mengambil data hasil_cf dan hasil_nb berdasarkan id_hasil
+        $data['hasil_cf'] = $this->Pdf_model->getHasilCfData($id_hasil);
+        $data['hasil_nb'] = $this->Pdf_model->getHasilNbData($id_hasil);
+
+        $this->pdf->setPaper('A4', 'portrait');
+        $this->pdf->filename = "laporan.pdf";
+
+        // Load view 'user/pages/laporan' dengan data
+        $html = $this->load->view('user/pages/laporan', $data, true);
+        $this->pdf->loadHtml($html);
+        $this->pdf->render();
+        $this->pdf->stream('document.pdf');
     }
 
     public function submit_jawaban()
@@ -128,7 +155,7 @@ class Deteksi extends CI_Controller
             // Jika user sudah pernah tes, ambil nilai sesi dari $isSesion dan tambahkan 1
             $sesi = 1;
         } else {
-            $sesi = (int)$isSesion->sesi + 1;
+            $sesi = (int) $isSesion->sesi + 1;
             // Jika user belum pernah tes, set nilai sesi menjadi 1
         }
 
@@ -211,11 +238,11 @@ class Deteksi extends CI_Controller
 
             echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
 
-            echo  ' | ';
+            echo ' | ';
 
             echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
 
-            echo  '<br/>';
+            echo '<br/>';
         }
     }
 
@@ -309,7 +336,7 @@ class Deteksi extends CI_Controller
             $decimal_position = strpos($formatted_probability, '.') + 4; // Menentukan posisi dua digit di belakang koma
             $trimmed_probability = substr($formatted_probability, 0, $decimal_position); // Memotong angka
 
-            $result_probabilitas[] = (float) $trimmed_probability * (float)$cf_user[$i];
+            $result_probabilitas[] = (float) $trimmed_probability * (float) $cf_user[$i];
         }
 
 
@@ -323,7 +350,7 @@ class Deteksi extends CI_Controller
 
         $sum_of_H = 0;
         for ($i = 0; $i < count($cf_pakar); $i++) {
-            $sum_of_H += ((float)$cf_pakar[$i]->cf_pakar);
+            $sum_of_H += ((float) $cf_pakar[$i]->cf_pakar);
         }
 
         $result = 0;
