@@ -21,7 +21,7 @@
                                             <th>Usia</th>
                                             <th>Sesi</th>
                                             <th>Bobot CF</th>
-                                            <th>Bobot NB</th>
+                                            <th>Bobot TB</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>

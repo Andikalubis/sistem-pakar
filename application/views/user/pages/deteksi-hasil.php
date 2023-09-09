@@ -53,7 +53,7 @@
                             <div class="col-md-6 border-left">
                                 <div class="p-3 py-5">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4 class="text-right mtext-112 cl2 ">Naive Bayes</h4>
+                                        <h4 class="text-right mtext-112 cl2 ">Teorema Bayes</h4>
                                     </div>
 
                                     <div class="card-body table-responsive p-0">

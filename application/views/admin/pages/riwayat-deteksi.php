@@ -1,4 +1,4 @@
-p<h3 class="text-center my-4">Riwayat Deteksi</h3>
+<h3 class="text-center my-4">Riwayat Deteksi</h3>
 <div class="row">
     <div class="col-md-12">
         <div class="card card-default">
@@ -11,7 +11,8 @@ p<h3 class="text-center my-4">Riwayat Deteksi</h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                        <input type="text" name="table_search" class="form-control float-right"
+                                            placeholder="Search">
 
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
@@ -31,34 +32,47 @@ p<h3 class="text-center my-4">Riwayat Deteksi</h3>
                                             <th>Nama</th>
                                             <th>Usia</th>
                                             <th>Bobot CF</th>
-                                            <th>Bobot NB</th>
+                                            <th>Bobot TB</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($hasil as $data) : ?>
+                                        foreach ($hasil as $data): ?>
                                             <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $data['tanggal'] ?></td>
-                                                <td><?php echo $data['nama'] ?></td>
-                                                <td><?php echo $data['usia'] ?> Tahun</td>
                                                 <td>
-                                                    <?php echo $data['cf_bobot'] ?> %
-                                                    <br>
-                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                    <?php echo $no++ ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $data['tanggal'] ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $data['nama'] ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $data['usia'] ?> Tahun
                                                 </td>
                                                 <td>
                                                     <?php echo $data['cf_bobot'] ?> %
                                                     <br>
-                                                    <small> <?= $data['cf_kriteria'] ?></small>
+                                                    <small>
+                                                        <?= $data['cf_kriteria'] ?>
+                                                    </small>
+                                                </td>
+                                                <td>
+                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <br>
+                                                    <small>
+                                                        <?= $data['cf_kriteria'] ?>
+                                                    </small>
                                                 </td>
                                                 <td>
                                                     <!-- <a href="<?php echo base_url('user/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fa fa-eye"></i>
                                                     </a> -->
-                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>"
+                                                        class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
