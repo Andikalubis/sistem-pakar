@@ -29,6 +29,14 @@
                         <input type="deskripsi" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukan Deskripsi ..." value="<?= set_value('deskripsi'); ?>">
                     </div>
                 </div>
+                <div class="row input-group mb-3">
+                    <div class="col">
+                        <label for="stimulasi">Stimulasi</label>
+                    </div>
+                    <div class="col">
+                        <input type="stimulasi" class="form-control" id="stimulasi" name="stimulasi" placeholder="Masukan stimulasi ..." value="<?= set_value('stimulasi'); ?>">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-block">

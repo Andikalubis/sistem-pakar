@@ -42,13 +42,15 @@ class Ciri extends CI_Controller
             $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required');
             $this->form_validation->set_rules('nama_kriteria', 'Nama Kriteria', 'required');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+            $this->form_validation->set_rules('stimulasi', 'Stimulasi', 'required');
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses tambah data ke model
                 $data = array(
                     'kode_kriteria' => $this->input->post('kode_kriteria'),
                     'nama_kriteria' => $this->input->post('nama_kriteria'),
-                    'deskripsi'     => $this->input->post('deskripsi')
+                    'deskripsi'     => $this->input->post('deskripsi'),
+                    'stimulasi'     => $this->input->post('stimulasi')
                 );
 
                 $this->Admin_model->insertKriteria($data);
@@ -71,6 +73,7 @@ class Ciri extends CI_Controller
             $this->form_validation->set_rules('kode_kriteria', 'Kode Kriteria', 'required');
             $this->form_validation->set_rules('nama_kriteria', 'Nama Kriteria', 'required');
             $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+            $this->form_validation->set_rules('stimulasi', 'Stimulasi', 'required');
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
@@ -78,7 +81,8 @@ class Ciri extends CI_Controller
                 $data = array(
                     'kode_kriteria' => $this->input->post('kode_kriteria'),
                     'nama_kriteria' => $this->input->post('nama_kriteria'),
-                    'deskripsi'     => $this->input->post('deskripsi')
+                    'deskripsi'     => $this->input->post('deskripsi'),
+                    'stimulasi'     => $this->input->post('stimulasi')
                 );
 
                 $this->Admin_model->updateKriteria($id_kriteria, $data);
