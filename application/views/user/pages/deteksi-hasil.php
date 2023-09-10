@@ -31,7 +31,7 @@
                                             <tbody>
                                                 <?php
                                                 $no = 1;
-                                                foreach ($hasil_cf as $data): ?>
+                                                foreach ($hasil_cf as $data) : ?>
                                                     <tr>
                                                         <td>
                                                             <?= $no++ ?>
@@ -68,7 +68,7 @@
                                             <tbody>
                                                 <?php
                                                 $no = 1;
-                                                foreach ($hasil_nb as $data): ?>
+                                                foreach ($hasil_nb as $data) : ?>
                                                     <tr>
                                                         <td>
                                                             <?= $no++ ?>
@@ -91,7 +91,7 @@
                                 <div class="col">
                                     <?php
                                     $no = 1;
-                                    foreach ($hasil_cf as $data): ?>
+                                    foreach ($hasil_cf as $data) : ?>
                                         <strong class="mb-2 d-inline-block">
                                             <?= $data->nama ?>
                                         </strong>
@@ -110,8 +110,7 @@
 
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <a href="<?php echo base_url('user/deteksi/generate_pdf/' . $id . '/' . $sesi); ?>"
-                                    class="btn btn-danger">
+                                <a href="<?php echo base_url('user/deteksi/generate_pdf/' . $id . '/' . $sesi); ?>" class="btn btn-danger">
                                     Export PDF
                                 </a>
                             </div>

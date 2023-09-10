@@ -11,6 +11,7 @@
  * @license        MIT License
  * @link        https://github.com/ardianta/codeigniter-dompdf
  */
+
 use Dompdf\Dompdf;
 
 class Pdf extends Dompdf
@@ -29,7 +30,7 @@ class Pdf extends Dompdf
      * Get an instance of CodeIgniter
      *
      * @access    protected
-     * @return    void
+     * @return    object    Instance of CodeIgniter
      */
     protected function ci()
     {

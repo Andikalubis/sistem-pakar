@@ -129,10 +129,10 @@ class Deteksi extends CI_Controller
         $this->pdf->filename = "laporan.pdf";
 
         // Load view 'user/pages/laporan' dengan data
-        $html = $this->load->view('user/pages/laporan', $data, true);
+        $html = $this->load->view('user/pages/laporan', $data, TRUE);
         $this->pdf->loadHtml($html);
         $this->pdf->render();
-        $this->pdf->stream('document.pdf');
+        $this->pdf->stream('laporan.pdf');
     }
 
     public function submit_jawaban()
