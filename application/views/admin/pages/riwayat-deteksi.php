@@ -11,8 +11,7 @@
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right"
-                                            placeholder="Search">
+                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-default">
@@ -39,7 +38,7 @@
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($hasil as $data): ?>
+                                        foreach ($hasil as $data) : ?>
                                             <tr>
                                                 <td>
                                                     <?php echo $no++ ?>
@@ -61,18 +60,17 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <?php echo $data['cf_bobot'] ?> %
+                                                    <?php echo $data['nb_bobot'] ?> %
                                                     <br>
                                                     <small>
-                                                        <?= $data['cf_kriteria'] ?>
+                                                        <?= $data['nb_kriteria'] ?>
                                                     </small>
                                                 </td>
                                                 <td>
                                                     <!-- <a href="<?php echo base_url('user/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fa fa-eye"></i>
                                                     </a> -->
-                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>"
-                                                        class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>
