@@ -109,8 +109,10 @@ class Deteksi extends CI_Controller
 
     public function generate_pdf($id_hasil, $sesi)
     {
-        $this->load->library('pdf');
-        // Mengambil data hasil dari model berdasarkan id_hasil dan sesi
+        // Load the necessary models
+        $this->load->model('Pdf_model');
+
+        // Get data from the database
         $data['hasil'] = $this->Pdf_model->getHasilData($id_hasil, $sesi);
 
         if (!$data['hasil']) {
@@ -119,18 +121,27 @@ class Deteksi extends CI_Controller
 
         // Mengambil data kriteria berdasarkan kode kriteria dari hasil
         $kode_kriteria = $data['hasil']->kode_kriteria;
-        // $data['kriteria'] = $this->Pdf_model->getKriteriaData($kode_kriteria);
-        $data['kriteria'] = "gas";
+        $data['kriteria'] = $this->Pdf_model->getKriteriaData($kode_kriteria);
 
         // Mengambil data hasil_cf dan hasil_nb berdasarkan id_hasil
         $data['hasil_cf'] = $this->Pdf_model->getHasilCfData($id_hasil);
         $data['hasil_nb'] = $this->Pdf_model->getHasilNbData($id_hasil);
 
+        // Iterate through hasil_cf and hasil_nb to get kriteria data
+        foreach ($data['hasil_cf'] as &$cf) {
+            $cf->kriteria_data = $this->Pdf_model->getKriteriaData($cf->kode_kriteria);
+        }
+        foreach ($data['hasil_nb'] as &$nb) {
+            $nb->kriteria_data = $this->Pdf_model->getKriteriaData($nb->kode_kriteria);
+        }
+
+        // Load Dompdf library
+        $this->load->library('pdf');
         $this->pdf->setPaper('A4', 'portrait');
         $this->pdf->filename = "laporan.pdf";
 
-        // Load view 'user/pages/laporan' dengan data
         $html = $this->load->view('user/pages/laporan', $data, TRUE);
+
         $this->pdf->loadHtml($html);
         $this->pdf->render();
         // $this->pdf->stream('laporan.pdf');
