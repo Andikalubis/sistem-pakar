@@ -24,7 +24,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
-                                <!-- <th scope="col">Kode</th> -->
+                                <th scope="col">Kode</th>
                                 <th scope="col">Pertanyaan</th>
                                 <th scope="col">Jawaban</th>
                             </tr>
@@ -35,6 +35,7 @@
                             foreach ($pertanyaan as $data) : ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
+                                    <td><?php echo $data->kode_gejala ?></td>
                                     <!-- <td><?php echo $data->kode_pertanyaan ?></td> -->
                                     <td><?php echo $data->pertanyaan ?></td>
                                     <td>

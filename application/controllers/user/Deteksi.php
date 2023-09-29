@@ -119,7 +119,8 @@ class Deteksi extends CI_Controller
 
         // Mengambil data kriteria berdasarkan kode kriteria dari hasil
         $kode_kriteria = $data['hasil']->kode_kriteria;
-        $data['kriteria'] = $this->Pdf_model->getKriteriaData($kode_kriteria);
+        // $data['kriteria'] = $this->Pdf_model->getKriteriaData($kode_kriteria);
+        $data['kriteria'] = "gas";
 
         // Mengambil data hasil_cf dan hasil_nb berdasarkan id_hasil
         $data['hasil_cf'] = $this->Pdf_model->getHasilCfData($id_hasil);
@@ -132,7 +133,7 @@ class Deteksi extends CI_Controller
         $html = $this->load->view('user/pages/laporan', $data, TRUE);
         $this->pdf->loadHtml($html);
         $this->pdf->render();
-        $this->pdf->stream('laporan.pdf');
+        // $this->pdf->stream('laporan.pdf');
     }
 
     public function submit_jawaban()
@@ -227,21 +228,20 @@ class Deteksi extends CI_Controller
     public function coba()
     {
         $id = 4;
-        $sesi = 3;
+        $sesi = 6;
         $result_cf = $this->cf($id, $sesi);
         $result_nb = $this->bayes($id, $sesi);
 
         $sortedDataFromCF = $this->_quickSort($result_cf);
         $sortedDataFromNB = $this->_quickSort($result_nb);
 
+        var_dump($result_nb);
+
         for ($i = 0; $i < 3; $i++) {
 
             echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
-
             echo ' | ';
-
             echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
-
             echo '<br/>';
         }
     }
