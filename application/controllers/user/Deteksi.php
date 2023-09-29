@@ -239,7 +239,7 @@ class Deteksi extends CI_Controller
     public function coba()
     {
         $id = 4;
-        $sesi = 6;
+        $sesi = 8;
         $result_cf = $this->cf($id, $sesi);
         $result_nb = $this->bayes($id, $sesi);
 
@@ -248,13 +248,13 @@ class Deteksi extends CI_Controller
 
         var_dump($result_nb);
 
-        for ($i = 0; $i < 3; $i++) {
+        // for ($i = 0; $i < 3; $i++) {
 
-            echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
-            echo ' | ';
-            echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
-            echo '<br/>';
-        }
+        //     echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
+        //     echo ' | ';
+        //     echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
+        //     echo '<br/>';
+        // }
     }
 
     public function bayes($user_id, $user_sesi)
@@ -268,6 +268,10 @@ class Deteksi extends CI_Controller
                 "nilai" => $this->_nb($kriteria[$index], $user_id, $user_sesi),
             );
         }
+        // $result = array(
+        //     "kode_ciri" => $kriteria[0],
+        //     "nilai" => $this->_nb($kriteria[0], $user_id, $user_sesi),
+        // );
 
         return $result;
     }
@@ -299,60 +303,60 @@ class Deteksi extends CI_Controller
         return $maxCfCombine;
     }
 
-    public function _bayes($ciri, $user_id, $user_sesi)
-    {
-        $cf_pakar = [];
-        $pakar_from_db = $this->Kriteria_model->get_cf_pakar($ciri, $user_id, $user_sesi);
+    // public function _bayes($ciri, $user_id, $user_sesi)
+    // {
+    //     $cf_pakar = [];
+    //     $pakar_from_db = $this->Kriteria_model->get_cf_pakar($ciri, $user_id, $user_sesi);
 
-        $cf_user = $this->Kriteria_model->get_cf_user($ciri, $user_id, $user_sesi);
+    //     $cf_user = $this->Kriteria_model->get_cf_user($ciri, $user_id, $user_sesi);
 
-        for ($i = 0; $i < count($pakar_from_db); $i++) {
-            $cf_pakar[] = $pakar_from_db[$i]->cf_pakar;
-        }
+    //     for ($i = 0; $i < count($pakar_from_db); $i++) {
+    //         $cf_pakar[] = $pakar_from_db[$i]->cf_pakar;
+    //     }
 
-        $cf_pakar_arr = array(); // Inisialisasi array kosong
-        for ($i = 0; $i < count($cf_pakar); $i++) {
-            $cf_pakar_arr[] = $cf_pakar[$i];
-        }
+    //     $cf_pakar_arr = array(); // Inisialisasi array kosong
+    //     for ($i = 0; $i < count($cf_pakar); $i++) {
+    //         $cf_pakar_arr[] = $cf_pakar[$i];
+    //     }
 
-        // mencari nilai semesta
-        $sum_of_gejala = array_sum($cf_pakar_arr);
+    //     // mencari nilai semesta
+    //     $sum_of_gejala = array_sum($cf_pakar_arr);
 
-        $result_of_division = array(); // Inisialisasi array kosong
-        for ($i = 0; $i < count($cf_pakar_arr); $i++) {
-            $result = $cf_pakar_arr[$i] / $sum_of_gejala;
-            $formatted_result = number_format($result, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
-            $decimal_position = strpos($formatted_result, '.') + 3; // Menentukan posisi dua digit di belakang koma
-            $trimmed_result = substr($formatted_result, 0, $decimal_position); // Memotong angka
+    //     $result_of_division = array(); // Inisialisasi array kosong
+    //     for ($i = 0; $i < count($cf_pakar_arr); $i++) {
+    //         $result = $cf_pakar_arr[$i] / $sum_of_gejala;
+    //         $formatted_result = number_format($result, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
+    //         $decimal_position = strpos($formatted_result, '.') + 3; // Menentukan posisi dua digit di belakang koma
+    //         $trimmed_result = substr($formatted_result, 0, $decimal_position); // Memotong angka
 
-            $result_of_division[] = (float) $trimmed_result;
-        }
+    //         $result_of_division[] = (float) $trimmed_result;
+    //     }
 
-        $sum_of_product_arr = [];
-        for ($i = 0; $i < count($cf_pakar_arr); $i++) {
-            $product = $result_of_division[$i] * $cf_pakar_arr[$i];
-            $formatted_product = number_format($product, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
-            $decimal_position = strpos($formatted_product, '.') + 3; // Menentukan posisi dua digit di belakang koma
-            $trimmed_product = substr($formatted_product, 0, $decimal_position); // Memotong angka
+    //     $sum_of_product_arr = [];
+    //     for ($i = 0; $i < count($cf_pakar_arr); $i++) {
+    //         $product = $result_of_division[$i] * $cf_pakar_arr[$i];
+    //         $formatted_product = number_format($product, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
+    //         $decimal_position = strpos($formatted_product, '.') + 3; // Menentukan posisi dua digit di belakang koma
+    //         $trimmed_product = substr($formatted_product, 0, $decimal_position); // Memotong angka
 
-            $sum_of_product_arr[] = (float) $trimmed_product;
-        }
+    //         $sum_of_product_arr[] = (float) $trimmed_product;
+    //     }
 
-        $result_probabilitas = array();
-        $sum_of_product_total = array_sum($sum_of_product_arr);
+    //     $result_probabilitas = array();
+    //     $sum_of_product_total = array_sum($sum_of_product_arr);
 
-        for ($i = 0; $i < count($cf_pakar_arr); $i++) {
-            $probability = $sum_of_product_arr[$i] / $sum_of_product_total;
-            $formatted_probability = number_format($probability, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
-            $decimal_position = strpos($formatted_probability, '.') + 4; // Menentukan posisi dua digit di belakang koma
-            $trimmed_probability = substr($formatted_probability, 0, $decimal_position); // Memotong angka
+    //     for ($i = 0; $i < count($cf_pakar_arr); $i++) {
+    //         $probability = $sum_of_product_arr[$i] / $sum_of_product_total;
+    //         $formatted_probability = number_format($probability, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
+    //         $decimal_position = strpos($formatted_probability, '.') + 4; // Menentukan posisi dua digit di belakang koma
+    //         $trimmed_probability = substr($formatted_probability, 0, $decimal_position); // Memotong angka
 
-            $result_probabilitas[] = (float) $trimmed_probability * (float) $cf_user[$i];
-        }
+    //         $result_probabilitas[] = (float) $trimmed_probability * (float) $cf_user[$i];
+    //     }
 
 
-        return array_sum($result_probabilitas) * 100;
-    }
+    //     return array_sum($result_probabilitas) * 100;
+    // }
 
     public function _nb($ciri, $user_id, $user_sesi)
     {
@@ -364,17 +368,28 @@ class Deteksi extends CI_Controller
             $sum_of_H += ((float) $cf_pakar[$i]->cf_pakar);
         }
 
-        $result = 0;
+        $sumPHGi = 0;
+        foreach ($cf_pakar as $i => $pakar) {
+            $nilai_pakar = (float) $pakar->cf_pakar;
+            $sumPHGi += ($cf_user[$i] * ($nilai_pakar / $sum_of_H));
+        }
+
+        $PHgi = 0;
+        $result = [];
         foreach ($cf_pakar as $i => $pakar) {
             $nilai_pakar = (float) $pakar->cf_pakar;
             $PHgi = $nilai_pakar / $sum_of_H;
-
             $PEHgi = $cf_user[$i] * $PHgi;
 
-            $result += $PEHgi;
+            if ($PEHgi != 0) {
+                $PHE = $PEHgi / $sumPHGi;
+                $P = $PHE * $nilai_pakar;
+
+                $result[$i] = $P;
+            }
         }
 
-        return round($result * 100, 2);
+        return round(array_sum($result) * 100, 2);
     }
 
     public function _quickSort($arr)
