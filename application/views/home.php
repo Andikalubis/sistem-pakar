@@ -14,23 +14,16 @@
     <link href="<?= base_url() ?> assets/template/landing_page/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/bootstrap/css/bootstrap.min.css"
-        rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/bootstrap-icons/bootstrap-icons.css"
-        rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/boxicons/css/boxicons.min.css"
-        rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/glightbox/css/glightbox.min.css"
-        rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/swiper/swiper-bundle.min.css"
-        rel="stylesheet">
+    <link href="<?= base_url() ?>assets/template/landing_page/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>assets/template/landing_page/assets/css/style.css" rel="stylesheet">
@@ -78,8 +71,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
-                    data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
                     <h1>Selamat Datang...!</h1>
                     <h2>Ayo Identifikasi Minat dan Bakat Anakmu...</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
@@ -88,8 +80,7 @@
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                     <!-- <img src="<?= base_url() ?>assets/template/landing_page/assets/img/hero-img.png" class="img-fluid animated" alt=""> -->
-                    <img src="<?= base_url() ?>assets/template/landing_page/assets/img/MI.png"
-                        class="img-fluid animated" alt="">
+                    <img src="<?= base_url() ?>assets/template/landing_page/assets/img/MI.png" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -171,12 +162,9 @@
 
                 <div class="row">
 
-                    <div class="col-lg-5 align-items-stretch img"
-                        style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");'
-                        data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+                    <div class="col-lg-5 align-items-stretch img" style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
 
-                    <div
-                        class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                         <div class="content">
                             <h3>Apa itu metode <strong>Certainty Factor</strong></h3>
@@ -185,10 +173,8 @@
                         <div class="accordion-list">
                             <ul>
                                 <li class="bg-light">
-                                    <a data-bs-toggle="collapse" class="collapse"
-                                        data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar
-                                        dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i
-                                            class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar
+                                        dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
                                         <p style="text-align: justify;">
                                             Certainty Factor, dalam konteks sistem pakar dan kecerdasan buatan, adalah
@@ -201,10 +187,7 @@
                                 </li>
 
                                 <li class="bg-light">
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2"
-                                        class="collapsed"><span>02</span> Sejarah Certainty Factor <i
-                                            class="bx bx-chevron-down icon-show"></i><i
-                                            class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
                                         <p style="text-align: justify;">
                                             Certainty Factor diperkenalkan sebagai salah satu teknik dalam sistem pakar
@@ -217,10 +200,7 @@
                                 </li>
 
                                 <li class="bg-light">
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3"
-                                        class="collapsed"><span>03</span> Pendekatan Certainty Factor <i
-                                            class="bx bx-chevron-down icon-show"></i><i
-                                            class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Certainty Factor <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
                                         <p style="text-align: justify;">
                                             Certainty Factor menghitung tingkat keyakinan berdasarkan dua faktor utama
@@ -249,12 +229,9 @@
             <div class="container-fluid" data-aos="fade-up">
                 <div class="row">
 
-                    <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img"
-                        style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");'
-                        data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+                    <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?= base_url() ?>assets/template/landing_page/assets/img/MI1.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
 
-                    <div
-                        class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+                    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
                         <div class="content">
                             <h3>Apa itu metode <strong>Teorema Bayes</strong></h3>
                         </div>
@@ -262,10 +239,8 @@
                         <div class="accordion-list">
                             <ul>
                                 <li>
-                                    <a data-bs-toggle="collapse" class="collapse"
-                                        data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar
-                                        dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i
-                                            class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Dalam konteks sistem pakar
+                                        dan kecerdasan buatan <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
                                         <p style="text-align: justify;">
                                             Teorema Bayes, atau yang dikenal juga dengan Teorema Bayes Classifier,
@@ -277,10 +252,7 @@
                                 </li>
 
                                 <li>
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2"
-                                        class="collapsed"><span>02</span> Sejarah Sejarah Teorema Bayes <i
-                                            class="bx bx-chevron-down icon-show"></i><i
-                                            class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Sejarah Sejarah Teorema Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
                                         <p style="text-align: justify;">
                                             Teorema Bayes sangat populer dalam bidang kecerdasan buatan dan pembelajaran
@@ -293,10 +265,7 @@
                                 </li>
 
                                 <li>
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3"
-                                        class="collapsed"><span>03</span> Pendekatan Teorema Bayes <i
-                                            class="bx bx-chevron-down icon-show"></i><i
-                                            class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Pendekatan Teorema Bayes <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
                                         <p style="text-align: justify;">
                                             kelas target berdasarkan fitur-fitur yang diamati. Metode ini
@@ -352,8 +321,7 @@
                         <h4>Useful Links</h4>
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth'); ?>">Login</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a
-                                    href="<?= base_url('auth/register'); ?>">Register</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="<?= base_url('auth/register'); ?>">Register</a></li>
                         </ul>
                     </div>
 
@@ -389,19 +357,15 @@
     <!-- End Footer -->
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/aos/aos.js"></script>
-    <script
-        src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script
-        src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script
-        src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="<?= base_url(); ?>assets/template/landing_page/assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->

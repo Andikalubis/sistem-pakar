@@ -35,6 +35,8 @@ class Ciri extends CI_Controller
     ///data untuk kriteria
     public function tambahKriteria()
     {
+        $username = $this->session->userdata('username');
+        $data['username'] = $username;
         $data['title'] = 'tambah data kriteria';
 
         // Jika ada data yang dikirimkan melalui form
@@ -65,6 +67,8 @@ class Ciri extends CI_Controller
 
     public function editKriteria($id_kriteria)
     {
+        $username = $this->session->userdata('username');
+        $data['username'] = $username;
         $data['title'] = 'update data kriteria';
         $data['kriteria'] = $this->Admin_model->get_kriteria_by_id($id_kriteria);
 
@@ -97,9 +101,8 @@ class Ciri extends CI_Controller
 
     public function hapusKriteria($id_kriteria)
     {
-        // Proses hapus data kriteria dari database
+        // Proses hapus data kriteria dari databaseb
         $this->Admin_model->deleteKriteria($id_kriteria); // Panggil fungsi delete pada model
-
         // Redirect ke halaman daftar kriteria setelah penghapusan berhasil
         redirect('admin/ciri');
     }
@@ -108,6 +111,8 @@ class Ciri extends CI_Controller
     ///data untuk gejala
     public function tambahGejala()
     {
+        $username = $this->session->userdata('username');
+        $data['username'] = $username;
         $data['title'] = 'tambah data Gejala';
 
         // Jika ada data yang dikirimkan melalui form
@@ -134,6 +139,8 @@ class Ciri extends CI_Controller
 
     public function editGejala($id_gejala)
     {
+        $username = $this->session->userdata('username');
+        $data['username'] = $username;
         $data['title'] = 'update data Gejala';
         $data['gejala'] = $this->Admin_model->get_gejala_by_id($id_gejala);
 

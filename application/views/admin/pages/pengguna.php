@@ -36,10 +36,10 @@
                                             <td><?php echo $data->jenis_kelamin ?></td>
                                             <td><?php echo $data->email ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('admin/editPengguna/') . $data->id_user ?>" class="btn btn-sm btn-success">
+                                                <a href="<?php echo base_url('admin/pengguna/editPengguna/') . $data->id_user ?>" class="btn btn-sm btn-success">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="<?php echo base_url('admin/hapusPengguna/') . $data->id_user ?>" class="btn btn-sm btn-danger">
+                                                <a href="<?php echo base_url('admin/pengguna/hapusPengguna/') . $data->id_user ?>" class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>

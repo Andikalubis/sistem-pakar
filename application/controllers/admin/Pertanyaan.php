@@ -79,7 +79,7 @@ class Pertanyaan extends CI_Controller
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
                 $id_pertanyaan = $this->input->post('id_pertanyaan');
-                
+
                 $data = array(
                     'id_kriteria'     => $this->input->post('id_kriteria'),
                     'id_gejala'     => $this->input->post('id_gejala'),

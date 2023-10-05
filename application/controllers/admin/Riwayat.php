@@ -45,5 +45,4 @@ class Riwayat extends CI_Controller
         // Redirect ke halaman daftar hasil setelah penghapusan berhasil
         redirect('admin/riwayat/');
     }
-
 }

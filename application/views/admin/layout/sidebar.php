@@ -1,13 +1,5 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- <li class="nav-item">
-            <a href="<?= base_url() ?>admin/deteksi" class="nav-link <?= $title == 'deteksi' ? 'active' : '' ?>">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                    Mulai Deteksi
-                </p>
-            </a>
-        </li> -->
         <li class="nav-header">Main Menu</li>
         <li class="nav-item">
             <a href="<?= base_url() ?>admin/beranda" class="nav-link  <?= $title == 'beranda' ? 'active' : '' ?>">

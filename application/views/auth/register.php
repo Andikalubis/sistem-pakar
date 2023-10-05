@@ -32,36 +32,36 @@
 
                 <?php echo validation_errors(); ?>
                 <?php echo form_open('auth/register'); ?>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="username" placeholder="Username"required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="nama" placeholder="Nama"required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Password"required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="alamat" class="form-control" name="alamat" placeholder="Alamat"required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" placeholder="Email"required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="tlp" placeholder="Telepon"required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <select class="custom-select" name="jenis_kelamin">
-                            <option value="">---Pilih Jenis Kelamin---</option>
-                            <option name="jenis_kelamin" value="Laki-Laki"required>Laki-laki</option>
-                            <option name="jenis_kelamin" value="Perempuan"required>Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="social-auth-links text-center mt-2 mb-3">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Registrasi
-                        </button>
-                    </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="nama" placeholder="Nama" required>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="alamat" class="form-control" name="alamat" placeholder="Alamat" required>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="tlp" placeholder="Telepon" required>
+                </div>
+                <div class="input-group mb-3">
+                    <select class="custom-select" name="jenis_kelamin">
+                        <option value="">---Pilih Jenis Kelamin---</option>
+                        <option name="jenis_kelamin" value="Laki-Laki" required>Laki-laki</option>
+                        <option name="jenis_kelamin" value="Perempuan" required>Perempuan</option>
+                    </select>
+                </div>
+                <div class="social-auth-links text-center mt-2 mb-3">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Registrasi
+                    </button>
+                </div>
                 <?php echo form_close(); ?>
 
                 <p class="mb-1">

@@ -71,7 +71,7 @@ class Auth extends CI_Controller
         }
     }
 
-    public function register() 
+    public function register()
     {
         $data = array(
             'title' => 'Register',
@@ -92,7 +92,7 @@ class Auth extends CI_Controller
         }
     }
 
-    private function _register() 
+    private function _register()
     {
         $nama = $this->input->post('nama');
         $username = $this->input->post('username');
@@ -101,7 +101,7 @@ class Auth extends CI_Controller
         $email = $this->input->post('email');
         $tlp = $this->input->post('tlp');
         $jenis_kelamin = $this->input->post('jenis_kelamin');
-        $level = 'user'; 
+        $level = 'user';
 
         $hashPassword = md5($password);
 
@@ -135,4 +135,3 @@ class Auth extends CI_Controller
         }
     }
 }
-

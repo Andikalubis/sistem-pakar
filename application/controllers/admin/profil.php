@@ -69,19 +69,19 @@ class Profil extends CI_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_rules('new_password', 'Password baru', 'required|min_length[5]');
         $this->form_validation->set_rules('confirm_password', 'Konfirmasi password baru', 'required|matches[new_password]');
-    
+
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/pages/profil');
         } else {
             $new_password = $this->input->post('new_password');
-            $hashed_password = md5($new_password); 
-    
+            $hashed_password = md5($new_password);
+
             $username = $this->session->userdata('username');
-            $this->User_model->updatePassword($username, $hashed_password); 
-    
+            $this->User_model->updatePassword($username, $hashed_password);
+
             $this->session->set_flashdata('success_msg', 'Password updated successfully.');
 
-            redirect('admin/profil'); 
+            redirect('admin/profil');
         }
-    }    
+    }
 }
