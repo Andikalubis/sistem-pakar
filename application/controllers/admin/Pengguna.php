@@ -34,11 +34,9 @@ class Pengguna extends CI_Controller
     public function editPengguna($id_user)
     {
         $username = $this->session->userdata('username');
-        $data = array(
-            'title' => 'pengguna',
-            'user' => $this->Admin_model->getUser('user'), // Mengambil data user dengan level "user"
-            'username' => $username
-        );
+        $data['username'] = $username;
+        $data['title'] = 'update data Profil';
+        $data['user'] = $this->User_model->get_user_by_id($id_user);
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
             $this->form_validation->set_rules('nama', 'Nama', 'required');
@@ -66,6 +64,7 @@ class Pengguna extends CI_Controller
         $data['contents'] = $this->load->view('admin/pages/editPengguna', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }
+
     public function hapusPengguna($id_user)
     {
         // Proses hapus data pengguna dari database
