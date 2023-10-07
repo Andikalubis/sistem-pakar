@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistem Pakar Anak</title>
-    
+
     <!-- Favicon -->
     <link href="<?= base_url('assets/') ?>template/landing_page/assets/img/MI1.png" rel="icon">
     <!-- Google Font: Source Sans Pro -->

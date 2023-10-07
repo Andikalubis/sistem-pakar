@@ -10,15 +10,6 @@
                                 <h3 class="card-title">Tabel Riwayat Deteksi User</h3>
 
                                 <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -67,10 +58,10 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <!-- <a href="<?php echo base_url('user/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
+                                                    <!-- <a href="<?php echo base_url('admin/riwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fa fa-eye"></i>
                                                     </a> -->
-                                                    <a href="<?php echo base_url('user/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
+                                                    <a href="<?php echo base_url('admin/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
                                                 </td>

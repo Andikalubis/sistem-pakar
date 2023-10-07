@@ -10,11 +10,11 @@
                         <label for="id_kriteria">Kriteria</label>
                     </div>
                     <div class="col">
-                        <select class="custom-select" name="id_kriteria" id="id_kriteria" value="<?= set_value('id_kriteria'); ?>" >>
+                        <select class="custom-select" name="id_kriteria" id="id_kriteria" value="<?= set_value('id_kriteria'); ?>">>
                             <option value="">Pilih Kriteria</option>
-                            <?php foreach ($kriteria as $data): ?>
+                            <?php foreach ($kriteria as $data) : ?>
                                 <option value="<?php echo $data->id_kriteria ?>">
-                                <?php echo $data->nama_kriteria ?></option>
+                                    <?php echo $data->nama_kriteria ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -24,11 +24,11 @@
                         <label for="id_gejala">Gejala</label>
                     </div>
                     <div class="col">
-                        <select class="custom-select" name="id_gejala" id="id_gejala" value="<?= set_value('id_gejala'); ?>" >>
+                        <select class="custom-select" name="id_gejala" id="id_gejala" value="<?= set_value('id_gejala'); ?>">>
                             <option value="">Pilih Gejala</option>
-                            <?php foreach ($gejala as $data): ?>
+                            <?php foreach ($gejala as $data) : ?>
                                 <option value="<?php echo $data->id_gejala ?>">
-                                <?php echo $data->nama_gejala ?></option>
+                                    <?php echo $data->nama_gejala ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

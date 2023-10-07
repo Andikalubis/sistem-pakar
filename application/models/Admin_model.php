@@ -10,6 +10,13 @@ class Admin_model extends CI_Model
         return $this->db->get('user')->result();
     }
 
+    public function deletePengguna($id_user)
+    {
+        // Menghapus data user berdasarkan ID dari tabel "user"
+        $this->db->where('id_user', $id_user);
+        $this->db->delete('user');
+    }
+
     public function getRiwayat()
     {
         // Ambil data riwayat dari tabel 'hasil'

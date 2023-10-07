@@ -28,10 +28,11 @@ class Pertanyaan extends CI_Controller
         $data['contents'] = $this->load->view('admin/pages/pertanyaan', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }
-
     ///data untuk Pertanyaan
     public function tambahPertanyaan()
     {
+        $username = $this->session->userdata('username');
+        $data['username'] = $username;
         $data['title'] = 'tambah data Pertanyaan';
         $data['gejala'] = $this->Admin_model->getGejala();
         $data['kriteria'] = $this->Admin_model->getKriteria();
@@ -64,6 +65,8 @@ class Pertanyaan extends CI_Controller
 
     public function editPertanyaan($id_pertanyaan)
     {
+        $username = $this->session->userdata('username');
+        $data['username'] = $username;
         $data['title'] = 'update data Pertanyaan';
         $data['pertanyaan'] = $this->Pertanyaan_model->get_Pertanyaan_by_id($id_pertanyaan);
         $data['gejala'] = $this->Admin_model->getGejala();
@@ -79,7 +82,7 @@ class Pertanyaan extends CI_Controller
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses update data ke model
                 $id_pertanyaan = $this->input->post('id_pertanyaan');
-                
+
                 $data = array(
                     'id_kriteria'     => $this->input->post('id_kriteria'),
                     'id_gejala'     => $this->input->post('id_gejala'),
