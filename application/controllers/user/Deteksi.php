@@ -213,6 +213,7 @@ class Deteksi extends CI_Controller
                 "kriteria" => $sortedDataFromCF[$i]['kode_ciri'],
                 "bobot" => $sortedDataFromCF[$i]['nilai'],
             );
+
             $data_hasil_nb = array(
                 "id_hasil" => $id_hasil,
                 "kode_kriteria" => $sortedDataFromNB[$i]['kode_ciri'],
@@ -368,6 +369,7 @@ class Deteksi extends CI_Controller
 
         $pivot = $arr[0]['nilai'];
         $left = $right = array();
+
 
         for ($i = 1; $i < $length; $i++) {
             if ($arr[$i]['nilai'] > $pivot) {
