@@ -107,46 +107,6 @@ class Deteksi extends CI_Controller
         }
     }
 
-    // public function generate_pdf($id_hasil, $sesi)
-    // {
-    //     // Load the necessary models
-    //     $this->load->model('Pdf_model');
-
-    //     // Get data from the database
-    //     $data['hasil'] = $this->Pdf_model->getHasilData($id_hasil, $sesi);
-
-    //     if (!$data['hasil']) {
-    //         show_error('Data tidak ditemukan.');
-    //     }
-
-    //     // Mengambil data kriteria berdasarkan kode kriteria dari hasil
-    //     $kode_kriteria = $data['hasil']->kode_kriteria;
-    //     $data['kriteria'] = $this->Pdf_model->getKriteriaData($kode_kriteria);
-
-    //     // Mengambil data hasil_cf dan hasil_nb berdasarkan id_hasil
-    //     $data['hasil_cf'] = $this->Pdf_model->getHasilCfData($id_hasil);
-    //     $data['hasil_nb'] = $this->Pdf_model->getHasilNbData($id_hasil);
-
-    //     // Iterate through hasil_cf and hasil_nb to get kriteria data
-    //     foreach ($data['hasil_cf'] as &$cf) {
-    //         $cf->kriteria_data = $this->Pdf_model->getKriteriaData($cf->kode_kriteria);
-    //     }
-    //     foreach ($data['hasil_nb'] as &$nb) {
-    //         $nb->kriteria_data = $this->Pdf_model->getKriteriaData($nb->kode_kriteria);
-    //     }
-
-    //     // Load Dompdf library
-    //     $this->load->library('pdf');
-    //     $this->pdf->setPaper('A4', 'portrait');
-    //     $this->pdf->filename = "laporan.pdf";
-
-    //     $html = $this->load->view('user/pages/laporan', $data, TRUE);
-
-    //     $this->pdf->loadHtml($html);
-    //     $this->pdf->render();
-    //     $this->pdf->stream('laporan.pdf');
-    // }
-
     public function generate_pdf($id_hasil, $sesi)
     {
         // Load the necessary models
@@ -267,27 +227,6 @@ class Deteksi extends CI_Controller
         redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
     }
 
-    public function coba()
-    {
-        $id = 4;
-        $sesi = 8;
-        $result_cf = $this->cf($id, $sesi);
-        $result_nb = $this->bayes($id, $sesi);
-
-        $sortedDataFromCF = $this->_quickSort($result_cf);
-        $sortedDataFromNB = $this->_quickSort($result_nb);
-
-        var_dump($result_nb);
-
-        // for ($i = 0; $i < 3; $i++) {
-
-        //     echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
-        //     echo ' | ';
-        //     echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
-        //     echo '<br/>';
-        // }
-    }
-
     public function bayes($user_id, $user_sesi)
     {
         $result = array();
@@ -299,10 +238,6 @@ class Deteksi extends CI_Controller
                 "nilai" => $this->_nb($kriteria[$index], $user_id, $user_sesi),
             );
         }
-        // $result = array(
-        //     "kode_ciri" => $kriteria[0],
-        //     "nilai" => $this->_nb($kriteria[0], $user_id, $user_sesi),
-        // );
 
         return $result;
     }
