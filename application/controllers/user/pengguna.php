@@ -33,7 +33,7 @@ class Pengguna extends CI_Controller
     public function editPengguna($id_user)
     {
 
-        $data['title'] = 'update data Gejala';
+        $data['title'] = 'update data profil';
         $data['user'] = $this->User_model->get_user_by_id($id_user);
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
@@ -68,7 +68,7 @@ class Pengguna extends CI_Controller
         $this->form_validation->set_rules('confirm_password', 'Konfirmasi password baru', 'required|matches[new_password]');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('admin/pages/profil');
+            $this->load->view('user/pages/pengguna');
         } else {
             $new_password = $this->input->post('new_password');
             $hashed_password = md5($new_password);
