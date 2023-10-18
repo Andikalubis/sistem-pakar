@@ -213,6 +213,7 @@ class Deteksi extends CI_Controller
                 "kriteria" => $sortedDataFromCF[$i]['kode_ciri'],
                 "bobot" => $sortedDataFromCF[$i]['nilai'],
             );
+
             $data_hasil_nb = array(
                 "id_hasil" => $id_hasil,
                 "kode_kriteria" => $sortedDataFromNB[$i]['kode_ciri'],
@@ -227,27 +228,6 @@ class Deteksi extends CI_Controller
         redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
     }
 
-    public function coba()
-    {
-        $id = 4;
-        $sesi = 8;
-        $result_cf = $this->cf($id, $sesi);
-        $result_nb = $this->bayes($id, $sesi);
-
-        $sortedDataFromCF = $this->_quickSort($result_cf);
-        $sortedDataFromNB = $this->_quickSort($result_nb);
-
-        var_dump($result_nb);
-
-        // for ($i = 0; $i < 3; $i++) {
-
-        //     echo $sortedDataFromCF[$i]['kode_ciri'] . " - " . $sortedDataFromCF[$i]['nilai'];
-        //     echo ' | ';
-        //     echo $sortedDataFromNB[$i]['kode_ciri'] . " - " . $sortedDataFromNB[$i]['nilai'];
-        //     echo '<br/>';
-        // }
-    }
-
     public function bayes($user_id, $user_sesi)
     {
         $result = array();
@@ -259,10 +239,6 @@ class Deteksi extends CI_Controller
                 "nilai" => $this->_nb($kriteria[$index], $user_id, $user_sesi),
             );
         }
-        // $result = array(
-        //     "kode_ciri" => $kriteria[0],
-        //     "nilai" => $this->_nb($kriteria[0], $user_id, $user_sesi),
-        // );
 
         return $result;
     }
@@ -393,6 +369,7 @@ class Deteksi extends CI_Controller
 
         $pivot = $arr[0]['nilai'];
         $left = $right = array();
+
 
         for ($i = 1; $i < $length; $i++) {
             if ($arr[$i]['nilai'] > $pivot) {

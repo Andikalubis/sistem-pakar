@@ -37,6 +37,7 @@
                                                             <?= $no++ ?>
                                                         </td>
                                                         <td>
+                                                            [<?= $data->kode ?>]
                                                             <?= $data->nama ?>
                                                         </td>
                                                         <td>
@@ -74,6 +75,7 @@
                                                             <?= $no++ ?>
                                                         </td>
                                                         <td>
+                                                            [<?= $data->kode ?>]
                                                             <?= $data->nama ?>
                                                         </td>
                                                         <td>
