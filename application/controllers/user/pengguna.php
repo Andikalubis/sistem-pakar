@@ -33,7 +33,7 @@ class Pengguna extends CI_Controller
     public function editPengguna($id_user)
     {
 
-        $data['title'] = 'update data Gejala';
+        $data['title'] = 'update data profil';
         $data['user'] = $this->User_model->get_user_by_id($id_user);
         // Jika ada data yang dikirimkan melalui form
         if ($this->input->post()) {
