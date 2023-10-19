@@ -137,7 +137,6 @@ class Deteksi extends CI_Controller
         $this->pdf->stream('Laporan-Riwayat-Deteksi.pdf');
     }
 
-
     public function submit_jawaban()
     {
         $nama = $this->input->post('nama');
@@ -269,61 +268,6 @@ class Deteksi extends CI_Controller
 
         return $maxCfCombine;
     }
-
-    // public function _bayes($ciri, $user_id, $user_sesi)
-    // {
-    //     $cf_pakar = [];
-    //     $pakar_from_db = $this->Kriteria_model->get_cf_pakar($ciri, $user_id, $user_sesi);
-
-    //     $cf_user = $this->Kriteria_model->get_cf_user($ciri, $user_id, $user_sesi);
-
-    //     for ($i = 0; $i < count($pakar_from_db); $i++) {
-    //         $cf_pakar[] = $pakar_from_db[$i]->cf_pakar;
-    //     }
-
-    //     $cf_pakar_arr = array(); // Inisialisasi array kosong
-    //     for ($i = 0; $i < count($cf_pakar); $i++) {
-    //         $cf_pakar_arr[] = $cf_pakar[$i];
-    //     }
-
-    //     // mencari nilai semesta
-    //     $sum_of_gejala = array_sum($cf_pakar_arr);
-
-    //     $result_of_division = array(); // Inisialisasi array kosong
-    //     for ($i = 0; $i < count($cf_pakar_arr); $i++) {
-    //         $result = $cf_pakar_arr[$i] / $sum_of_gejala;
-    //         $formatted_result = number_format($result, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
-    //         $decimal_position = strpos($formatted_result, '.') + 3; // Menentukan posisi dua digit di belakang koma
-    //         $trimmed_result = substr($formatted_result, 0, $decimal_position); // Memotong angka
-
-    //         $result_of_division[] = (float) $trimmed_result;
-    //     }
-
-    //     $sum_of_product_arr = [];
-    //     for ($i = 0; $i < count($cf_pakar_arr); $i++) {
-    //         $product = $result_of_division[$i] * $cf_pakar_arr[$i];
-    //         $formatted_product = number_format($product, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
-    //         $decimal_position = strpos($formatted_product, '.') + 3; // Menentukan posisi dua digit di belakang koma
-    //         $trimmed_product = substr($formatted_product, 0, $decimal_position); // Memotong angka
-
-    //         $sum_of_product_arr[] = (float) $trimmed_product;
-    //     }
-
-    //     $result_probabilitas = array();
-    //     $sum_of_product_total = array_sum($sum_of_product_arr);
-
-    //     for ($i = 0; $i < count($cf_pakar_arr); $i++) {
-    //         $probability = $sum_of_product_arr[$i] / $sum_of_product_total;
-    //         $formatted_probability = number_format($probability, 15, '.', ''); // Mengambil cukup banyak angka di belakang koma
-    //         $decimal_position = strpos($formatted_probability, '.') + 4; // Menentukan posisi dua digit di belakang koma
-    //         $trimmed_probability = substr($formatted_probability, 0, $decimal_position); // Memotong angka
-
-    //         $result_probabilitas[] = (float) $trimmed_probability * (float) $cf_user[$i];
-    //     }
-
-
-    //     return array_sum($result_probabilitas) * 100;
-    // }
 
     public function _nb($ciri, $user_id, $user_sesi)
     {

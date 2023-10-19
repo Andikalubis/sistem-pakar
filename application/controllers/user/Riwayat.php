@@ -1,4 +1,7 @@
 <?php
+
+use SebastianBergmann\Environment\Console;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Riwayat extends CI_Controller
@@ -28,8 +31,13 @@ class Riwayat extends CI_Controller
         );
 
         // Ambil data riwayat dari model
-        $data['hasil'] = $this->Admin_model->getRiwayat();
         $data['kriteria'] = $this->Admin_model->getKriteria();
+
+        if ($this->session->userdata('level') == 'user') {
+            $data['hasil'] = $this->User_model->getRiwayat($username);
+        } else {
+            $data['hasil'] = $this->Admin_model->getRiwayat();
+        }
 
         foreach ($data['hasil'] as $row) {
             $row['nama'] = $this->User_model->get_user_by_id($row['id_user']);
