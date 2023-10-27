@@ -35,6 +35,14 @@
                 </div>
                 <div class="row input-group mb-3">
                     <div class="col">
+                        <label for="kode_gejala">Kode Gejala</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="kode_gejala" name="kode_gejala" placeholder="Masukan Kode Gejala ..." value="<?= set_value('kode_gejala'); ?>">
+                    </div>
+                </div>
+                <div class="row input-group mb-3">
+                    <div class="col">
                         <label for="kode_pertanyaan">Kode Pertanyaan</label>
                     </div>
                     <div class="col">

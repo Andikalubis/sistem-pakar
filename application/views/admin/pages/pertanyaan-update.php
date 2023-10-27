@@ -36,6 +36,14 @@
             </div>
             <div class="row input-group mb-3">
                 <div class="col">
+                    <label for="kode_gejala">Kode Gejala</label>
+                </div>
+                <div class="col">
+                    <input type="text" name="kode_gejala" class="form-control" value="<?php echo $pertanyaan->kode_gejala ?>">
+                </div>
+            </div>
+            <div class="row input-group mb-3">
+                <div class="col">
                     <label for="kode_pertanyaan">Kode Pertanyaan</label>
                 </div>
                 <div class="col">
