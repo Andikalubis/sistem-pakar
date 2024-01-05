@@ -1,5 +1,11 @@
 <div class="container">
     <div class="card-body">
+        <?php
+        $warning = $this->session->flashdata('warning');
+        if (!empty($warning)) {
+            echo '<div class="alert alert-warning">' . $warning . '</div>';
+        }
+        ?>
         <form action="<?= base_url('user/deteksi/submit_jawaban'); ?>" method="post">
             <div class="row">
                 <div class="col">

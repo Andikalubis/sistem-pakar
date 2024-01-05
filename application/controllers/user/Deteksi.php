@@ -137,11 +137,109 @@ class Deteksi extends CI_Controller
         $this->pdf->stream('Laporan-Riwayat-Deteksi.pdf');
     }
 
+    // public function submit_jawaban()
+    // {
+    //     $nama = $this->input->post('nama');
+    //     $usia = $this->input->post('usia');
+    //     $username = $this->session->userdata('username');
+
+    //     // Get the user ID based on the username (assuming 'users' table has 'id_user' and 'username' columns).
+    //     $this->db->where('username', $username);
+    //     $user = $this->db->get('user')->row();
+
+    //     // check apakah user sudah pernah tes?
+    //     $this->db->select_max('sesi'); // Pilih kolom 'section' saja
+    //     $this->db->where('id_user', $user->id_user);
+    //     $isSesion = $this->db->get('jawaban')->row();
+
+    //     $sesi = 1;
+    //     if ($isSesion == null) {
+    //         // Jika user sudah pernah tes, ambil nilai sesi dari $isSesion dan tambahkan 1
+    //         $sesi = 1;
+    //     } else {
+    //         $sesi = (int) $isSesion->sesi + 1;
+    //         // Jika user belum pernah tes, set nilai sesi menjadi 1
+    //     }
+
+    //     // Save each answer to the 'jawaban' table.
+    //     foreach ($_POST['jawaban'] as $id_pertanyaan => $jawaban) {
+    //         if (empty($jawaban)) {
+    //             $jawaban = 0;
+    //         }
+
+    //         $kriteria = $this->Pertanyaan_model->get_kriteria_id($id_pertanyaan);
+    //         $gejala = $this->Pertanyaan_model->get_gejala_id($id_pertanyaan);
+
+    //         $data = array(
+    //             'id_user' => $user->id_user,
+    //             'nama' => $nama,
+    //             'usia' => $usia,
+    //             'id_pertanyaan' => $id_pertanyaan,
+    //             'id_kriteria' => $kriteria->id_kriteria,
+    //             'id_gejala' => $gejala->id_gejala,
+    //             'kode_gejala' => $gejala->kode_gejala,
+    //             'cf_user' => $jawaban,
+    //             'sesi' => $sesi,
+    //             'tanggal' => date('Y-m-d'),
+    //         );
+
+    //         $this->Pertanyaan_model->save_jawaban($data);
+    //     }
+
+    //     $id_hasil = rand(1000000, 9999);
+
+    //     $result_cf = $this->cf($user->id_user, $sesi);
+    //     $result_nb = $this->bayes($user->id_user, $sesi);
+
+    //     $sortedDataFromCF = $this->_quickSort($result_cf);
+    //     $sortedDataFromNB = $this->_quickSort($result_nb);
+
+    //     $data_hasil = array(
+    //         "id_hasil" => $id_hasil,
+    //         "id_user" => $user->id_user,
+    //         "nama" => $nama,
+    //         "usia" => $usia,
+    //         "sesi" => $sesi
+    //     );
+
+    //     $this->Pertanyaan_model->save_hasil($data_hasil);
+
+    //     for ($i = 0; $i < 3; $i++) {
+    //         // menyimpan kedalam tabel hasil
+    //         $data_hasil_cf = array(
+    //             "id_hasil" => $id_hasil,
+    //             "kode_kriteria" => $sortedDataFromCF[$i]['kode_ciri'],
+    //             "kriteria" => $sortedDataFromCF[$i]['kode_ciri'],
+    //             "bobot" => $sortedDataFromCF[$i]['nilai'],
+    //         );
+
+    //         $data_hasil_nb = array(
+    //             "id_hasil" => $id_hasil,
+    //             "kode_kriteria" => $sortedDataFromNB[$i]['kode_ciri'],
+    //             "kriteria" => $sortedDataFromNB[$i]['kode_ciri'],
+    //             "bobot" => $sortedDataFromNB[$i]['nilai'],
+    //         );
+
+    //         $this->Certainty_model->save_hasil($data_hasil_cf);
+    //         $this->Bayes_model->save_hasil($data_hasil_nb);
+    //     }
+
+    //     redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
+    // }
+
     public function submit_jawaban()
     {
         $nama = $this->input->post('nama');
         $usia = $this->input->post('usia');
         $username = $this->session->userdata('username');
+
+        // Check if any answers are submitted
+        if (!isset($_POST['jawaban']) || empty($_POST['jawaban'])) {
+            // Redirect back with a warning message
+            $this->session->set_flashdata('warning', 'Tolong Jawab Terlebih Dahulu Semua Pertanyaan Sebelum Sumbit Jawaban....!!!!');
+            redirect(base_url("user/deteksi"));
+            return;
+        }
 
         // Get the user ID based on the username (assuming 'users' table has 'id_user' and 'username' columns).
         $this->db->where('username', $username);
@@ -246,6 +344,7 @@ class Deteksi extends CI_Controller
 
         redirect(base_url("user/deteksi/hasil?id=" . $id_hasil . "&sesi=" . $sesi));
     }
+
 
     public function bayes($user_id, $user_sesi)
     {
