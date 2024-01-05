@@ -1,5 +1,16 @@
 <div>
     <h3 class="text-center my-4">Manajemen Data Kriteria dan Gejala</h3>
+
+    <div class="row my-4">
+        <!-- alert -->
+        <?php if ($this->session->flashdata('success_message')) : ?>
+            <div class="alert alert-success w-100" role="alert">
+                <?php echo $this->session->flashdata('success_message'); ?>
+            </div>
+        <?php endif; ?>
+        <!-- end alert -->
+    </div>
+
     <div class="row my-4">
         <div class="col-6 col-lg-3">
             <div class="small-box bg-success">

@@ -17,6 +17,14 @@
                 <h4 class="my-4 text-center">Silahkan menjawab pertanyaan ini untuk mendapatkan kriteria kecerdasan pada anak</h4>
                 <h10> PILIH 1 OPSI JAWABAN DI SETIAP PERTANYAAN...!!! </h10>
             </div>
+            <!-- alert -->
+            <?php if ($this->session->flashdata('alert')) : ?>
+                <div class="alert alert-danger text-center" role="alert">
+                    <?php echo $this->session->flashdata('alert'); ?>
+                    <?php var_dump($this->session->flashdata('alert'))  ?>
+                </div>
+            <?php endif; ?>
+            <!-- end alert -->
             <!-- soal -->
             <div class="soal-wrapper">
                 <div class="soal-wrapper-header">

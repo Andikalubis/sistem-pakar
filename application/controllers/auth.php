@@ -88,6 +88,8 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('auth/register', $data);
         } else {
+            $data['validation_errors'] = validation_errors();
+
             $this->_register();
         }
     }
@@ -117,6 +119,8 @@ class Auth extends CI_Controller
         );
 
         $this->User_model->createUser($data);
+
+        $this->session->set_flashdata('success_message', 'Registrasi berhasil. Silakan login.');
 
         redirect('auth');
     }

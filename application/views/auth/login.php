@@ -30,6 +30,14 @@
             <div class="card-body">
                 <p class="login-box-msg">Sign in untuk memulai sesi kamu</p>
 
+                <!-- alert -->
+                <?php if ($this->session->flashdata('success_message')) : ?>
+                    <div class="alert alert-success text-center" role="alert">
+                        <?php echo $this->session->flashdata('success_message'); ?>
+                    </div>
+                <?php endif; ?>
+                <!-- end alert -->
+
 
                 <form action="<?= base_url('auth'); ?>" method="post">
                     <div class="input-group mb-3">

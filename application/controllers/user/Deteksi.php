@@ -161,6 +161,26 @@ class Deteksi extends CI_Controller
             // Jika user belum pernah tes, set nilai sesi menjadi 1
         }
 
+        // Validasi jawaban
+        if (isset($_POST['jawaban'])) {
+            $jawabanErrors = $this->validateJawaban($_POST['jawaban']);
+
+            if (!empty($jawabanErrors)) {
+                // Jika ada jawaban yang kosong, kembalikan pesan kesalahan ke view
+                $data['validation_errors'] = $jawabanErrors;
+                // Load view dengan pesan kesalahan
+                $this->session->set_flashdata('alert', $jawabanErrors);
+
+                redirect(base_url('user/deteksi'));
+                return;
+            }
+        } else {
+            $this->session->set_flashdata('alert', 'PIlihan wajib di isi');
+            redirect(base_url('user/deteksi'));
+            return;
+        }
+
+
         // Save each answer to the 'jawaban' table.
         foreach ($_POST['jawaban'] as $id_pertanyaan => $jawaban) {
             if (empty($jawaban)) {
@@ -178,7 +198,7 @@ class Deteksi extends CI_Controller
                 'id_kriteria' => $kriteria->id_kriteria,
                 'id_gejala' => $gejala->id_gejala,
                 'kode_gejala' => $gejala->kode_gejala,
-                'cf_user' => $jawaban,
+                'cf_user' => isset($jawaban) ? $jawaban : 0,
                 'sesi' => $sesi,
                 'tanggal' => date('Y-m-d'),
             );
@@ -282,7 +302,7 @@ class Deteksi extends CI_Controller
         $sumPHGi = 0;
         foreach ($cf_pakar as $i => $pakar) {
             $nilai_pakar = (float) $pakar->cf_pakar;
-            $sumPHGi += ($cf_user[$i] * ($nilai_pakar / $sum_of_H));
+            $sumPHGi += ((isset($cf_user[$i]) ? $cf_user[$i] : 0) * ($nilai_pakar / $sum_of_H));
         }
 
         $PHgi = 0;
@@ -290,7 +310,7 @@ class Deteksi extends CI_Controller
         foreach ($cf_pakar as $i => $pakar) {
             $nilai_pakar = (float) $pakar->cf_pakar;
             $PHgi = $nilai_pakar / $sum_of_H;
-            $PEHgi = $cf_user[$i] * $PHgi;
+            $PEHgi = (isset($cf_user[$i]) ? $cf_user[$i] : 0) * $PHgi;
 
             if ($PEHgi != 0) {
                 $PHE = $PEHgi / $sumPHGi;
@@ -324,5 +344,20 @@ class Deteksi extends CI_Controller
         }
 
         return array_merge($this->_quickSort($left), array(array("kode_ciri" => $arr[0]['kode_ciri'], "nilai" => $pivot)), $this->_quickSort($right));
+    }
+
+
+    // Validasi jawaban
+    private function validateJawaban($jawabanArray)
+    {
+        $errors = array();
+
+        foreach ($jawabanArray as $id_pertanyaan => $jawaban) {
+            if (empty($jawaban)) {
+                $errors[] = "Jawaban untuk pertanyaan dengan ID $id_pertanyaan harus diisi.";
+            }
+        }
+
+        return $errors;
     }
 }

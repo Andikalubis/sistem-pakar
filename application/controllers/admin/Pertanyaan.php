@@ -56,6 +56,7 @@ class Pertanyaan extends CI_Controller
                 $this->Pertanyaan_model->insertPertanyaan($data);
 
                 // Redirect ke halaman index atau halaman sukses tambah data
+                $this->session->set_flashdata('success_message', 'Tambah data berhasil. Silakan login.');
                 redirect('admin/pertanyaan');
             }
         }
@@ -93,6 +94,8 @@ class Pertanyaan extends CI_Controller
                 $this->Pertanyaan_model->updatePertanyaan($id_pertanyaan, $data);
 
                 // Redirect ke halaman ciri ketika halaman sukses update data
+                $this->session->set_flashdata('success_message', 'Hapus data berhasil. Silakan login.');
+
                 redirect('admin/pertanyaan');
             }
         }
@@ -105,6 +108,7 @@ class Pertanyaan extends CI_Controller
         // Proses hapus data Pertanyaan dari database
         $this->Pertanyaan_model->deletePertanyaan($id_pertanyaan); // Panggil fungsi delete pada model
         // Redirect ke halaman daftar Pertanyaan setelah penghapusan berhasil
+        $this->session->set_flashdata('success_message', 'Hapus data berhasil. Silakan login.');
         redirect('admin/pertanyaan');
     }
 }

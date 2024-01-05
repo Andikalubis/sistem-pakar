@@ -27,6 +27,17 @@
             }
             ?>
 
+            <!-- alert -->
+            <?php if ($this->session->flashdata('success_message')) : ?>
+              <div class="row my-4">
+                <div class="alert alert-success w-100" role="alert">
+                  <?php echo $this->session->flashdata('success_message'); ?>
+                </div>
+              </div>
+            <?php endif; ?>
+            <!-- end alert -->
+
+
             <?php echo form_open('admin/profil/editProfil/' . $user['id_user']); ?>
 
             <div class="row mt-3">

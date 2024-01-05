@@ -42,6 +42,8 @@ class Riwayat extends CI_Controller
         // Proses hapus data hasil dari database
         $this->Admin_model->deleteRiwayat($id_hasil); // Panggil fungsi delete pada model
 
+        $this->session->set_flashdata('success_message', 'Berhasil menghapus data.');
+
         // Redirect ke halaman daftar hasil setelah penghapusan berhasil
         redirect('admin/riwayat/');
     }

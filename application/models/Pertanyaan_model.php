@@ -6,7 +6,8 @@ class Pertanyaan_model extends CI_Model
 
     public function getPertanyaan()
     {
-        return $this->db->get('pertanyaan')->result();
+        // return $this->db->get('pertanyaan')->result();
+        return $this->db->order_by('kode_pertanyaan', 'asc')->get('pertanyaan')->result();
     }
 
     public function insertPertanyaan($data)

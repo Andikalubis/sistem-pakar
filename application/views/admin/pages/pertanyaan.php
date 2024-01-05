@@ -13,6 +13,17 @@
             </div>
         </div>
     </div>
+
+    <div class="row my-4">
+        <!-- alert -->
+        <?php if ($this->session->flashdata('success_message')) : ?>
+            <div class="alert alert-success w-100" role="alert">
+                <?php echo $this->session->flashdata('success_message'); ?>
+            </div>
+        <?php endif; ?>
+        <!-- end alert -->
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="row">

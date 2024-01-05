@@ -58,6 +58,7 @@ class Ciri extends CI_Controller
                 $this->Admin_model->insertKriteria($data);
 
                 // Redirect ke halaman index atau halaman sukses tambah data
+                $this->session->set_flashdata('success_message', 'Tambah data berhasil. Silakan login.');
                 redirect('admin/ciri');
             }
         }
@@ -92,6 +93,8 @@ class Ciri extends CI_Controller
                 $this->Admin_model->updateKriteria($id_kriteria, $data);
 
                 // Redirect ke halaman ciri ketika halaman sukses update data
+                $this->session->set_flashdata('success_message', 'Edit data berhasil. Silakan login.');
+
                 redirect('admin/ciri');
             }
         }
@@ -104,6 +107,7 @@ class Ciri extends CI_Controller
         // Proses hapus data kriteria dari databaseb
         $this->Admin_model->deleteKriteria($id_kriteria); // Panggil fungsi delete pada model
         // Redirect ke halaman daftar kriteria setelah penghapusan berhasil
+        $this->session->set_flashdata('success_message', 'Hapus data berhasil. Silakan login.');
         redirect('admin/ciri');
     }
 
@@ -130,6 +134,7 @@ class Ciri extends CI_Controller
                 $this->Admin_model->insertGejala($data);
 
                 // Redirect ke halaman index atau halaman sukses tambah data
+                $this->session->set_flashdata('success_message', 'Tambah data berhasil. Silakan login.');
                 redirect('admin/ciri');
             }
         }
@@ -160,6 +165,8 @@ class Ciri extends CI_Controller
                 $this->Admin_model->updateGejala($id_gejala, $data);
 
                 // Redirect ke halaman ciri ketika halaman sukses update data
+                $this->session->set_flashdata('success_message', 'Edit data berhasil. Silakan login.');
+
                 redirect('admin/ciri');
             }
         }
@@ -172,6 +179,7 @@ class Ciri extends CI_Controller
         // Proses hapus data gejala dari database
         $this->Admin_model->deleteGejala($id_gejala); // Panggil fungsi delete pada model
         // Redirect ke halaman daftar gejala setelah penghapusan berhasil
+        $this->session->set_flashdata('success_message', 'Hapus data berhasil. Silakan login.');
         redirect('admin/ciri');
     }
 }
