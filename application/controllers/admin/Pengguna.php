@@ -58,7 +58,7 @@ class Pengguna extends CI_Controller
                 $this->User_model->updateUser($id_user, $data);
 
                 // Redirect ke halaman pengguna ketika halaman sukses update data
-                $this->session->set_flashdata('success_message', 'Edit pengguna berhasil. Silakan login.');
+                $this->session->set_flashdata('success_message', 'Edit pengguna berhasil.');
 
                 redirect('admin/pengguna');
             }
@@ -72,7 +72,7 @@ class Pengguna extends CI_Controller
         // Proses hapus data pengguna dari database
         $this->Admin_model->deletePengguna($id_user); // Panggil fungsi delete pada model
         // Redirect ke halaman daftar pengguna setelah penghapusan berhasil
-        $this->session->set_flashdata('success_message', 'Hapus data berhasil. Silakan login.');
+        $this->session->set_flashdata('success_message', 'Berhasil menghapus data.');
 
         redirect('admin/pengguna');
     }
