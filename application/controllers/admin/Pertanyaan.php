@@ -41,27 +41,27 @@ class Pertanyaan extends CI_Controller
         if ($this->input->post()) {
             $this->form_validation->set_rules('id_kriteria', 'Kriteria', 'required');
             $this->form_validation->set_rules('id_gejala', 'Gejala', 'required');
-            $this->form_validation->set_rules('kode_gejala', 'Kode Gejala', 'required');
-            $this->form_validation->set_rules('kode_pertanyaan', 'Kode Pertanyaan', 'required');
             $this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required');
+
+            $kode_pertanyaan = 'KP-' . sprintf('%03d', $this->db->count_all('pertanyaan') + 1);
 
             if ($this->form_validation->run() == TRUE) {
                 // Jika validasi sukses, lakukan proses tambah data ke model
                 $data = array(
                     'id_kriteria'       => $this->input->post('id_kriteria'),
                     'id_gejala'         => $this->input->post('id_gejala'),
-                    'kode_gejala'       => $this->input->post('kode_gejala'),
-                    'kode_pertanyaan'   => $this->input->post('kode_pertanyaan'),
+                    'kode_pertanyaan'   => $kode_pertanyaan,
                     'pertanyaan'        => $this->input->post('pertanyaan')
                 );
 
                 $this->Pertanyaan_model->insertPertanyaan($data);
 
                 // Redirect ke halaman index atau halaman sukses tambah data
-                $this->session->set_flashdata('success_message', 'Tambah data berhasil. Silakan login.');
+                $this->session->set_flashdata('success_message', 'Tambah data berhasil.');
                 redirect('admin/pertanyaan');
             }
         }
+
         $data['contents'] = $this->load->view('admin/pages/pertanyaan-tambah', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }

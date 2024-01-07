@@ -259,26 +259,6 @@ class Deteksi extends CI_Controller
             // Jika user belum pernah tes, set nilai sesi menjadi 1
         }
 
-        // Validasi jawaban
-        if (isset($_POST['jawaban'])) {
-            $jawabanErrors = $this->validateJawaban($_POST['jawaban']);
-
-            if (!empty($jawabanErrors)) {
-                // Jika ada jawaban yang kosong, kembalikan pesan kesalahan ke view
-                $data['validation_errors'] = $jawabanErrors;
-                // Load view dengan pesan kesalahan
-                $this->session->set_flashdata('alert', $jawabanErrors);
-
-                redirect(base_url('user/deteksi'));
-                return;
-            }
-        } else {
-            $this->session->set_flashdata('alert', 'PIlihan wajib di isi');
-            redirect(base_url('user/deteksi'));
-            return;
-        }
-
-
         // Save each answer to the 'jawaban' table.
         foreach ($_POST['jawaban'] as $id_pertanyaan => $jawaban) {
             if (empty($jawaban)) {

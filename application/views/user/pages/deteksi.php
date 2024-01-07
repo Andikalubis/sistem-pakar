@@ -25,12 +25,22 @@
             </div>
             <!-- alert -->
             <?php if ($this->session->flashdata('alert')) : ?>
-                <div class="alert alert-danger text-center" role="alert">
-                    <?php echo $this->session->flashdata('alert'); ?>
-                    <?php var_dump($this->session->flashdata('alert'))  ?>
-                </div>
+                <?php $alert = $this->session->flashdata('alert'); ?>
+
+                <?php if (isset($alert['error'])) : ?>
+                    <div class="alert alert-danger text-center" role="alert">
+                        <?php echo implode("<br>", $alert['error']); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($alert['success'])) : ?>
+                    <div class="alert alert-success text-center" role="alert">
+                        <?php echo $alert['success']; ?>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
             <!-- end alert -->
+
             <!-- soal -->
             <div class="soal-wrapper">
                 <div class="soal-wrapper-header">
