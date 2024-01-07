@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="col-6 col-lg-3">
-            <div class="small-box bg-danger">
+            <div class="small-box bg-primary">
                 <div class="inner">
                     <p>Insert Data Gejala</p>
                 </div>
