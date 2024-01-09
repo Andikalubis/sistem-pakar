@@ -22,7 +22,7 @@ class Perhitungan extends CI_Controller
     public function index()
     {
         // Memanggil fungsi pengurutan (misalnya QuickSort)
-        $sortedDataFromCF = $this->quickSort($this->certainty_factor(3, 1));
+        $sortedDataFromCF = $this->quickSort($this->certainty_factor(22785, 1));
         $sortedDataFromBayes = $this->quickSort($this->bayes(3, 1));
 
         // var_dump($sortedDataFromBayes);

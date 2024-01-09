@@ -33,8 +33,21 @@ class Pertanyaan_model extends CI_Model
     public function get_Pertanyaan_by_id($id_pertanyaan)
     {
         // Mengambil data Pertanyaan berdasarkan ID dari tabel "Pertanyaan"
-        $this->db->where('id_pertanyaan', $id_pertanyaan);
-        return $this->db->get('pertanyaan')->row();
+        // $this->db->where('id_pertanyaan', $id_pertanyaan);
+        // return $this->db->get('pertanyaan')->row();
+
+        // Menentukan kolom yang ingin diambil
+        $this->db->select('pertanyaan.*, kriteria.kode_kriteria'); // Sesuaikan dengan kolom yang Anda butuhkan
+
+        // Menggabungkan tabel pertanyaan dengan tabel kriteria
+        $this->db->from('pertanyaan');
+        $this->db->join('kriteria', 'pertanyaan.id_kriteria = kriteria.id_kriteria', 'left'); // Sesuaikan dengan relasi antara kedua tabel
+
+        // Menentukan kondisi WHERE berdasarkan id_pertanyaan
+        $this->db->where('pertanyaan.id_pertanyaan', $id_pertanyaan);
+
+        // Mengambil satu baris hasil
+        return $this->db->get()->row();
     }
 
     public function get_kriteria_id($id_pertanyaan)

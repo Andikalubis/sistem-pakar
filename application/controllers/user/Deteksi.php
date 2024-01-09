@@ -100,6 +100,8 @@ class Deteksi extends CI_Controller
                 'sesi' => $sesi,
             );
 
+            var_dump($id);
+
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);
         } else {
@@ -354,10 +356,12 @@ class Deteksi extends CI_Controller
         foreach ($kriteria as $index => $kriteria_nama) {
             $nilai_gejala = $cf_user[$index];
 
-            $result = $this->Kriteria_model->nilai_gejala($kriteria_nama, $nilai_gejala);
-            $formatted_result = number_format($result, 15, '.', ''); // Format angka
-            $decimal_position = strpos($formatted_result, '.') + 3;
-            $trimmed_result = substr($formatted_result, 0, $decimal_position);
+            // ($this->Kriteria_model->nilai_gejala($kriteria_nama, $nilai_gejala));
+
+            $result             = $this->Kriteria_model->nilai_gejala($kriteria_nama, $nilai_gejala);
+            $formatted_result   = number_format($result, 15, '.', ''); // Format angka
+            $decimal_position   = strpos($formatted_result, '.') + 3;
+            $trimmed_result     = substr($formatted_result, 0, $decimal_position);
 
             $maxCfCombine[$index] = array(
                 "kode_ciri" => $kriteria[$index],

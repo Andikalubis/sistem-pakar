@@ -26,13 +26,14 @@ class Kriteria_model extends CI_Model
         $cfCombine = 0;
 
         foreach ($result as $key => $value) {
-            $nilaiGejala = ((float)$value->cf_pakar * isset($cfUser[$key]) ? $cfUser[$key] : 0);
+            // var_dump($value);
+            // $nilaiGejala = ((float)$value->cf_pakar * isset($cfUser[$key]) ? $cfUser[$key] : 1);
+            // $nilaiGejala = $value->cf_pakar * $cfUser[$key];
+            $nilaiGejala = isset($cfUser[$key]) ? ($value->cf_pakar * $cfUser[$key]) : 0;
 
             // echo $value->kode_gejala . "-" . $value->cf_pakar . "*" . $cfUser[$key] . " = " . $value->cf_pakar * $cfUser[$key] . "<br/>";
             array_push($cfHE, $nilaiGejala);
         }
-
-        // var_dump($cfHE);
 
         for ($i = 0; $i < count($cfHE); $i++) {
             $cfCombine = $cfCombine + $cfHE[$i] * (1 - $cfCombine);

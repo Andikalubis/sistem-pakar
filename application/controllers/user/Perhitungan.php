@@ -34,6 +34,8 @@ class Perhitungan extends CI_Controller
             );
         }
 
+        var_dump($maxCfCombine);
+
         return $maxCfCombine;
     }
 }
