@@ -103,7 +103,7 @@ class Pertanyaan extends CI_Controller
                     'pertanyaan'        => $this->input->post('pertanyaan')
                 );
 
-                $this->Pertanyaan_model->insertPertanyaan($data);
+                $this->Pertanyaan_model->updatePertanyaan($id_pertanyaan, $data);
 
                 // Redirect ke halaman index atau halaman sukses tambah data
                 $this->session->set_flashdata('success_message', 'Edit data berhasil.');
