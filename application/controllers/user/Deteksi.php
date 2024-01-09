@@ -100,8 +100,6 @@ class Deteksi extends CI_Controller
                 'sesi' => $sesi,
             );
 
-            var_dump($id);
-
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);
         } else {

@@ -142,6 +142,17 @@ class Riwayat extends CI_Controller
         }
     }
 
+    public function hapusRiwayat($id_hasil)
+    {
+        // Proses hapus data hasil dari database
+        $this->Admin_model->deleteRiwayat($id_hasil); // Panggil fungsi delete pada model
+
+        $this->session->set_flashdata('success_message', 'Berhasil menghapus data.');
+
+        // Redirect ke halaman daftar hasil setelah penghapusan berhasil
+        redirect('admin/riwayat/');
+    }
+
     public function bayes($user_id, $user_sesi)
     {
         $result = array();
@@ -170,10 +181,12 @@ class Riwayat extends CI_Controller
         foreach ($kriteria as $index => $kriteria_nama) {
             $nilai_gejala = $cf_user[$index];
 
-            $result = $this->Kriteria_model->nilai_gejala($kriteria_nama, $nilai_gejala);
-            $formatted_result = number_format($result, 15, '.', ''); // Format angka
-            $decimal_position = strpos($formatted_result, '.') + 3;
-            $trimmed_result = substr($formatted_result, 0, $decimal_position);
+            // ($this->Kriteria_model->nilai_gejala($kriteria_nama, $nilai_gejala));
+
+            $result             = $this->Kriteria_model->nilai_gejala($kriteria_nama, $nilai_gejala);
+            $formatted_result   = number_format($result, 15, '.', ''); // Format angka
+            $decimal_position   = strpos($formatted_result, '.') + 3;
+            $trimmed_result     = substr($formatted_result, 0, $decimal_position);
 
             $maxCfCombine[$index] = array(
                 "kode_ciri" => $kriteria[$index],
@@ -239,16 +252,5 @@ class Riwayat extends CI_Controller
         }
 
         return array_merge($this->_quickSort($left), array(array("kode_ciri" => $arr[0]['kode_ciri'], "nilai" => $pivot)), $this->_quickSort($right));
-    }
-
-    public function hapusRiwayat($id_hasil)
-    {
-        // Proses hapus data hasil dari database
-        $this->Admin_model->deleteRiwayat($id_hasil); // Panggil fungsi delete pada model
-
-        $this->session->set_flashdata('success_message', 'Berhasil menghapus data.');
-
-        // Redirect ke halaman daftar hasil setelah penghapusan berhasil
-        redirect('admin/riwayat/');
     }
 }
