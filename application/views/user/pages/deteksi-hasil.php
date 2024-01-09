@@ -89,7 +89,7 @@
                                 </div>
                             </div>
 
-                            <div class="row p-4">
+                            <!-- <div class="row p-4">
                                 <div class="col">
                                     <?php
                                     $no = 1;
@@ -108,7 +108,29 @@
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
+                            </div> -->
+
+                            <div class="row p-4">
+                                <div class="col">
+                                    <?php
+                                    $no = 1;
+                                    foreach ($stimulus as $data) : ?>
+                                        <strong class="mb-2 d-inline-block">
+                                            <?= $data->nama ?>
+                                        </strong>
+                                        <p>
+                                            <?= $data->deskripsi ?>
+                                        </p>
+                                        <div class="px-4 border-left border-info mb-4">
+                                            <small style="font-style: italic;">stimulus</small>
+                                            <p>
+                                                <?= $data->stimulasi ?>
+                                            </p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
+
 
                             <!-- /.card-body -->
                             <div class="card-footer">

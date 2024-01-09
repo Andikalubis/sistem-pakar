@@ -100,7 +100,10 @@ class Deteksi extends CI_Controller
                 'sesi' => $sesi,
             );
 
-            var_dump($data);
+            $combinedArray = array_merge($data['hasil_cf'], $data['hasil_nb']);
+            $uniqueCombinedArray = $this->removeDuplicateByCode($combinedArray);
+
+            $data['stimulus'] = $uniqueCombinedArray;
 
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);
@@ -429,18 +432,18 @@ class Deteksi extends CI_Controller
         return array_merge($this->_quickSort($left), array(array("kode_ciri" => $arr[0]['kode_ciri'], "nilai" => $pivot)), $this->_quickSort($right));
     }
 
-
-    // Validasi jawaban
-    private function validateJawaban($jawabanArray)
+    function removeDuplicateByCode($array)
     {
-        $errors = array();
+        $uniqueArray = [];
+        $uniqueCodes = [];
 
-        foreach ($jawabanArray as $id_pertanyaan => $jawaban) {
-            if (empty($jawaban)) {
-                $errors[] = "Jawaban untuk pertanyaan dengan ID $id_pertanyaan harus diisi.";
+        foreach ($array as $item) {
+            if (!in_array($item->kode, $uniqueCodes)) {
+                $uniqueCodes[] = $item->kode;
+                $uniqueArray[] = $item;
             }
         }
 
-        return $errors;
+        return $uniqueArray;
     }
 }
