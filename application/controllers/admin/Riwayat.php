@@ -41,8 +41,6 @@ class Riwayat extends CI_Controller
             $row['nama']     = $this->User_model->get_user_all();
         }
 
-        var_dump($data['hasil']);
-
         $data['contents'] = $this->load->view('admin/pages/riwayat-deteksi', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
     }
