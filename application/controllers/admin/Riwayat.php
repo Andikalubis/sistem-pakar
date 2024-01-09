@@ -208,6 +208,7 @@ class Riwayat extends CI_Controller
             $uniqueCombinedArray = $this->removeDuplicateByCode($combinedArray);
 
             $data['stimulus'] = $uniqueCombinedArray;
+            $data['export_pdf'] = 'admin/riwayat/generate_pdf/' . $id . '/' . $sesi . '/' . $username;
 
             $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
             $this->load->view('user/layout/template', $data);

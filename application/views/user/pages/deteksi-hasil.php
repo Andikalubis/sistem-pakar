@@ -134,7 +134,7 @@
 
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <a href="<?php echo base_url('user/deteksi/generate_pdf/' . $id . '/' . $sesi); ?>" class="btn btn-danger">
+                                <a href="<?php echo base_url($export_pdf) ?>" class="btn btn-danger">
                                     Export PDF
                                 </a>
                             </div>
