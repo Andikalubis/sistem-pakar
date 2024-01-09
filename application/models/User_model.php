@@ -60,6 +60,7 @@ class User_model extends CI_Model
         // Ambil data riwayat dari tabel 'hasil'
         $columns = array(
             'hasil.*',
+            'user.username AS username',
             'hasil_cf.kode_kriteria AS cf_kode_kriteria',
             'hasil_cf.kriteria AS cf_kriteria',
             'hasil_cf.bobot AS cf_bobot',

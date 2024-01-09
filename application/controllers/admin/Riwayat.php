@@ -36,9 +36,12 @@ class Riwayat extends CI_Controller
         // Ambil data riwayat dari model
         $data['hasil'] = $this->Admin_model->getRiwayat();
 
+
         foreach ($data['hasil'] as $row) {
-            $row['nama'] = $this->User_model->get_user_all();
+            $row['nama']     = $this->User_model->get_user_all();
         }
+
+        var_dump($data['hasil']);
 
         $data['contents'] = $this->load->view('admin/pages/riwayat-deteksi', $data, TRUE);
         $this->load->view('admin/layout/template', $data);
@@ -74,13 +77,81 @@ class Riwayat extends CI_Controller
         $this->pdf->stream('Laporan-Riwayat-Deteksi.pdf');
     }
 
+    // public function hasil()
+    // {
+    //     $id = isset($_GET['id']) ? $_GET['id'] : null;
+    //     $sesi = isset($_GET['sesi']) ? $_GET['sesi'] : 1;
+
+    //     if ($id) {
+    //         $username = $this->session->userdata('username');
+    //         $id_user = $this->User_model->get_user_by_username($username)['id_user'];
+
+    //         $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
+    //         $sortedDataFromCF = $this->_quickSort($this->cf($id_user, $sesi));
+    //         $sortedDataFromBayes = $this->_quickSort($this->bayes($id_user, $sesi));
+
+    //         // mengambil hasil dari tabel hasil_cf
+    //         $hasil_cf = array();
+    //         for ($i = 0; $i < 3; $i++) {
+    //             $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromCF[$i]['kode_ciri']);
+    //             $nama = $kriteria->nama_kriteria;
+    //             $deskripsi = $kriteria->deskripsi;
+    //             $kode = $sortedDataFromCF[$i]['kode_ciri'];
+    //             $bobot = $sortedDataFromCF[$i]['nilai'];
+    //             $stimulasi = $kriteria->stimulasi;
+
+    //             $hasil_cf[] = (object) array(
+    //                 'kode' => $kode,
+    //                 'nama' => $nama,
+    //                 'deskripsi' => $deskripsi,
+    //                 'bobot' => $bobot,
+    //                 'stimulasi' => $stimulasi,
+    //             );
+    //         }
+
+    //         // mengambil hasil dari tabel hasil_nb
+    //         $hasil_nb = array();
+    //         for ($i = 0; $i < 3; $i++) {
+    //             $kriteria = $this->Kriteria_model->get_kriteria($sortedDataFromBayes[$i]['kode_ciri']);
+    //             $nama = $kriteria->nama_kriteria;
+    //             $deskripsi = $kriteria->deskripsi;
+    //             $kode = $sortedDataFromBayes[$i]['kode_ciri'];
+    //             $bobot = $sortedDataFromBayes[$i]['nilai'];
+
+    //             $hasil_nb[] = (object) array(
+    //                 'kode' => $kode,
+    //                 'nama' => $nama,
+    //                 'deskripsi' => $deskripsi,
+    //                 'bobot' => $bobot,
+    //                 'stimulasi' => $stimulasi,
+    //             );
+    //         }
+
+    //         $data = array(
+    //             'title' => 'hasil',
+    //             'username' => $username,
+    //             'nama' => $data['nama'],
+    //             'usia' => $data['usia'],
+    //             'hasil_cf' => $hasil_cf,
+    //             'hasil_nb' => $hasil_nb,
+    //             'id' => $id,
+    //             'sesi' => $sesi,
+    //         );
+
+    //         $data['contents'] = $this->load->view('admin/pages/deteksiHasil', $data, TRUE);
+    //         $this->load->view('admin/layout/template', $data);
+    //     } else {
+    //         redirect(base_url("admin/riwayat"));
+    //     }
+    // }
+
     public function hasil()
     {
         $id = isset($_GET['id']) ? $_GET['id'] : null;
         $sesi = isset($_GET['sesi']) ? $_GET['sesi'] : 1;
+        $username = isset($_GET['username']) ? $_GET['username'] : 'admin';
 
         if ($id) {
-            $username = $this->session->userdata('username');
             $id_user = $this->User_model->get_user_by_username($username)['id_user'];
 
             $data = $this->Hasil_model->get_nama_umur_user_by_sesi($sesi);
@@ -135,12 +206,11 @@ class Riwayat extends CI_Controller
                 'sesi' => $sesi,
             );
 
-            $data['contents'] = $this->load->view('admin/pages/deteksiHasil', $data, TRUE);
-            $this->load->view('admin/layout/template', $data);
-        } else {
-            redirect(base_url("admin/riwayat"));
+            $data['contents'] = $this->load->view('user/pages/deteksi-hasil', $data, TRUE);
+            $this->load->view('user/layout/template', $data);
         }
     }
+
 
     public function hapusRiwayat($id_hasil)
     {

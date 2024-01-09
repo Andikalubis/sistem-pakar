@@ -67,7 +67,7 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo base_url('admin/Riwayat/hasil?id=' . $data['id_hasil'] . '&sesi=' . $data['sesi']) ?>" class="btn btn-sm btn-success">
+                                                    <a href="<?php echo base_url('admin/riwayat/hasil?id=' . $data['id_hasil'] . '&sesi=' . $data['sesi']) . '&username=' . $data['username'] ?>" class="btn btn-sm btn-success">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                     <a href="<?php echo base_url('admin/riwayat/hapusRiwayat/') . $data['id_hasil'] ?>" class="btn btn-sm btn-danger">

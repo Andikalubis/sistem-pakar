@@ -22,6 +22,7 @@ class Admin_model extends CI_Model
         // Ambil data riwayat dari tabel 'hasil'
         $columns = array(
             'hasil.*',
+            'user.username AS username',
             'hasil_cf.kode_kriteria AS cf_kode_kriteria',
             'hasil_cf.kriteria AS cf_kriteria',
             'hasil_cf.bobot AS cf_bobot',
@@ -32,6 +33,7 @@ class Admin_model extends CI_Model
 
         $this->db->select($columns)
             ->from('hasil')
+            ->join('user', 'hasil.id_user = user.id_user', 'left')
             ->join('hasil_cf', 'hasil.id_hasil = hasil_cf.id_hasil', 'left')
             ->join('hasil_nb', 'hasil.id_hasil = hasil_nb.id_hasil', 'left')
             ->group_by('hasil.id_hasil')
